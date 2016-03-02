@@ -1,3 +1,10 @@
 body {
     padding-top: 50px;
 }
+
+/*
+ * Tables
+ */
+.clickable-row {
+    cursor: pointer;
+}

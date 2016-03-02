@@ -1,2 +1,12 @@
-<script type="application/javascript" src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-<script type="application/javascript" src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script type="application/javascript"
+        src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+<script type="application/javascript"
+        src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script type="application/javascript"
+        src="{{ asset('bower_components/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
+<script type="application/javascript"
+        src="{{ asset('bower_components/bootstrap-table/dist/locale/bootstrap-table-fr-FR.min.js') }}"></script>
+<script type="application/javascript"
+        src="{{ asset('bower_components/bootstrap-table/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.min.js') }}"></script>
+<script type="application/javascript"
+        src="{{ asset('js/emprunt.js') }}"></script>
