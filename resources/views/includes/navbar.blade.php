@@ -11,9 +11,15 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="{{ Request::segment(1) === 'users' ? 'active' : null }}">
+                    <a href="{{url('users')}}"> Utilisateurs</a>
+                </li>
+                <li class="{{ Request::segment(1) === 'devices' ? 'active' : null }}">
+                    <a href="{{url('devices')}}"> Materiel</a>
+                </li>
+                <li class="{{ Request::segment(1) === 'admin' ? 'active' : null }}">
+                    <a href="{{url('admin')}}"> Administration</a>
+                </li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

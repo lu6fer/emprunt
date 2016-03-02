@@ -23,4 +23,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function regulators () {
+        return $this->belongsToMany('Emprunt\Regulator')->withPivot('borrow', 'return');
+    }
+
+    public function stabs () {
+        return $this->belongsToMany('Emprunt\Stab')->withPivot('borrow', 'return');
+    }
+
+    public function blocks () {
+        return $this->belongsToMany('Emprunt\Block')->withPivot('borrow', 'return');
+    }
 }

@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('layout/html');
-});
-
+});*/
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -27,5 +26,6 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('/users',   'UserController@index');
+    Route::get('/devices', 'DeviceController@index');
 });

@@ -1,0 +1,2 @@
+<script type="application/javascript" src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+<script type="application/javascript" src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>

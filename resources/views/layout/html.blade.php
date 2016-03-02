@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Emprunt - @yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+    @include('includes.head')
 </head>
 <body>
-    <nav>
-        @sidebar
-    </nav>
-    <script type="application/javascript" src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script type="application/javascript" src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    @include('includes.navbar')
+
+    <div class="container">
+        @yield('content')
+    </div>
+
+    {{ csrf_field() }}
+    @include('includes.js')
 </body>
 </html>
