@@ -5,7 +5,7 @@
     <div>
 
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs nav-justified" role="tablist">
             <li role="presentation" class="active"><a href="#regulators" aria-controls="regulators" role="tab" data-toggle="tab">Détendeurs</a></li>
             <li role="presentation"><a href="#stabs" aria-controls="stabs" role="tab" data-toggle="tab">Stabs</a></li>
             <li role="presentation"><a href="#blocks" aria-controls="blocks" role="tab" data-toggle="tab">Blocs</a></li>

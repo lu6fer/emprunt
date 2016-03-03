@@ -26,6 +26,7 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/users',   'UserController@index');
-    Route::get('/devices', 'DeviceController@index');
+    Route::get('/users',            'UserController@index');
+    Route::get('/devices',          'DeviceController@index');
+    Route::get('/borrow/user/{id}', 'BorrowController@user');
 });

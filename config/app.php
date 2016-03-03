@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Paris',
 
     /*
     |--------------------------------------------------------------------------
@@ -155,7 +155,10 @@ return [
         Emprunt\Providers\AuthServiceProvider::class,
         Emprunt\Providers\EventServiceProvider::class,
         Emprunt\Providers\RouteServiceProvider::class,
-
+        /*
+         * Debug
+         */
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -201,6 +204,10 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        /*
+         * Debug
+         */
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
 
     ],
 

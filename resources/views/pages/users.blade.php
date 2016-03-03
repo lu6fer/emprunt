@@ -15,16 +15,24 @@
                 <th data-sortable="true">Nom</th>
                 <th data-sortable="true">email</th>
                 <th data-sortable="true">Actif</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
             @foreach($users as $user)
-                <tr class="clickable-row" data-href="{{url('borrow/' . $user->id)}}">
+                <tr>
                     <td>{{$user->id}}</td>
                     <td>{{$user->firstname}}</td>
                     <td>{{$user->lastname}}</td>
                     <td>{{$user->email}}</td>
-                    <td><input type="checkbox" checked="@if ($user->active == true) checked @endif" disabled></td>
+                    <td>
+                        <input type="checkbox" checked="@if ($user->active == true) checked @endif" disabled>
+                    </td>
+                    <td>
+                        <a href="{{url('borrow/user/' . $user->id)}}" type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                        </a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
