@@ -66,16 +66,20 @@
                 </tr>
             @endforeach
             <!-- New Line -->
-            <tr>
+            <tr class="new-borrow">
                 <td>
-                    <select>
+                    <select class="type">
                         <option value="blocks">Bloc</option>
                         <option value="regulator">Détendeur</option>
                         <option value="stab">Stab</option>
                     </select>
                 </td>
                 <td>
-                    <input type="number">
+                    <select class="device" id="stabs">
+                    @foreach($stabs as $stab)
+                        <option value="{{$stab->id}}">[{{$stab->numero}}] {{$stab->brand}} - {{$stab->model}} - {{$stab->size}}</option>
+                    @endforeach
+                    </select>
                 </td>
                 <td></td>
                 <td></td>

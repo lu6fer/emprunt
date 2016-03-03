@@ -11,6 +11,15 @@ class Stab_UserTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $table = 'stab_user';
+
+        DB::table($table)->delete();
+        $data = [
+            'user_id' => '1',
+            'stab_id' => '1',
+            'borrow'  => '2015-06-25'
+        ];
+
+        DB::table($table)->insert($data);
     }
 }

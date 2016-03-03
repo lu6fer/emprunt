@@ -8,3 +8,10 @@ body {
 .clickable-row {
     cursor: pointer;
 }
+
+/*
+ * Borrow
+ */
+.new-borrow .device {
+    display: none;
+}

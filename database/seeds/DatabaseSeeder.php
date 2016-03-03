@@ -15,5 +15,9 @@ class DatabaseSeeder extends Seeder
         $this->call(StabsTableSeeder::class);
         $this->call(BlocksTableSeeder::class);
         $this->call(RegulatorsTableSeeder::class);
+        $this->call(Block_UserTableSeeder::class);
+        $this->call(Regulator_UserTableSeeder::class);
+        $this->call(Stab_UserTableSeeder::class);
+
     }
 }
