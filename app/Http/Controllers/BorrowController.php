@@ -42,6 +42,7 @@ class BorrowController extends Controller
         $regulators = Regulator::doesntHave('users')->get();
         // Get blocks available list
         $blocks = Block::doesntHave('users')->get();
+        // Return view with model data
         return view('pages.borrow.user')
             ->with('user', $user)
             ->with('regulators', $regulators)

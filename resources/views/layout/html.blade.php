@@ -10,7 +10,6 @@
         @yield('content')
     </div>
 
-    {{ csrf_field() }}
     @include('includes.js')
 </body>
 </html>

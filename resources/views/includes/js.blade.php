@@ -9,4 +9,8 @@
 <script type="application/javascript"
         src="{{ asset('bower_components/bootstrap-table/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.min.js') }}"></script>
 <script type="application/javascript"
+        src="{{ asset('bower_components/select2/dist/js/select2.min.js') }}"></script>
+<script type="application/javascript"
+        src="{{ asset('bower_components/select2/dist/js/i18n/fr.js') }}"></script>
+<script type="application/javascript"
         src="{{ asset('js/emprunt.js') }}"></script>

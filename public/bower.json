@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "bootstrap-table": "^1.10.1",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "select2": "^4.0.1"
   }
 }

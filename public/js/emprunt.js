@@ -1,43 +1,26 @@
-/**
- * Find in table
- */
-/*
 $(document).ready(function() {
-    $(".search").keyup(function () {
-        var searchTerm = $(".search").val();
-        var listItem = $('.results tbody').children('tr');
-        var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+    // Extend selector
+    $.fn.exists = function () {
+        return this.length !== 0;
+    };
 
-        $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-            return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-        }
+    // enbale tooltip
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    // Create select 2 from select
+    $('select').select2();
+    /**
+     * Show/Hide type list in borrow view
+     * @type {*|jQuery}
+     */
+
+    if($('#types').exists()) {
+        var selected_val = $('#types').select2('data')[0];
+        $('#'+selected_val.id).show();
+        $('#types').change(function() {
+            var prev_val = selected_val;
+            selected_val = $('#types').select2('data')[0];
+            $('#'+prev_val.id).hide();
+            $('#'+selected_val.id).show();
         });
-
-        $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-            $(this).attr('visible','false');
-        });
-
-        $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-            $(this).attr('visible','true');
-        });
-
-        var jobCount = $('.results tbody tr[visible="true"]').length;
-        $('.counter').text(jobCount + ' item');
-
-        if(jobCount == '0') {$('.no-result').show();}
-        else {$('.no-result').hide();}
-    });
-});
-*/
-/**
- * Table - clickable row
- */
-$(document).ready(function() {
-    $('.clickable-row').click(function () {
-        window.document.location = $(this).data('href');
-    });
-});
-
-$(document).ready(function() {
-
+    }
 });

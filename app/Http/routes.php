@@ -26,7 +26,28 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/users',            'UserController@index');
-    Route::get('/devices',          'DeviceController@index');
-    Route::get('/borrow/user/{id}', 'BorrowController@user');
+    Route::get(
+        '/',
+        'UserController@index'
+    );
+    Route::get(
+        '/devices',
+        'DeviceController@index'
+    );
+    Route::get(
+        '/borrow/user/{id}',
+        'BorrowController@user'
+    );
+    Route::post(
+        '/return/stab',
+        'ReturnController@stab'
+    );
+    Route::post(
+        '/return/regulator',
+        'ReturnController@regulator'
+    );
+    Route::post(
+        '/return/block',
+        'ReturnController@block'
+    );
 });

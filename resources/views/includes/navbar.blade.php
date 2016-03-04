@@ -7,12 +7,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Emprunt</a>
+            <a class="navbar-brand" href="/">Emprunt</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="{{ Request::segment(1) === 'users' ? 'active' : null }}">
-                    <a href="{{url('users')}}"> Utilisateurs</a>
+                <li class="{{ Request::segment(1) === null ? 'active' : null }}">
+                    <a href="{{url('/')}}"> Utilisateurs</a>
                 </li>
                 <li class="{{ Request::segment(1) === 'devices' ? 'active' : null }}">
                     <a href="{{url('devices')}}"> Materiel</a>
