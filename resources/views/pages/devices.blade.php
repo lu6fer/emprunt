@@ -31,7 +31,7 @@
                         </thead>
                         <tbody>
                         @foreach($regulators as $regulator)
-                            <tr class="clickable-row" data-href="{{url('regulator/' . $regulator->id)}}">
+                            <tr>
                                 <td>{{$regulator->numero}}</td>
                                 <td>{{$regulator->brand}}</td>
                                 <td>{{$regulator->model}}</td>
@@ -41,13 +41,17 @@
                                 </td>
                                 <td>
                                 @if ($regulator->borrow == true)
-                                    <a href="#"
-                                       class="btn btn-default"
-                                       data-toggle="tooltip"
-                                       data-placement="top"
-                                       title="Rendre le détendeur">
-                                        <span class="glyphicon glyphicon-log-out"></span>
-                                    </a>
+                                    <form name="regulator" method="post" action="{{url('return/regulator')}}">
+                                        <input type="hidden" name="regulator_id" value="{{$regulator->id}}">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-default"
+                                                type="submit"
+                                                data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Rendre le detendeur">
+                                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                                        </button>
+                                    </form>
                                 @endif
                                 </td>
                             </tr>
@@ -76,7 +80,7 @@
                         </thead>
                         <tbody>
                         @foreach($stabs as $stab)
-                            <tr class="clickable-row" data-href="{{url('stab/' . $stab->id)}}">
+                            <tr>
                                 <td>{{$stab->numero}}</td>
                                 <td>{{$stab->brand}}</td>
                                 <td>{{$stab->model}}</td>
@@ -86,13 +90,17 @@
                                 </td>
                                 <td>
                                 @if ($stab->borrow == true)
-                                    <a href="#"
-                                       class="btn btn-default"
-                                       data-toggle="tooltip"
-                                       data-placement="top"
-                                       title="Rendre la stab">
-                                        <span class="glyphicon glyphicon-log-out"></span>
-                                    </a>
+                                    <form name="stab" method="post" action="{{url('return/stab')}}">
+                                        <input type="hidden" name="stab_id" value="{{$stab->id}}">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-default"
+                                                type="submit"
+                                                data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Rendre la stab">
+                                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                                        </button>
+                                    </form>
                                 @endif
                                 </td>
                             </tr>
@@ -121,7 +129,7 @@
                         </thead>
                         <tbody>
                         @foreach($blocks as $block)
-                            <tr class="clickable-row" data-href="{{url('block/' . $block->id)}}">
+                            <tr>
                                 <td>{{$block->numero}}</td>
                                 <td>{{$block->brand}}</td>
                                 <td>{{$block->model}}</td>
@@ -131,13 +139,17 @@
                                 </td>
                                 <td>
                                 @if ($block->borrow == true)
-                                    <a href="#"
-                                       class="btn btn-default"
-                                       data-toggle="tooltip"
-                                       data-placement="top"
-                                       title="Rendre le bloc">
-                                        <span class="glyphicon glyphicon-log-out"></span>
-                                    </a>
+                                    <form name="block" method="post" action="{{url('return/block')}}">
+                                        <input type="hidden" name="stab_id" value="{{$stab->id}}">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-default"
+                                                type="submit"
+                                                data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Rendre le block">
+                                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                                        </button>
+                                    </form>
                                 @endif
                                 </td>
                             </tr>
