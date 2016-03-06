@@ -18,9 +18,8 @@ class CreateStabUserTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('stab_id')->unsigned()->index();
             $table->foreign('stab_id')->references('id')->on('stabs')->onDelete('cascade');
-            $table->date('borrow');
-            $table->date('return')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

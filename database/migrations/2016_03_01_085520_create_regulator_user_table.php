@@ -18,9 +18,8 @@ class CreateRegulatorUserTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('regulator_id')->unsigned()->index();
             $table->foreign('regulator_id')->references('id')->on('regulators')->onDelete('cascade');
-            $table->date('borrow');
-            $table->date('return')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

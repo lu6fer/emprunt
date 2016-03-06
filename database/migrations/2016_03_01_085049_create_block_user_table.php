@@ -18,9 +18,8 @@ class CreateBlockUserTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('block_id')->unsigned()->index();
             $table->foreign('block_id')->references('id')->on('blocks')->onDelete('cascade');
-            $table->date('borrow');
-            $table->date('return')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -15,9 +15,9 @@ class Regulator_UserTableSeeder extends Seeder
 
         DB::table($table)->delete();
         $data = [
-            'user_id' => '1',
+            'user_id'      => '1',
             'regulator_id' => '1',
-            'borrow'  => '2015-12-25'
+            'created_at'   => '2015-12-25 12:32:45'
         ];
 
         DB::table($table)->insert($data);

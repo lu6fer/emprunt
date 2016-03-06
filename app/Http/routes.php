@@ -35,7 +35,7 @@ Route::group(['middleware' => ['web']], function () {
         'DeviceController@index'
     );
     Route::get(
-        '/borrow/user/{id}',
+        '/borrow/user/{user_id}',
         'BorrowController@user'
     );
     Route::post(
@@ -50,4 +50,15 @@ Route::group(['middleware' => ['web']], function () {
         '/return/block',
         'ReturnController@block'
     );
+    Route::post(
+        '/borrow/device',
+        'BorrowController@device'
+    );
+});
+
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });

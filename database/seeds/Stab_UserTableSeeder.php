@@ -15,9 +15,9 @@ class Stab_UserTableSeeder extends Seeder
 
         DB::table($table)->delete();
         $data = [
-            'user_id' => '1',
-            'stab_id' => '1',
-            'borrow'  => '2015-06-25'
+            'user_id'     => '1',
+            'stab_id'     => '1',
+            'created_at'  => '2015-06-25 12:30:23'
         ];
 
         DB::table($table)->insert($data);
