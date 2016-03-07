@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     @include('includes.head')
 </head>
 <body>
     @include('includes.navbar')
 
-    <div class="container">
+    <!-- Display messages -->
+    <div class="container-fluid">
         <div class="flash-message">
             @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                 @if(Session::has('alert-' . $msg))
@@ -15,7 +16,15 @@
                 @endif
             @endforeach
         </div> <!-- end .flash-message -->
-        @yield('content')
+    </div>
+
+    <div id="wrapper">
+        <div id="sidebar">
+            @yield('sidebar')
+        </div>
+        <div id="content">
+            @yield('content')
+        </div>
     </div>
 
     @include('includes.js')

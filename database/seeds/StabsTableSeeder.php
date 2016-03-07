@@ -16,14 +16,14 @@ class StabsTableSeeder extends Seeder
         DB::table($table)->delete();
         $data = [
             [
-                'numero' => '1',
+                'number' => '1',
                 'active' => true,
                 'brand' => 'Scubapro',
                 'model' => 'T-one',
                 'size'  => 'M'
             ],
             [
-                'numero' => '2',
+                'number' => '2',
                 'active' => true,
                 'brand' => 'Spirotech',
                 'model' => 'Atlantis',

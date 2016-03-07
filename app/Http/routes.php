@@ -25,10 +25,10 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+/*Route::group(['middleware' => ['web']], function () {
     Route::get(
         '/',
-        'UserController@index'
+        'HomeController@index'
     );
     Route::get(
         '/devices',
@@ -54,11 +54,46 @@ Route::group(['middleware' => ['web']], function () {
         '/borrow/device',
         'BorrowController@device'
     );
-});
+});*/
 
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
+    Route::get(
+        '/',
+        'HomeController@index'
+    );
+    Route::get(
+        '/devices',
+        'DeviceController@index'
+    );
+    Route::get(
+        '/borrow/user/{user_id}',
+        'BorrowController@user'
+    );
+    Route::post(
+        '/return/stab',
+        'ReturnController@stab'
+    );
+    Route::post(
+        '/return/regulator',
+        'ReturnController@regulator'
+    );
+    Route::post(
+        '/return/block',
+        'ReturnController@block'
+    );
+    Route::post(
+        '/borrow/device',
+        'BorrowController@device'
+    );
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/admin', 'Admin\HomeController@index');
+    Route::group([
+        'middleware' => 'auth',
+        'prefix' => 'admin',
+        'namespace' => 'Admin'],
+        function() {
+       Route::get('blocks', 'BlockController@index');
+    });
 });

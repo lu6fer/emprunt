@@ -17,7 +17,7 @@ class Block_UserTableSeeder extends Seeder
         $data = [
             'user_id'      => '1',
             'block_id'     => '1',
-            'created_at'   => '2016-02-02 14:05:12'
+            'borrow_date'  => '2015-01-02 15:08:40'
         ];
 
         DB::table($table)->insert($data);

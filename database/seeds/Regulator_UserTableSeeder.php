@@ -17,7 +17,7 @@ class Regulator_UserTableSeeder extends Seeder
         $data = [
             'user_id'      => '1',
             'regulator_id' => '1',
-            'created_at'   => '2015-12-25 12:32:45'
+            'borrow_date'  => '2016-02-22 13:55:20'
         ];
 
         DB::table($table)->insert($data);

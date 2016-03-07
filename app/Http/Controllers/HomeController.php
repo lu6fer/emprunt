@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Emprunt\Http\Requests;
 use Emprunt\User;
 
-class UserController extends Controller
+class HomeController extends Controller
 {
     public function index () {
         $users = User::where('active', true)->get();

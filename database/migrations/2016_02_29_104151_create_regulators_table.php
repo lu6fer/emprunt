@@ -14,7 +14,7 @@ class CreateRegulatorsTable extends Migration
     {
         Schema::create('regulators', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('numero');
+            $table->integer('number');
             $table->boolean('active');
             $table->string('brand');
             $table->string('model');

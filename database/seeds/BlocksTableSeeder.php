@@ -16,14 +16,14 @@ class BlocksTableSeeder extends Seeder
         DB::table($table)->delete();
         $data = [
             [
-                'numero' => '1',
+                'number' => '1',
                 'active' => true,
                 'brand' => 'Aqualung',
                 'model' => '',
                 'size'  => '12l'
             ],
             [
-                'numero' => '2',
+                'number' => '2',
                 'active' => true,
                 'brand' => 'Aqualung',
                 'model' => '',

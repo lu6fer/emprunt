@@ -27,26 +27,15 @@ class User extends Authenticatable
     protected $dateFormat = 'd/m/Y';
 
     public function regulators () {
-        return $this->belongsToMany('Emprunt\Regulator')
-            //->withPivot('borrow', 'return')
-            ->whereNull('regulator_user.deleted_at')
-            ->withTimestamps();//return $this->belongsToMany('Emprunt\Regulator')->withPivot('borrow', 'return')->withTimestamps();
+        return $this->belongsToMany('Emprunt\Regulator')->withPivot('borrow_date');
 
     }
 
     public function stabs () {
-        return $this->belongsToMany('Emprunt\Stab')
-            //->withPivot('borrow', 'return')
-            ->whereNull('stab_user.deleted_at')
-            ->withTimestamps();
-        //return $this->belongsToMany('Emprunt\Stab')->withPivot('borrow', 'return')->withTimestamps();
+        return $this->belongsToMany('Emprunt\Stab')->withPivot('borrow_date');
     }
 
     public function blocks () {
-        //return $this->belongsToMany('Emprunt\Block')->withPivot('borrow', 'return')->withTimestamps();
-        return $this->belongsToMany('Emprunt\Block')
-            //->withPivot('borrow', 'return')
-            ->whereNull('block_user.deleted_at')
-            ->withTimestamps();
+        return $this->belongsToMany('Emprunt\Block')->withPivot('borrow_date');
     }
 }

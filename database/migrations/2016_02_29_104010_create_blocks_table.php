@@ -14,7 +14,7 @@ class CreateBlocksTable extends Migration
     {
         Schema::create('blocks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('numero');
+            $table->integer('number');
             $table->boolean('active');
             $table->string('brand');
             $table->string('model');
