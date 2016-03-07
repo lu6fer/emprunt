@@ -2,28 +2,15 @@
 
 namespace Emprunt\Http\Controllers;
 
-use Emprunt\Http\Requests;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+use Emprunt\Http\Requests;
+use Emprunt\User;
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
+class UserController extends Controller
+{
+    public function index () {
+        $users = User::where('active', true)->get();
+        return view('pages.users')->with('users', $users);
     }
 }

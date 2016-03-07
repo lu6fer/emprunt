@@ -20,13 +20,37 @@
             </tr>
             </thead>
             <tbody>
+            <!-- Blocks -->
+            @foreach($user->blocks as $block)
+            <tr>
+                <td>Bloc</td>
+                <td>{{$block->number}}</td>
+                <td>{{$block->brand}} - {{$block->model}} - {{$block->size}}</td>
+                <td>{!! date('d/m/Y', strtotime($block->pivot->borrow_date)) !!}</td>
+                <td>{{ $block->pivot->duration }}</td>
+                <td>
+                    <form name="block" method="post" action="{{url('return/block')}}">
+                        <input type="hidden" name="user_id" value="{{$user->id}}">
+                        <input type="hidden" name="block_id" value="{{$block->id}}">
+                        {{ csrf_field() }}
+                        <button class="btn btn-default"
+                                type="submit"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Rendre le bloc">
+                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
             <!-- Stabs -->
             @foreach($user->stabs as $stab)
                 <tr>
                     <td>Stab</td>
-                    <td>{{$stab->numero}}</td>
+                    <td>{{$stab->number}}</td>
                     <td>{{$stab->brand}} - {{$stab->model}} - {{$stab->size}}</td>
-                    <td>{!! date('d/m/Y', strtotime($stab->pivot->created_at)) !!}</td>
+                    <td>{!! date('d/m/Y', strtotime($stab->pivot->borrow_date)) !!}</td>
                     <td>{{ $stab->pivot->duration }}</td>
                     <td>
                         <form name="stab" method="post" action="{{url('return/stab')}}">
@@ -48,9 +72,9 @@
             @foreach($user->regulators as $regulator)
                 <tr>
                     <td>Détendeur</td>
-                    <td>{{$regulator->numero}}</td>
+                    <td>{{$regulator->number}}</td>
                     <td>{{$regulator->brand}} - {{$regulator->model}} - {{$regulator->type}}</td>
-                    <td>{!! date('d/m/Y', strtotime($regulator->pivot->create_at)) !!} {!! dd($regulator->pivot->create_at) !!}</td>
+                    <td>{!! date('d/m/Y', strtotime($regulator->pivot->borrow_date)) !!}</td>
                     <td>{{ $regulator->pivot->duration }}</td>
                     <td>
                         <form name="regulator" method="post" action="{{url('return/regulator')}}">
@@ -62,30 +86,6 @@
                                     data-toggle="tooltip"
                                     data-placement="top"
                                     title="Rendre le détendeur">
-                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-            <!-- Blocks -->
-            @foreach($user->blocks as $block)
-                <tr>
-                    <td>Bloc</td>
-                    <td>{{$block->numero}}</td>
-                    <td>{{$block->brand}} - {{$block->model}} - {{$block->size}}</td>
-                    <td>{!! date('d/m/Y', strtotime($block->pivot->create_at)) !!}</td>
-                    <td>{{ $block->pivot->duration }}</td>
-                    <td>
-                        <form name="block" method="post" action="{{url('return/block')}}">
-                            <input type="hidden" name="user_id" value="{{$user->id}}">
-                            <input type="hidden" name="block_id" value="{{$block->id}}">
-                            {{ csrf_field() }}
-                            <button class="btn btn-default"
-                                    type="submit"
-                                    data-toggle="tooltip"
-                                    data-placement="top"
-                                    title="Rendre le bloc">
                                 <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                             </button>
                         </form>
@@ -109,21 +109,21 @@
                         <div id="stab" class="device">
                             <select form="device" title="stabs" name="stab_id">
                                 @foreach($stabs as $stab)
-                                    <option value="{{$stab->id}}">[{{$stab->numero}}] {{$stab->brand}} - {{$stab->model}} - {{$stab->size}}</option>
+                                    <option value="{{$stab->id}}">[{{$stab->number}}] {{$stab->brand}} - {{$stab->model}} - {{$stab->size}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div id="regulator" class="device">
                             <select form="device" title="regulator" name="regulator_id">
                                 @foreach($regulators as $regulator)
-                                    <option value="{{$regulator->id}}">[{{$regulator->numero}}] {{$regulator->brand}} - {{$regulator->model}} - {{$regulator->type}}</option>
+                                    <option value="{{$regulator->id}}">[{{$regulator->number}}] {{$regulator->brand}} - {{$regulator->model}} - {{$regulator->type}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div id="block" class="device">
                             <select form="device" title="block" name="block_id">
                                 @foreach($blocks as $block)
-                                    <option value="{{$block->id}}">[{{$block->numero}}] {{$block->brand}} - {{$block->model}} - {{$block->size}}</option>
+                                    <option value="{{$block->id}}">[{{$block->number}}] {{$block->brand}} - {{$block->model}} - {{$block->size}}</option>
                                 @endforeach
                             </select>
                         </div>
