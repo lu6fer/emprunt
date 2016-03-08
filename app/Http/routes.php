@@ -95,5 +95,6 @@ Route::group(['middleware' => 'web'], function () {
         'namespace' => 'Admin'],
         function() {
        Route::get('blocks', 'BlockController@index');
+       Route::get('blocks/history', 'BlockController@history');
     });
 });
