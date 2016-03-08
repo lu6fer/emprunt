@@ -22,7 +22,7 @@
         <div id="sidebar">
             @yield('sidebar')
         </div>
-        <div id="content">
+        <div id="content" class="container">
             @yield('content')
         </div>
     </div>

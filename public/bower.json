@@ -19,6 +19,8 @@
   "dependencies": {
     "bootstrap-table": "^1.10.1",
     "bootstrap": "^3.3.6",
-    "select2": "^4.0.1"
+    "select2": "^4.0.1",
+    "font-awesome": "^4.5.0",
+    "lato": "^0.3.0"
   }
 }

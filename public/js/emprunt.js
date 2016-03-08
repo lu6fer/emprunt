@@ -23,4 +23,9 @@ $(document).ready(function() {
             $('#'+selected_val.id).show();
         });
     }
+
+    $('#sidebar_shrink').click(function() {
+       $('#sidenav').toggleClass('sidebar-md sidebar-sm');
+        $('#sidebar_shrink>i').toggleClass('fa-arrow-left fa-arrow-right');
+    });
 });
