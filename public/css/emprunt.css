@@ -41,6 +41,27 @@ body {
     display: none;
 }
 
+@media screen and (max-width: 1110px) {
+    #sidenav.sidebar-md,
+    #sidenav.sidebar-sm{
+        min-width: 70px;
+        max-width: 70px;
+    }
+
+    #sidenav.sidebar-sm .sidenav-link,
+    #sidenav.sidebar-md .sidenav-link{
+        display: none;
+    }
+    .sidebar-md .sidenav>li>ul>li>a,
+    .sidebar-sm .sidenav>li>ul>li>a{
+        padding: 10px 15px 10px 30px;
+    }
+    .sidebar-md .sidenav-shrink,
+    .sidebar-sm .sidenav-shrink{
+        display: none;
+    }
+}
+
 .sidenav {
     border: none;
     border-radius: 0;
