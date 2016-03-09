@@ -17,10 +17,17 @@ $(document).ready(function() {
         $('#sidebar_shrink>i').removeClass('fa-arrow-left').addClass('fa-arrow-right');
     }
 
-    // enbale tooltip
-    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-    // Create select 2 from select
-    $('select').select2();
+    $(function () {
+        // enbale tooltip
+        $('[data-toggle="tooltip"]').tooltip(
+            {
+                container: 'body'
+            }
+        );
+        // Create select 2 from select
+        $('select').select2();
+    });
+
 
     /**
      * Show/Hide type list in borrow view

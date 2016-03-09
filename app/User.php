@@ -35,7 +35,7 @@ class User extends Authenticatable
         return $this->belongsToMany('Emprunt\Stab')->withPivot('borrow_date');
     }
 
-    public function blocks () {
-        return $this->belongsToMany('Emprunt\Block')->withPivot('borrow_date');
+    public function tanks () {
+        return $this->belongsToMany('Emprunt\Tank')->withPivot('borrow_date');
     }
 }

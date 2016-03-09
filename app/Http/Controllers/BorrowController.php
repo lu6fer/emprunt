@@ -8,7 +8,7 @@ use Emprunt\Http\Requests;
 use Emprunt\User;
 use Emprunt\Stab;
 use Emprunt\Regulator;
-use Emprunt\Block;
+use Emprunt\Tank;
 
 class BorrowController extends Controller
 {
@@ -21,7 +21,7 @@ class BorrowController extends Controller
         // Get user info
         $user = User::find($user_id);
         // Grab model relationship
-        $user->load(['stabs', 'regulators', 'blocks']);
+        $user->load(['stabs', 'regulators', 'tanks']);
 
         // Display borrow duration
         $now = time();
@@ -35,10 +35,10 @@ class BorrowController extends Controller
             $datediff = $now - $borrow;
             $regulator->pivot->duration = floor($datediff/(60*60*24));
         }
-        foreach ($user->blocks as $block) {
-            $borrow = strtotime($block->pivot->borrow_date);
+        foreach ($user->tanks as $tank) {
+            $borrow = strtotime($tank->pivot->borrow_date);
             $datediff = $now - $borrow;
-            $block->pivot->duration = floor($datediff/(60*60*24));
+            $tank->pivot->duration = floor($datediff/(60*60*24));
         }
 
         // Get stabs available list
@@ -46,12 +46,12 @@ class BorrowController extends Controller
         // Get regulators available list
         $regulators = Regulator::doesntHave('users')->get();
         // Get blocks available list
-        $blocks = Block::doesntHave('users')->get();
+        $tanks = Tank::doesntHave('users')->get();
         // Return view with model data
         return view('pages.borrow')
             ->with('user', $user)
             ->with('regulators', $regulators)
-            ->with('blocks', $blocks)
+            ->with('tanks', $tanks)
             ->with('stabs', $stabs);
     }
 
@@ -66,18 +66,51 @@ class BorrowController extends Controller
         switch ($type) {
             case 'stab':
                 $stab_id = $request->input('stab_id');
-                $user->stabs()->attach($stab_id, ['borrow_date' => date("Y-m-d H:i:s")]);
+                if ($user->stab) {
+                    $user->stabs()->attach($stab_id, ['borrow_date' => date("Y-m-d H:i:s")]);
+                    $alert = [
+                        'type' => 'alert-success',
+                        'msg'  => 'La stab est a jouté a votre liste d\'emprunt'
+                    ];
+                } else {
+                    $alert = [
+                        'type' => 'alert-warning',
+                        'msg'  => 'Vous n\'avez pas les droits suffisant pour cette emprunt'
+                    ];
+                }
                 break;
             case 'regulator':
                 $regulator_id = $request->input('regulator_id');
-                $user->regulators()->attach($regulator_id, ['borrow_date' => date("Y-m-d H:i:s")]);
+                if ($user->regulator) {
+                    $user->regulators()->attach($regulator_id, ['borrow_date' => date("Y-m-d H:i:s")]);
+                    $alert = [
+                        'type' => 'alert-success',
+                        'msg'  => 'Le détendeur est a jouté a votre liste d\'emprunt'
+                    ];
+                } else {
+                    $alert = [
+                        'type' => 'alert-warning',
+                        'msg'  => 'Vous n\'avez pas les droits suffisant pour cette emprunt'
+                    ];
+                }
                 break;
-            case 'block':
-                $block_id = $request->input('block_id');
-                $user->blocks()->attach($block_id, ['borrow_date' => date("Y-m-d H:i:s")]);
+            case 'tank':
+                $block_id = $request->input('tank_id');
+                if ($user->tank) {
+                    $user->tanks()->attach($block_id, ['borrow_date' => date("Y-m-d H:i:s")]);
+                    $alert = [
+                        'type' => 'alert-success',
+                        'msg'  => 'Le bloc est a jouté a votre liste d\'emprunt'
+                    ];
+                } else {
+                    $alert = [
+                        'type' => 'alert-warning',
+                        'msg'  => 'Vous n\'avez pas les droits suffisant pour cette emprunt'
+                    ];
+                }
                 break;
         }
-        $request->session()->flash('alert-success', 'Emprunt enregistré');
+        $request->session()->flash($alert['type'], $alert['msg']);
         return redirect()->back();
     }
 }

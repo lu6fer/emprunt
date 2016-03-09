@@ -80,8 +80,8 @@ Route::group(['middleware' => 'web'], function () {
         'ReturnController@regulator'
     );
     Route::post(
-        '/return/block',
-        'ReturnController@block'
+        '/return/tank',
+        'ReturnController@tank'
     );
     Route::post(
         '/borrow/device',
@@ -89,12 +89,15 @@ Route::group(['middleware' => 'web'], function () {
     );
 
     Route::get('/admin', 'Admin\HomeController@index');
-    Route::group([
-        'middleware' => 'auth',
-        'prefix' => 'admin',
-        'namespace' => 'Admin'],
+    Route::group(
+        [
+            'middleware' => 'auth',
+            'prefix' => 'admin',
+            'namespace' => 'Admin'
+        ],
         function() {
-       Route::get('blocks', 'BlockController@index');
-       Route::get('blocks/history', 'BlockController@history');
+           Route::get('tank',                'TankController@index');
+           Route::get('tank/history',        'TankController@history');
+           Route::get('tank/edit/{tank_id}', 'TankController@edit');
     });
 });

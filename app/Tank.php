@@ -4,7 +4,7 @@ namespace Emprunt;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Block extends Model
+class Tank extends Model
 {
     protected $dateFormat = 'd/m/Y';
 

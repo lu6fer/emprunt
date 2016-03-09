@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Block_UserTableSeeder extends Seeder
+class Tank_UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,12 +11,12 @@ class Block_UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $table = 'block_user';
+        $table = 'tank_user';
 
         DB::table($table)->delete();
         $data = [
             'user_id'      => '1',
-            'block_id'     => '1',
+            'tank_id'     => '1',
             'borrow_date'  => '2015-01-02 15:08:40'
         ];
 

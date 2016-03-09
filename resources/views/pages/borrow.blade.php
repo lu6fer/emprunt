@@ -20,18 +20,18 @@
             </tr>
             </thead>
             <tbody>
-            <!-- Blocks -->
-            @foreach($user->blocks as $block)
+            <!-- Tanks -->
+            @foreach($user->tanks as $tank)
             <tr>
                 <td>Bloc</td>
-                <td>{{$block->number}}</td>
-                <td>{{$block->brand}} - {{$block->model}} - {{$block->size}}</td>
-                <td>{!! date('d/m/Y', strtotime($block->pivot->borrow_date)) !!}</td>
-                <td>{{ $block->pivot->duration }}</td>
+                <td>{{$tank->number}}</td>
+                <td>{{$tank->brand}} - {{$tank->model}} - {{$tank->size}}</td>
+                <td>{!! date('d/m/Y', strtotime($tank->pivot->borrow_date)) !!}</td>
+                <td>{{ $tank->pivot->duration }}</td>
                 <td>
-                    <form name="block" method="post" action="{{url('return/block')}}">
+                    <form name="block" method="post" action="{{url('return/tank')}}">
                         <input type="hidden" name="user_id" value="{{$user->id}}">
-                        <input type="hidden" name="block_id" value="{{$block->id}}">
+                        <input type="hidden" name="block_id" value="{{$tank->id}}">
                         {{ csrf_field() }}
                         <button class="btn btn-default"
                                 type="submit"
@@ -100,9 +100,9 @@
                             {!! csrf_field() !!}
                         </form>
                         <select form="device" title="types" id="types" name="type" class="device">
-                            <option value="block">Bloc</option>
-                            <option value="regulator">Détendeur</option>
-                            <option value="stab">Stab</option>
+                            @if($user->tank)<option value="tank">Bloc</option>@endif
+                            @if($user->regulator)<option value="regulator">Détendeur</option>@endif
+                            @if($user->stab)<option value="stab">Stab</option>@endif
                         </select>
                     </td>
                     <td>
@@ -120,10 +120,10 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div id="block" class="device">
-                            <select form="device" title="block" name="block_id">
-                                @foreach($blocks as $block)
-                                    <option value="{{$block->id}}">[{{$block->number}}] {{$block->brand}} - {{$block->model}} - {{$block->size}}</option>
+                        <div id="tank" class="device">
+                            <select form="device" title="tank" name="tank_id">
+                                @foreach($tanks as $tank)
+                                    <option value="{{$tank->id}}">[{{$tank->number}}] {{$tank->brand}} - {{$tank->model}} - {{$tank->size}}</option>
                                 @endforeach
                             </select>
                         </div>

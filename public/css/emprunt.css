@@ -11,15 +11,22 @@ body {
     min-height: 100vh;
     padding-top: 51px;
 }
-/*#sidebar {
-    min-height: 100%;
-}*/
 
 #content {
     padding-top: 10px;
     flex-grow: 1;
     min-height: 100%;
 }
+
+.flash-message {
+    left: 0;
+    margin: auto;
+    position: fixed;
+    right: 0;
+    top: 10%;
+    width: 50%;
+}
+
 /*
  * Side nav
  */
@@ -139,3 +146,13 @@ body {
 .new-borrow .device {
     display: none;
 }
+.new-borrow > td > span.select2,
+.new-borrow > td > div > span.select2{
+    min-width: 100px;
+}
+
+/*.select2-container--default .select2-search--inline .select2-search__field {
+    width: 100% !important;
+}
+input[placeholder] { width: 100% !important; }*/
+

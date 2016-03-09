@@ -30,22 +30,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($blocks as $block)
+                        @foreach($tanks as $tank)
                             <tr>
-                                <td>{{$block->number}}</td>
-                                <td>{{$block->brand}}</td>
-                                <td>{{$block->model}}</td>
-                                <td>{{$block->size}}</td>
+                                <td>{{$tank->number}}</td>
+                                <td>{{$tank->brand}}</td>
+                                <td>{{$tank->model}}</td>
+                                <td>{{$tank->size}}</td>
                                 <td>
-                                    <input title="borrow" type="checkbox" @if (count($block->users) != 0) checked="checked" @endif disabled>
+                                    <input title="borrow" type="checkbox" @if (count($tank->users) != 0) checked="checked" @endif disabled>
                                 </td>
                                 <td>
-                                    @if (count($block->users) != 0)
-                                        <form name="block" method="post" action="{{url('return/block')}}">
-                                            <input type="hidden" name="block_id" value="{{$block->id}}">
-                                            <input type="hidden" name="user_id" value="{{$block->users[0]->id}}">
+                                    @if (count($tank->users) != 0)
+                                        <form name="block" method="post" action="{{url('return/tank')}}">
+                                            <input type="hidden" name="block_id" value="{{$tank->id}}">
+                                            <input type="hidden" name="user_id" value="{{$tank->users[0]->id}}">
                                             {{ csrf_field() }}
-                                            <button class="btn btn-default"
+                                            <button class="btn btn-default btn-sm"
                                                     type="submit"
                                                     data-toggle="tooltip"
                                                     data-placement="top"
@@ -95,7 +95,7 @@
                                         <input type="hidden" name="regulator_id" value="{{$regulator->id}}">
                                         <input type="hidden" name="user_id" value="{{$regulator->users[0]->id}}">
                                         {{ csrf_field() }}
-                                        <button class="btn btn-default"
+                                        <button class="btn btn-default btn-sm"
                                                 type="submit"
                                                 data-toggle="tooltip"
                                                 data-placement="top"
@@ -145,7 +145,7 @@
                                         <input type="hidden" name="stab_id" value="{{$stab->id}}">
                                         <input type="hidden" name="user_id" value="{{$stab->users[0]->id}}">
                                         {{ csrf_field() }}
-                                        <button class="btn btn-default"
+                                        <button class="btn btn-default btn-sm"
                                                 type="submit"
                                                 data-toggle="tooltip"
                                                 data-placement="top"

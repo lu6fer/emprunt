@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class BlocksTableSeeder extends Seeder
+class TanksTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class BlocksTableSeeder extends Seeder
      */
     public function run()
     {
-        $table = 'blocks';
+        $table = 'tanks';
 
         DB::table($table)->delete();
         $data = [

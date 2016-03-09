@@ -1,49 +1,66 @@
 <div class="sidebar-md" id="sidenav">
     <ul class="nav navbar-nav sidenav sidenav-inverse">
         <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#bloc" role="button">
+            <!-- Tanks -->
+            <a href="javascript:;" data-toggle="collapse" data-target="#tank" role="button">
                 <i class="fa fa-fw ef-tank"></i>&nbsp;
             <span class="sidenav-link">
                 Blocs <i class="fa fa-fw fa-caret-down"></i>
             </span>
             </a>
-            <ul id="bloc" class="collapse {{ Request::segment(2) === 'blocks' ? 'in' : null }}">
-                <li class="{{ Request::segment(2) === 'blocks' ? 'active' : null }}">
-                    <a href="{!! url('admin/blocks') !!}"
-                       data-toggle="tooltip"
-                       data-placement="right"
-                       title="Lister les blocs">
+            <ul id="tank" class="collapse {{ Request::segment(2) === 'tank' ? 'in' : null }}">
+                <!-- list -->
+                <li class="{{ (Request::segment(2) === 'tank' && Request::segment(3) === null) ? 'active' : null }}"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-original-title="Lister les blocs">
+                    <a href="{!! url('admin/tank') !!}">
                         <i class="fa fa-fw fa-list"></i>&nbsp;
                     <span class="sidenav-link">
                         Liste
                     </span>
                     </a>
                 </li>
-                <li class="{{ Request::segment(3) === 'tiv' ? 'active' : null }}">
-                    <a href="{!! url('admin/blocks/tiv') !!}"
-                       data-toggle="tooltip"
-                       data-placement="right"
-                       title="T.I.V.">
+                <!-- TIV -->
+                <li class="{{ Request::segment(3) === 'tiv' ? 'active' : null }}"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-original-title="T.I.V.">
+                    <a href="{!! url('admin/tank/tiv') !!}">
                         <i class="fa fa-fw fa-wrench"></i>&nbsp;
                     <span class="sidenav-link">
                         T.I.V.
                     </span>
                     </a>
                 </li>
-                <li class="{{ Request::segment(3) === 'history' ? 'active' : null }}">
-                    <a href="{!! url('admin/blocks/history') !!}"
-                       data-toggle="tooltip"
-                       data-placement="right"
-                       title="Historique des emprunts">
+                <!-- Borrow history -->
+                <li class="{{ Request::segment(3) === 'history' ? 'active' : null }}"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-original-title="Historique des emprunts">
+                    <a href="{!! url('admin/tank/history') !!}">
                         <i class="fa fa-fw fa-history"></i>&nbsp;
                     <span class="sidenav-link">
                         Historique des emprunts
                     </span>
                     </a>
                 </li>
+                <!-- Buy history -->
+                <li class="{{ Request::segment(3) === 'buy' ? 'active' : null }}"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-original-title="Historique des achats">
+                    <a href="{!! url('admin/tank/buy') !!}">
+                        <i class="fa fa-fw fa-money"></i>&nbsp;
+                    <span class="sidenav-link">
+                        Historique des achats
+                    </span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li>
+            <!-- Regulator -->
             <a href="javascript:;" data-toggle="collapse" data-target="#regulator">
                 <i class="fa fa-fw ef-regulator"></i>&nbsp;
             <span class="sidenav-link">
@@ -51,11 +68,13 @@
             </span>
             </a>
             <ul id="regulator" class="collapse">
+                <!--  -->
                 <li>
                     <a href="#">
                         <span class="sidenav-link">Dropdown Item</span>
                     </a>
                 </li>
+                <!--  -->
                 <li>
                     <a href="#">
                         <span class="sidenav-link">Dropdown Item</span>
@@ -64,6 +83,7 @@
             </ul>
         </li>
         <li>
+            <!-- Stab -->
             <a href="javascript:;" data-toggle="collapse" data-target="#stab">
                 <i class="fa fa-fw ef-jacket"></i>&nbsp;
             <span class="sidenav-link">
@@ -71,9 +91,11 @@
             </span>
             </a>
             <ul id="stab" class="collapse">
+                <!--  -->
                 <li>
                     <a href="#"><span class="sidenav-link">Dropdown Item</span></a>
                 </li>
+                <!--  -->
                 <li>
                     <a href="#"><span class="sidenav-link">Dropdown Item</span></a>
                 </li>

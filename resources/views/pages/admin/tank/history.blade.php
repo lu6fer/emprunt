@@ -23,14 +23,14 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($history as $block)
+            @foreach($history as $tank)
                 <tr>
-                    <td>{{$block->device_number}}</td>
-                    <td>{{$block->device_description}}</td>
-                    <td>{{$block->user}}</td>
-                    <td>{!! date('d/m/Y', strtotime($block->borrow_date)) !!}</td>
-                    <td>{!! date('d/m/Y', strtotime($block->return_date)) !!}</td>
-                    <td>{{$block->duration}}</td>
+                    <td>{{$tank->device_number}}</td>
+                    <td>{{$tank->device_description}}</td>
+                    <td>{{$tank->user}}</td>
+                    <td>{!! date('d/m/Y', strtotime($tank->borrow_date)) !!}</td>
+                    <td>{!! date('d/m/Y', strtotime($tank->return_date)) !!}</td>
+                    <td>{{$tank->duration}}</td>
                 </tr>
             @endforeach
             </tbody>

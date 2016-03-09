@@ -25,8 +25,13 @@
                 <td>{{$user->lastname}}</td>
                 <td>{{$user->email}}</td>
                 <td>
-                    <a href="{{url('borrow/user/' . $user->id)}}" type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                    <a href="{{url('borrow/user/' . $user->id)}}"
+                       type="button"
+                       class="btn btn-default btn-sm"
+                       data-toggle="tooltip"
+                       data-placement="top"
+                       title="Liste des emprunts">
+                        <span class="fa fa-shopping-basket" aria-hidden="true"></span>
                     </a>
                 </td>
             </tr>

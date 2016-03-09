@@ -8,7 +8,7 @@ use Emprunt\Http\Requests;
 use DB;
 use Emprunt\User;
 use Emprunt\Stab;
-use Emprunt\Block;
+use Emprunt\Tank;
 use Emprunt\Regulator;
 use Emprunt\Borrow_history;
 
@@ -75,23 +75,23 @@ class ReturnController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function block(Request $request) {
+    public function tank(Request $request) {
         $user_id = $request->input('user_id');
-        $block_id = $request->input('block_id');
+        $tank_id = $request->input('block_id');
 
         $user = User::find($user_id);
-        $bloc = Block::find($block_id);
-        $borrow = DB::select('select borrow_date from block_user where user_id = ? and block_id = ?', [$user_id, $block_id]);
+        $tank = Tank::find($tank_id);
+        $borrow = DB::select('select borrow_date from tank_user where user_id = ? and tank_id = ?', [$user_id, $tank_id]);
 
         $borrow_history = new Borrow_history();
         $borrow_history->user = $user->firstname.' '.$user->lastname;
         $borrow_history->device_type = 'block';
-        $borrow_history->device_number = $bloc->number;
-        $borrow_history->device_description = $bloc->brand.' - '.$bloc->model.' - '.$bloc->size;
+        $borrow_history->device_number = $tank->number;
+        $borrow_history->device_description = $tank->brand.' - '.$tank->model.' - '.$tank->size;
         $borrow_history->borrow_date = $borrow[0]->borrow_date;
         $borrow_history->save();
 
-        $user->blocks()->detach($block_id);
+        $user->tanks()->detach($tank_id);
 
         $request->session()->flash('alert-success', 'Retour du bloc enregistré');
         return redirect()->back();
