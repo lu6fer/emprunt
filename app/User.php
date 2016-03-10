@@ -38,4 +38,8 @@ class User extends Authenticatable
     public function tanks () {
         return $this->belongsToMany('Emprunt\Tank')->withPivot('borrow_date');
     }
+
+    public function own_tanks () {
+        return $this->hasMany('Emprunt\Tank', 'owner', 'id');
+    }
 }

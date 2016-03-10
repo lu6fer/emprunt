@@ -11,4 +11,8 @@ class Tank extends Model
     public function users () {
         return $this->belongsToMany('Emprunt\User')->withPivot('borrow_date');
     }
+
+    public function owner () {
+        return $this->belongsTo('Emprunt\User', 'owner', 'id');
+    }
 }

@@ -37,7 +37,15 @@
                                 <td>{{$tank->model}}</td>
                                 <td>{{$tank->size}}</td>
                                 <td>
-                                    <input title="borrow" type="checkbox" @if (count($tank->users) != 0) checked="checked" @endif disabled>
+                                    <div class="form-group login-group-checkbox">
+                                        <input type="checkbox"
+                                               id="borrowed"
+                                               name="borrowed"
+                                               @if (count($tank->users) != 0) checked="checked" @endif
+                                               disabled>
+                                        <label for="borrowed"></label>
+                                    </div>
+                                    {{--<input title="borrow" type="checkbox" @if (count($tank->users) != 0) checked="checked" @endif disabled>--}}
                                 </td>
                                 <td>
                                     @if (count($tank->users) != 0)

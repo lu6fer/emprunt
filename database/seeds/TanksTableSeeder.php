@@ -24,7 +24,7 @@ class TanksTableSeeder extends Seeder
                 'size'  => '15l',
                 'sn_valve' => 'M2562',
                 'sn_cylinder' => 'B9154',
-                'limit_presure' => '345',
+                'limit_pressure' => '345',
                 'use_presure' => '230',
                 'usage' => 'Air',
                 'owner' => '1'
@@ -37,7 +37,7 @@ class TanksTableSeeder extends Seeder
                 'size'  => '13.5l',
                 'sn_valve' => '2003',
                 'sn_cylinder' => '67606',
-                'limit_presure' => '348',
+                'limit_pressure' => '348',
                 'use_presure' => '232',
                 'usage' => 'Air',
                 'owner' => '2'
@@ -50,7 +50,7 @@ class TanksTableSeeder extends Seeder
                 'size'  => '12l',
                 'sn_valve' => '809178',
                 'sn_cylinder' => '08/0017/093',
-                'limit_presure' => '372',
+                'limit_pressure' => '372',
                 'use_presure' => '232',
                 'usage' => 'Air',
                 'owner' => '1'

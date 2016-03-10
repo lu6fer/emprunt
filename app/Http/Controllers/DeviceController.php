@@ -21,7 +21,7 @@ class DeviceController extends Controller
             ->with('users')
             ->get();
         // Grab tanks model and user related
-        $tanks = Tank::where('active', true)
+        $tanks = Tank::where('borrowable', true)
             ->with('users')
             ->get();
 
