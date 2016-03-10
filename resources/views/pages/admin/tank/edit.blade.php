@@ -4,7 +4,6 @@
     @include('includes.admin.sidebar')
 @endsection
 @section('content')
-    {!! dd($tank->owner) !!}
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <form name="tank_edit"
@@ -68,7 +67,18 @@
                 <div class="form-group">
                     <label for="owner" class="col-sm-2 control-label">Propriétaire</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="owner" id="owner" placeholder="Propriétaire" value="{{$tank->owner}}">
+                        <select form="device" title="tank" name="tank_id">
+                            @foreach($users as $user)
+                                <option value="{{$user->id}}"
+                                        @if($user->id == $tank->owner)
+                                                selected="selected"
+                                        @endif
+                                        name="owner"
+                                        id="owner">
+                                    {{$user->firstname}} {{$user->lastname}}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -79,7 +89,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
                     </div>
                 </div>
             </form>

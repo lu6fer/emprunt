@@ -40,6 +40,6 @@ class User extends Authenticatable
     }
 
     public function own_tanks () {
-        return $this->hasMany('Emprunt\Tank', 'owner', 'id');
+        return $this->hasMany('Emprunt\Tank', 'owner');
     }
 }

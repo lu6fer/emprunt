@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Emprunt\Http\Controllers\Controller;
 use Emprunt\Http\Requests;
 use Emprunt\Tank;
+use Emprunt\User;
 
 class TankController extends Controller
 {
@@ -29,6 +30,8 @@ class TankController extends Controller
 
     public function edit($tank_id) {
         $tank = Tank::find($tank_id);
-        return view('pages.admin.tank.edit')->with('tank', $tank);
+        $tank->load(['owner']);
+        $users = User::all();
+        return view('pages.admin.tank.edit')->with('tank', $tank)->with('users', $users);
     }
 }
