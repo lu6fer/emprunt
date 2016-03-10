@@ -15,10 +15,17 @@ class CreateTanksTable extends Migration
         Schema::create('tanks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('number');
-            $table->boolean('active');
+            $table->boolean('borrowable');
             $table->string('brand');
             $table->string('model');
             $table->string('size');
+            $table->string('sn_valve');
+            $table->string('sn_cylinder');
+            $table->integer('limit_presure');
+            $table->integer('use_presure');
+            $table->string('usage');
+            $table->integer('owner')->unsigned()->index();
+            $table->foreign('owner')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

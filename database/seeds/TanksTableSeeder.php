@@ -14,20 +14,46 @@ class TanksTableSeeder extends Seeder
         $table = 'tanks';
 
         DB::table($table)->delete();
+
         $data = [
             [
-                'number' => '1',
-                'active' => true,
-                'brand' => 'Aqualung',
-                'model' => '',
-                'size'  => '12l'
+                'number' => '4',
+                'borrowable' => true,
+                'brand' => 'Beuchat',
+                'model' => 'Mono - 2 sorties',
+                'size'  => '15l',
+                'sn_valve' => 'M2562',
+                'sn_cylinder' => 'B9154',
+                'limit_presure' => '345',
+                'use_presure' => '230',
+                'usage' => 'Air',
+                'owner' => '1'
             ],
             [
-                'number' => '2',
-                'active' => true,
-                'brand' => 'Aqualung',
-                'model' => '',
-                'size'  => '15l'
+                'number' => '626',
+                'borrowable' => false,
+                'brand' => 'Vieux plongeur',
+                'model' => 'mono - 2 sorties',
+                'size'  => '13.5l',
+                'sn_valve' => '2003',
+                'sn_cylinder' => '67606',
+                'limit_presure' => '348',
+                'use_presure' => '232',
+                'usage' => 'Air',
+                'owner' => '2'
+            ],
+            [
+                'number' => '5',
+                'borrowable' => true,
+                'brand' => 'Auqalung',
+                'model' => 'Mono court - 2 sorties',
+                'size'  => '12l',
+                'sn_valve' => '809178',
+                'sn_cylinder' => '08/0017/093',
+                'limit_presure' => '372',
+                'use_presure' => '232',
+                'usage' => 'Air',
+                'owner' => '1'
             ],
         ];
 

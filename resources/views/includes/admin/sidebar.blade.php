@@ -120,9 +120,13 @@
     </ul>
     <ul class="nav navbar-nav sidenav sidenav-inverse sidenav-shrink">
         <li>
-            <a href="javascript:;" id="sidebar_shrink" data-target="#sidebar">
-                <i class="fa fa-arrow-left"></i>
-                <span class="sidenav-link"> Réduire</span>
+            <a href="javascript:;" id="sidebar_shrink"
+               data-target="#sidebar"
+               data-toggle="tooltip"
+               data-placement="right"
+               data-original-title="Réduire">
+                <i class="fa fa-arrow-right"></i>
+                {{--<span class="sidenav-link"> Réduire</span>--}}
             </a>
         </li>
     </ul>

@@ -26,6 +26,16 @@ class UsersTableSeeder extends Seeder
                 'stab' => true
             ],
             [
+                'firstname' => 'SubAlcatel',
+                'lastname' => null,
+                'email' => null,
+                'password' => null,
+                'active' => false,
+                'tank' => false,
+                'regulator' => false,
+                'stab' => false
+            ],
+            [
                 'fisrtname' => 'Richard',
                 'lastname' => 'Josse',
                 'email' => 'frichar.josse@gmail.com',

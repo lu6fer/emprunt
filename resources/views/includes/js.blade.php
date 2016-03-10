@@ -6,8 +6,10 @@
         src="{{ asset('bower_components/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
 <script type="application/javascript"
         src="{{ asset('bower_components/bootstrap-table/dist/locale/bootstrap-table-fr-FR.min.js') }}"></script>
+{{--<script type="application/javascript"
+        src="{{ asset('bower_components/bootstrap-table/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.min.js') }}"></script>--}}
 <script type="application/javascript"
-        src="{{ asset('bower_components/bootstrap-table/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.min.js') }}"></script>
+        src="{{ asset('bower_components/bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.js') }}"></script>
 <script type="application/javascript"
         src="{{ asset('bower_components/select2/dist/js/select2.min.js') }}"></script>
 <script type="application/javascript"

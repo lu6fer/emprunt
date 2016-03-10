@@ -1,66 +1,41 @@
 @extends('layout.html')
 @section('title', 'Connexion')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {!! csrf_field() !!}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
+    <div class="text-center" style="padding:50px 0">
+        <div class="logo">Connexion</div>
+        <!-- Main Form -->
+        <div class="login-form-1">
+            <form id="login-form" class="text-left" role="form" method="POST" action="{{ url('/login') }}">
+                <div class="login-form-main-message"></div>
+                <div class="main-login-form">
+                    <div class="login-group">
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
+                            <label for="lg_username" class="sr-only">
+                                Email
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="lg_username"
+                                   name="email"
+                                   placeholder="Email"
+                                   value="{{ old('email') }}">
                         </div>
-
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i>Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                            </div>
+                            <label for="lg_password" class="sr-only">
+                                Mot de passe
+                            </label>
+                            <input type="password"
+                                   class="form-control"
+                                   id="lg_password"
+                                   name="password"
+                                   placeholder="Mot de passe">
                         </div>
-                    </form>
+                    </div>
+                    {!! csrf_field() !!}
+                    <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
                 </div>
-            </div>
+            </form>
         </div>
+        <!-- end:Main Form -->
     </div>
-</div>
 @endsection

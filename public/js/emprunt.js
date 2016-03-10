@@ -24,9 +24,9 @@ $(document).ready(function() {
                 container: 'body'
             }
         );
-        // Create select 2 from select
-        $('select').select2();
     });
+    // Create select 2 from select
+    $('select').select2();
 
 
     /**
@@ -49,7 +49,7 @@ $(document).ready(function() {
      */
     $('#sidebar_shrink').click(function() {
        $('#sidenav').toggleClass('sidebar-md sidebar-sm');
-        $('#sidebar_shrink>i').toggleClass('fa-arrow-left fa-arrow-right');
+        $('#sidebar_shrink>i').toggleClass('fa-arrow-right fa-arrow-left');
         var shrinked = JSON.parse(localStorage.getItem('sidebar_shrinked'));
         localStorage.setItem('sidebar_shrinked', !shrinked);
     });
