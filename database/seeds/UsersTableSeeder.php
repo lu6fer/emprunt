@@ -16,16 +16,6 @@ class UsersTableSeeder extends Seeder
         DB::table($table)->delete();
         $data = [
             [
-                'firstname' => 'Florent',
-                'lastname' => 'Hunkeler',
-                'email' => 'florent.hunkeler@gmail.com',
-                'password' => Hash::make('florent'),
-                'active' => true,
-                'tank' => true,
-                'regulator' => true,
-                'stab' => true
-            ],
-            [
                 'firstname' => 'SubAlcatel',
                 'lastname' => null,
                 'email' => null,
@@ -45,6 +35,16 @@ class UsersTableSeeder extends Seeder
                 'regulator' => false,
                 'stab' => true
             ],
+            [
+                'firstname' => 'Florent',
+                'lastname' => 'Hunkeler',
+                'email' => 'florent.hunkeler@gmail.com',
+                'password' => Hash::make('florent'),
+                'active' => true,
+                'tank' => true,
+                'regulator' => true,
+                'stab' => true
+            ]
         ];
 
         DB::table($table)->insert($data);
