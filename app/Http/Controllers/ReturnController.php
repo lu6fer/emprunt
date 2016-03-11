@@ -85,7 +85,7 @@ class ReturnController extends Controller
 
         $borrow_history = new Borrow_history();
         $borrow_history->user = $user->firstname.' '.$user->lastname;
-        $borrow_history->device_type = 'block';
+        $borrow_history->device_type = 'tank';
         $borrow_history->device_number = $tank->number;
         $borrow_history->device_description = $tank->brand.' - '.$tank->model.' - '.$tank->size;
         $borrow_history->borrow_date = $borrow[0]->borrow_date;

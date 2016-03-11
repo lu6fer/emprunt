@@ -4,6 +4,10 @@ namespace Emprunt;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Class User
+ * @package Emprunt
+ */
 class User extends Authenticatable
 {
     /**
@@ -24,22 +28,47 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * @var string
+     */
     protected $dateFormat = 'd/m/Y';
 
-    public function regulators () {
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'active'    => 'boolean',
+        'tank'      => 'boolean',
+        'stab'      => 'boolean',
+        'regulator' => 'boolean',
+    ];
+
+    /**
+     * @return $this
+     */
+    public function regulators() {
         return $this->belongsToMany('Emprunt\Regulator')->withPivot('borrow_date');
 
     }
 
-    public function stabs () {
+    /**
+     * @return $this
+     */
+    public function stabs() {
         return $this->belongsToMany('Emprunt\Stab')->withPivot('borrow_date');
     }
 
-    public function tanks () {
+    /**
+     * @return $this
+     */
+    public function tanks() {
         return $this->belongsToMany('Emprunt\Tank')->withPivot('borrow_date');
     }
 
-    public function own_tanks () {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function personal_tanks() {
         return $this->hasMany('Emprunt\Tank', 'owner');
     }
 }

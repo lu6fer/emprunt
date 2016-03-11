@@ -19,6 +19,8 @@ class CreateStabsTable extends Migration
             $table->string('brand');
             $table->string('model');
             $table->string('size');
+            $table->integer('status')->unsigned()->index();
+            $table->foreign('status')->references('id')->on('statuses')->onDelete('cascade');
             $table->timestamps();
         });
     }

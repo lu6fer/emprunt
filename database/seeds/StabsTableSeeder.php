@@ -20,14 +20,16 @@ class StabsTableSeeder extends Seeder
                 'active' => true,
                 'brand' => 'Scubapro',
                 'model' => 'T-one',
-                'size'  => 'M'
+                'size'  => 'M',
+                'status' => '1'
             ],
             [
                 'number' => '2',
                 'active' => true,
                 'brand' => 'Spirotech',
                 'model' => 'Atlantis',
-                'size'  => 'M'
+                'size'  => 'M',
+                'status' => '1'
             ],
         ];
 

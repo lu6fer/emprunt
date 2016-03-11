@@ -21,11 +21,13 @@ class CreateTanksTable extends Migration
             $table->string('size');
             $table->string('sn_valve');
             $table->string('sn_cylinder');
-            $table->integer('limit_pressure');
-            $table->integer('use_presure');
+            $table->integer('test_pressure');
+            $table->integer('operating_pressure');
             $table->string('usage');
             $table->integer('owner')->unsigned()->index();
             $table->foreign('owner')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('status')->unsigned()->index();
+            $table->foreign('status')->references('id')->on('statuses')->onDelete('cascade');
             $table->timestamps();
         });
     }

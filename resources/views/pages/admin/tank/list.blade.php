@@ -24,6 +24,8 @@
                 <th data-sortable="true">Marque</th>
                 <th data-sortable="true">Model</th>
                 <th data-sortable="true">Taille</th>
+                <th data-sortable="true">Etat</th>
+                <th data-sortable="true">Propriètaire</th>
                 <th data-sortable="true">Emprunté</th>
                 <th data-sortable="true">Emprunteur</th>
                 <th data-sortable="true">Date d'emprunt</th>
@@ -37,8 +39,16 @@
                     <td>{{$tank->brand}}</td>
                     <td>{{$tank->model}}</td>
                     <td>{{$tank->size}}</td>
+                    <td>{{$tank->tank_status->value}}</td>
+                    <td>{{$tank->tank_owner->firstname}} {{$tank->tank_owner->lastname}}</td>
                     <td>
-                        <input title="borrow" type="checkbox" @if (count($tank->users) != 0) checked="checked" @endif disabled>
+                        <input type="checkbox" id="borrowed"
+                               name="borrowed"
+                               @if (count($tank->users) != 0)
+                               checked="checked"
+                               @endif
+                               disabled>
+                        <label for="borrowed"></label>
                     </td>
                     <td>
                         @if (count($tank->users) != 0)
@@ -52,7 +62,7 @@
                     </td>
                     <td>
                         @if (count($tank->users) != 0)
-                        <form id="block" name="block" method="post" action="{{url('return/block')}}">
+                        <form id="block" name="block" method="post" action="{{url('return/tank')}}">
                             <input type="hidden" name="block_id" value="{{$tank->id}}">
                             <input type="hidden" name="user_id" value="{{$tank->users[0]->id}}">
                             {{ csrf_field() }}

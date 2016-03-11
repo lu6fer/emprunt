@@ -99,5 +99,7 @@ Route::group(['middleware' => 'web'], function () {
            Route::get('tank',                'TankController@index');
            Route::get('tank/history',        'TankController@history');
            Route::get('tank/edit/{tank_id}', 'TankController@edit');
+            Route::get('tank/add',           'TankController@add');
+           Route::post('tank/store',         'TankController@store');
     });
 });

@@ -120,7 +120,7 @@
     </ul>
     <ul class="nav navbar-nav sidenav sidenav-inverse sidenav-shrink">
         <li>
-            <a href="javascript:;" id="sidebar_shrink"
+            <a id="sidebar_shrink"
                data-target="#sidebar"
                data-toggle="tooltip"
                data-placement="right"

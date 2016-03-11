@@ -20,14 +20,16 @@ class RegulatorsTableSeeder extends Seeder
                 'active' => true,
                 'brand' => 'Aqualung',
                 'model' => 'Calypso',
-                'type'  => 'Octopus'
+                'type'  => 'Octopus',
+                'status' => '1'
             ],
             [
                 'number' => '2',
                 'active' => true,
                 'brand' => 'Aqualung',
                 'model' => 'Calypso',
-                'type'  => 'Simple'
+                'type'  => 'Simple',
+                'status' => '1'
             ],
         ];
 
