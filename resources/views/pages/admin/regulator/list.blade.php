@@ -1,5 +1,5 @@
 @extends('layout.html')
-@section('title', 'Administration - Liste des blocs')
+@section('title', 'Administration - Liste des détendeurs')
 @section('sidebar')
     @include('includes.admin.sidebar')
 @endsection
@@ -23,7 +23,7 @@
                 <th data-sortable="true">Numéro</th>
                 <th data-sortable="true">Marque</th>
                 <th data-sortable="true">Model</th>
-                <th data-sortable="true">Taille</th>
+                <th data-sortable="true">Description</th>
                 <th data-sortable="true">Etat</th>
                 <th data-sortable="true">Propriètaire</th>
                 <th data-sortable="true">Emprunté</th>
@@ -33,54 +33,54 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($tanks as $tank)
+            @foreach($regulators as $regulator)
                 <tr>
-                    <td>{{$tank->number}}</td>
-                    <td>{{$tank->brand}}</td>
-                    <td>{{$tank->model}}</td>
-                    <td>{{$tank->size}}</td>
-                    <td>{{$tank->tank_status->value}}</td>
-                    <td>{{$tank->tank_owner->firstname}} {{$tank->tank_owner->lastname}}</td>
+                    <td>{{$regulator->number}}</td>
+                    <td>{{$regulator->brand}}</td>
+                    <td>{{$regulator->model}}</td>
+                    <td>{{$regulator->type}}</td>
+                    <td>{{$regulator->regulator_status->value}}</td>
+                    <td>{{$regulator->regulator_owner->firstname}} {{$regulator->regulator_owner->lastname}}</td>
                     <td>
                         <input type="checkbox" id="borrowed"
                                name="borrowed"
-                               @if (count($tank->users) != 0)
+                               @if (count($regulator->users) != 0)
                                checked="checked"
                                @endif
                                disabled>
                         <label for="borrowed"></label>
                     </td>
                     <td>
-                        @if (count($tank->users) != 0)
-                            {{$tank->users[0]->firstname}} {{$tank->users[0]->lastname}}
+                        @if (count($regulator->users) != 0)
+                            {{$regulator->users[0]->firstname}} {{$regulator->users[0]->lastname}}
                         @endif
                     </td>
                     <td>
-                        @if (count($tank->users) != 0)
-                            {{$tank->users[0]->pivot->borrow_date}}
+                        @if (count($regulator->users) != 0)
+                            {{$regulator->users[0]->pivot->borrow_date}}
                         @endif
                     </td>
                     <td>
-                        <form id="tank" name="tank" method="post" action="{{url('return/tank')}}">
-                            @if (count($tank->users) != 0)
-                            <input type="hidden" name="tank_id" value="{{$tank->id}}">
-                            <input type="hidden" name="user_id" value="{{$tank->users[0]->id}}">
+                        <form id="regulator" name="regulator" method="post" action="{{url('return/regulator')}}">
+                            @if (count($regulator->users) != 0)
+                                <input type="hidden" name="regulator_id" value="{{$regulator->id}}">
+                                <input type="hidden" name="user_id" value="{{$regulator->users[0]->id}}">
                             @endif
                             {{ csrf_field() }}
                             <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                @if (count($tank->users) != 0)
-                                <button class="btn btn-default"
-                                        type="submit"
-                                        data-toggle="tooltip"
-                                        data-placement="top"
-                                        title="Rendre le bloc">
-                                    <span class="fa fa-sign-out" aria-hidden="true"></span>
-                                </button>
+                                @if (count($regulator->users) != 0)
+                                    <button class="btn btn-default"
+                                            type="submit"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Rendre le détendeur">
+                                        <span class="fa fa-sign-out" aria-hidden="true"></span>
+                                    </button>
                                 @endif
-                                <a href="{!! url('admin/tank/edit/'.$tank->id) !!}" class="btn btn-default"
+                                <a href="{!! url('admin/regulator/edit/'.$regulator->id) !!}" class="btn btn-default"
                                    data-toggle="tooltip"
                                    data-placement="top"
-                                   title="Editer le bloc">
+                                   title="Editer le détendeur">
                                     <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
                                 </a>
                             </div>

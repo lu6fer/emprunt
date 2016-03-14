@@ -16,19 +16,29 @@ class RegulatorsTableSeeder extends Seeder
         DB::table($table)->delete();
         $data = [
             [
-                'number' => '1',
-                'active' => true,
+                'number' => '6',
+                'borrowable' => true,
                 'brand' => 'Aqualung',
                 'model' => 'Calypso',
-                'type'  => 'Octopus',
+                'type'  => 'Double - Manomètre - DS',
+                'usage' => 'Air',
+                'sn_stage_1' => 'F002874',
+                'sn_stage_2' => 'F002874',
+                'sn_stage_octo' => 'F004516',
+                'owner' => '1',
                 'status' => '1'
             ],
             [
-                'number' => '2',
-                'active' => true,
+                'number' => '21',
+                'borrowable' => true,
                 'brand' => 'Aqualung',
                 'model' => 'Calypso',
-                'type'  => 'Simple',
+                'type'  => 'Double - Manomètre - DS',
+                'usage' => 'Air',
+                'sn_stage_1' => 'F002875',
+                'sn_stage_2' => 'F002875',
+                'sn_stage_octo' => 'F004505',
+                'owner' => '1',
                 'status' => '1'
             ],
         ];

@@ -15,10 +15,12 @@ class CreateStabsTable extends Migration
         Schema::create('stabs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('number');
-            $table->boolean('active');
+            $table->boolean('borrowable');
             $table->string('brand');
             $table->string('model');
             $table->string('size');
+            $table->integer('owner')->unsigned()->index();
+            $table->foreign('owner')->references('id')->on('users')->onDelete('cascade');
             $table->integer('status')->unsigned()->index();
             $table->foreign('status')->references('id')->on('statuses')->onDelete('cascade');
             $table->timestamps();

@@ -77,7 +77,7 @@ class ReturnController extends Controller
      */
     public function tank(Request $request) {
         $user_id = $request->input('user_id');
-        $tank_id = $request->input('block_id');
+        $tank_id = $request->input('tank_id');
 
         $user = User::find($user_id);
         $tank = Tank::find($tank_id);

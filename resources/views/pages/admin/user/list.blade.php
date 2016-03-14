@@ -61,30 +61,31 @@
                         @endif
                     </td>
                     <td>
-                        <form id="tank" name="tank" method="post" action="{{url('return/tank')}}">
-                            @if (count($tank->users) != 0)
-                            <input type="hidden" name="tank_id" value="{{$tank->id}}">
+                        @if (count($tank->users) != 0)
+                        <form id="block" name="block" method="post" action="{{url('return/tank')}}">
+                            <input type="hidden" name="block_id" value="{{$tank->id}}">
                             <input type="hidden" name="user_id" value="{{$tank->users[0]->id}}">
-                            @endif
                             {{ csrf_field() }}
-                            <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                @if (count($tank->users) != 0)
-                                <button class="btn btn-default"
-                                        type="submit"
-                                        data-toggle="tooltip"
-                                        data-placement="top"
-                                        title="Rendre le bloc">
-                                    <span class="fa fa-sign-out" aria-hidden="true"></span>
-                                </button>
-                                @endif
-                                <a href="{!! url('admin/tank/edit/'.$tank->id) !!}" class="btn btn-default"
-                                   data-toggle="tooltip"
-                                   data-placement="top"
-                                   title="Editer le bloc">
-                                    <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
-                                </a>
-                            </div>
                         </form>
+                        @endif
+                        <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                            @if (count($tank->users) != 0)
+                            <button class="btn btn-default" form="block"
+                                    type="submit"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title="Rendre le bloc">
+                                <span class="fa fa-sign-out" aria-hidden="true"></span>
+                            </button>
+                            @endif
+                            <a href="{!! url('admin/tank/edit/'.$tank->id) !!}" class="btn btn-default"
+                               type="submit"
+                               data-toggle="tooltip"
+                               data-placement="top"
+                               title="Editer le bloc">
+                                <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+                            </a>
+                        </div>
                     </td>
                 </tr>
             @endforeach

@@ -10,7 +10,6 @@
                   action="{!! url('admin/tank/store') !!}"
                   method="post"
                   class="form-horizontal">
-                <!-- Number -->
                 <div class="form-group {!! $errors->has('number') ? 'has-error' :'' !!}">
                     <label for="number" class="col-sm-2 control-label">Numéro</label>
                     <div class="col-sm-10">
@@ -24,7 +23,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- Brand -->
                 <div class="form-group {!! $errors->has('brand') ? 'has-error' :'' !!}">
                     <label for="brand" class="col-sm-2 control-label">Marque</label>
                     <div class="col-sm-10">
@@ -38,7 +36,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- Model -->
                 <div class="form-group {!! $errors->has('model') ? 'has-error' :'' !!}">
                     <label for="model" class="col-sm-2 control-label">Modèle</label>
                     <div class="col-sm-10">
@@ -52,7 +49,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- Size -->
                 <div class="form-group {!! $errors->has('size') ? 'has-error' :'' !!}">
                     <label for="size" class="col-sm-2 control-label">Taille</label>
                     <div class="col-sm-10">
@@ -65,7 +61,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- Valve serial number -->
                 <div class="form-group {!! $errors->has('sn_valve') ? 'has-error' :'' !!}">
                     <label for="sn_valve" class="col-sm-2 control-label">N° série robineterie</label>
                     <div class="col-sm-10">
@@ -79,7 +74,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- Cylinder serial number -->
                 <div class="form-group {!! $errors->has('sn_cylinder') ? 'has-error' :'' !!}">
                     <label for="sn_cylinder" class="col-sm-2 control-label">N° série fût</label>
                     <div class="col-sm-10">
@@ -93,7 +87,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- Test pressure -->
                 <div class="form-group {!! $errors->has('test_pressure') ? 'has-error' :'' !!}">
                     <label for="test_pressure" class="col-sm-2 control-label">Pression d'éssai</label>
                     <div class="col-sm-10">
@@ -107,7 +100,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- Operating pressure -->
                 <div class="form-group {!! $errors->has('operating_pressure') ? 'has-error' :'' !!}">
                     <label for="operating_pressure" class="col-sm-2 control-label">Pression de service</label>
                     <div class="col-sm-10">
@@ -121,7 +113,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- Usage -->
                 <div class="form-group {!! $errors->has('usage') ? 'has-error' :'' !!}">
                     <label for="usage" class="col-sm-2 control-label">Utilisation</label>
                     <div class="col-sm-10">
@@ -135,7 +126,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- Owner -->
                 <div class="form-group {!! $errors->has('owner') ? 'has-error' :'' !!}">
                     <label for="owner" class="col-sm-2 control-label">Propriètaire</label>
                     <div class="col-sm-10">
@@ -158,7 +148,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- Status -->
                 <div class="form-group {!! $errors->has('status') ? 'has-error' :'' !!}">
                     <label for="status" class="col-sm-2 control-label">Propriètaire</label>
                     <div class="col-sm-10">
@@ -181,7 +170,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- Borrowable -->
                 <div class="form-group {!! $errors->has('borrowable') ? 'has-error' :'' !!}">
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="checkbox" id="borrowable"
@@ -196,11 +184,8 @@
                         </span>
                     </div>
                 </div>
-                <!-- ID -->
                 <input type="hidden" name="id" id="id" value="{{$tank->id}}">
-                <!-- CSRF -->
                 {!! csrf_field() !!}
-                <!-- Submit -->
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary">Enregistrer</button>

@@ -71,4 +71,18 @@ class User extends Authenticatable
     public function personal_tanks() {
         return $this->hasMany('Emprunt\Tank', 'owner');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function personal_regulators() {
+        return $this->hasMany('Emprunt\Regulator', 'owner');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function personal_stabs() {
+        return $this->hasMany('Emprunt\Stab', 'owner');
+    }
 }

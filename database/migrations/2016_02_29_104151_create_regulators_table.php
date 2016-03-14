@@ -15,10 +15,16 @@ class CreateRegulatorsTable extends Migration
         Schema::create('regulators', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('number');
-            $table->boolean('active');
+            $table->boolean('borrowable');
             $table->string('brand');
             $table->string('model');
             $table->string('type');
+            $table->string('usage');
+            $table->string('sn_stage_1');
+            $table->string('sn_stage_2');
+            $table->string('sn_stage_octo');
+            $table->integer('owner')->unsigned()->index();
+            $table->foreign('owner')->references('id')->on('users')->onDelete('cascade');
             $table->integer('status')->unsigned()->index();
             $table->foreign('status')->references('id')->on('statuses')->onDelete('cascade');
             $table->timestamps();

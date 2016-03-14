@@ -1,5 +1,5 @@
 @extends('layout.html')
-@section('title', 'Administration - Liste des blocs')
+@section('title', 'Administration - Liste des stabs')
 @section('sidebar')
     @include('includes.admin.sidebar')
 @endsection
@@ -33,54 +33,54 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($tanks as $tank)
+            @foreach($stabs as $stab)
                 <tr>
-                    <td>{{$tank->number}}</td>
-                    <td>{{$tank->brand}}</td>
-                    <td>{{$tank->model}}</td>
-                    <td>{{$tank->size}}</td>
-                    <td>{{$tank->tank_status->value}}</td>
-                    <td>{{$tank->tank_owner->firstname}} {{$tank->tank_owner->lastname}}</td>
+                    <td>{{$stab->number}}</td>
+                    <td>{{$stab->brand}}</td>
+                    <td>{{$stab->model}}</td>
+                    <td>{{$stab->size}}</td>
+                    <td>{{$stab->stab_status->value}}</td>
+                    <td>{{$stab->stab_owner->firstname}} {{$stab->stab_owner->lastname}}</td>
                     <td>
                         <input type="checkbox" id="borrowed"
                                name="borrowed"
-                               @if (count($tank->users) != 0)
+                               @if (count($stab->users) != 0)
                                checked="checked"
                                @endif
                                disabled>
                         <label for="borrowed"></label>
                     </td>
                     <td>
-                        @if (count($tank->users) != 0)
-                            {{$tank->users[0]->firstname}} {{$tank->users[0]->lastname}}
+                        @if (count($stab->users) != 0)
+                            {{$stab->users[0]->firstname}} {{$stab->users[0]->lastname}}
                         @endif
                     </td>
                     <td>
-                        @if (count($tank->users) != 0)
-                            {{$tank->users[0]->pivot->borrow_date}}
+                        @if (count($stab->users) != 0)
+                            {{$stab->users[0]->pivot->borrow_date}}
                         @endif
                     </td>
                     <td>
-                        <form id="tank" name="tank" method="post" action="{{url('return/tank')}}">
-                            @if (count($tank->users) != 0)
-                            <input type="hidden" name="tank_id" value="{{$tank->id}}">
-                            <input type="hidden" name="user_id" value="{{$tank->users[0]->id}}">
+                        <form id="tank" name="tank" method="post" action="{{url('return/stab')}}">
+                            @if (count($stab->users) != 0)
+                                <input type="hidden" name="stab_id" value="{{$stab->id}}">
+                                <input type="hidden" name="user_id" value="{{$stab->users[0]->id}}">
                             @endif
                             {{ csrf_field() }}
                             <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                @if (count($tank->users) != 0)
-                                <button class="btn btn-default"
-                                        type="submit"
-                                        data-toggle="tooltip"
-                                        data-placement="top"
-                                        title="Rendre le bloc">
-                                    <span class="fa fa-sign-out" aria-hidden="true"></span>
-                                </button>
+                                @if (count($stab->users) != 0)
+                                    <button class="btn btn-default"
+                                            type="submit"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Rendre la stab">
+                                        <span class="fa fa-sign-out" aria-hidden="true"></span>
+                                    </button>
                                 @endif
-                                <a href="{!! url('admin/tank/edit/'.$tank->id) !!}" class="btn btn-default"
+                                <a href="{!! url('admin/stab/edit/'.$stab->id) !!}" class="btn btn-default"
                                    data-toggle="tooltip"
                                    data-placement="top"
-                                   title="Editer le bloc">
+                                   title="Editer la stab">
                                     <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
                                 </a>
                             </div>

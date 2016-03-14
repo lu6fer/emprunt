@@ -2,7 +2,7 @@
     <ul class="nav navbar-nav sidenav sidenav-inverse">
         <li>
             <!-- Tanks -->
-            <a href="javascript:;" data-toggle="collapse" data-target="#tank" role="button">
+            <a href="javascript:;" data-toggle="collapse" data-parent="#sidenav" data-target="#tank" role="button">
                 <i class="fa fa-fw ef-tank"></i>&nbsp;
             <span class="sidenav-link">
                 Blocs <i class="fa fa-fw fa-caret-down"></i>
@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <!-- TIV -->
-                <li class="{{ Request::segment(3) === 'tiv' ? 'active' : null }}"
+                <li class="{{ (Request::segment(2) === 'tank' && Request::segment(3) === 'tiv') ? 'active' : null }}"
                     data-toggle="tooltip"
                     data-placement="right"
                     data-original-title="T.I.V.">
@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <!-- Borrow history -->
-                <li class="{{ Request::segment(3) === 'history' ? 'active' : null }}"
+                <li class="{{ (Request::segment(2) === 'tank' && Request::segment(3) === 'history') ? 'active' : null }}"
                     data-toggle="tooltip"
                     data-placement="right"
                     data-original-title="Historique des emprunts">
@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <!-- Buy history -->
-                <li class="{{ Request::segment(3) === 'buy' ? 'active' : null }}"
+                <li class="{{ (Request::segment(2) === 'tank' && Request::segment(3) === 'buy') ? 'active' : null }}"
                     data-toggle="tooltip"
                     data-placement="right"
                     data-original-title="Historique des achats">
@@ -67,17 +67,29 @@
                 Détendeurs <i class="fa fa-fw fa-caret-down"></i>
             </span>
             </a>
-            <ul id="regulator" class="collapse">
-                <!--  -->
-                <li>
-                    <a href="#">
-                        <span class="sidenav-link">Dropdown Item</span>
+            <ul id="regulator" class="collapse {{ Request::segment(2) === 'regulator' ? 'in' : null }}">
+                <!-- list -->
+                <li class="{{ (Request::segment(2) === 'regulator' && Request::segment(3) === null) ? 'active' : null }}"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-original-title="Lister les blocs">
+                    <a href="{!! url('admin/regulator') !!}">
+                        <i class="fa fa-fw fa-list"></i>&nbsp;
+                    <span class="sidenav-link">
+                        Liste
+                    </span>
                     </a>
                 </li>
-                <!--  -->
-                <li>
-                    <a href="#">
-                        <span class="sidenav-link">Dropdown Item</span>
+                <!-- Borrow history -->
+                <li class="{{ (Request::segment(2) === 'regulator' && Request::segment(3) === 'history') ? 'active' : null }}"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-original-title="Historique des emprunts">
+                    <a href="{!! url('admin/regulator/history') !!}">
+                        <i class="fa fa-fw fa-history"></i>&nbsp;
+                    <span class="sidenav-link">
+                        Historique des emprunts
+                    </span>
                     </a>
                 </li>
             </ul>
@@ -90,14 +102,30 @@
                 Stab <i class="fa fa-fw fa-caret-down"></i>
             </span>
             </a>
-            <ul id="stab" class="collapse">
-                <!--  -->
-                <li>
-                    <a href="#"><span class="sidenav-link">Dropdown Item</span></a>
+            <ul id="stab" class="collapse {{ Request::segment(2) === 'stab' ? 'in' : null }}">
+                <!-- list -->
+                <li class="{{ (Request::segment(2) === 'stab' && Request::segment(3) === null) ? 'active' : null }}"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-original-title="Lister les blocs">
+                    <a href="{!! url('admin/stab') !!}">
+                        <i class="fa fa-fw fa-list"></i>&nbsp;
+                    <span class="sidenav-link">
+                        Liste
+                    </span>
+                    </a>
                 </li>
-                <!--  -->
-                <li>
-                    <a href="#"><span class="sidenav-link">Dropdown Item</span></a>
+                <!-- Borrow history -->
+                <li class="{{ (Request::segment(2) === 'stab' && Request::segment(3) === 'history') ? 'active' : null }}"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-original-title="Historique des emprunts">
+                    <a href="{!! url('admin/stab/history') !!}">
+                        <i class="fa fa-fw fa-history"></i>&nbsp;
+                    <span class="sidenav-link">
+                        Historique des emprunts
+                    </span>
+                    </a>
                 </li>
             </ul>
         </li>
@@ -108,12 +136,18 @@
                 Utilisateurs <i class="fa fa-fw fa-caret-down"></i>
             </span>
             </a>
-            <ul id="user" class="collapse">
-                <li>
-                    <a href="#"><span class="sidenav-link">Dropdown Item</span></a>
-                </li>
-                <li>
-                    <a href="#"><span class="sidenav-link">Dropdown Item</span></a>
+            <ul id="user" class="collapse {{ Request::segment(2) === 'user' ? 'in' : null }}">
+                <!-- list -->
+                <li class="{{ (Request::segment(2) === 'user' && Request::segment(3) === null) ? 'active' : null }}"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-original-title="Lister les blocs">
+                    <a href="{!! url('admin/user') !!}">
+                        <i class="fa fa-fw fa-list"></i>&nbsp;
+                    <span class="sidenav-link">
+                        Liste
+                    </span>
+                    </a>
                 </li>
             </ul>
         </li>

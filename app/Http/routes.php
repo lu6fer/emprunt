@@ -96,10 +96,23 @@ Route::group(['middleware' => 'web'], function () {
             'namespace' => 'Admin'
         ],
         function() {
-           Route::get('tank',                'TankController@index');
-           Route::get('tank/history',        'TankController@history');
-           Route::get('tank/edit/{tank_id}', 'TankController@edit');
-            Route::get('tank/add',           'TankController@add');
-           Route::post('tank/store',         'TankController@store');
+            // Tanks
+            Route::get('tank',                          'TankController@index');
+            Route::get('tank/history',                  'TankController@history');
+            Route::get('tank/edit/{tank_id}',           'TankController@edit');
+            Route::get('tank/add',                      'TankController@add');
+            Route::post('tank/store',                   'TankController@store');
+            // Stabs
+            Route::get('stab',                          'StabController@index');
+            Route::get('stab/history',                  'StabController@history');
+            Route::get('stab/edit/{stab_id}',           'StabController@edit');
+            Route::get('stab/add',                      'StabController@add');
+            Route::post('stab/store',                   'StabController@store');
+            // Regulators
+            Route::get('regulator',                     'RegulatorController@index');
+            Route::get('regulator/history',             'RegulatorController@history');
+            Route::get('regulator/edit/{regulator_id}', 'RegulatorController@edit');
+            Route::get('regulator/add',                 'RegulatorController@add');
+            Route::post('regulator/store',              'RegulatorController@store');
     });
 });

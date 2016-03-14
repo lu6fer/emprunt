@@ -26,7 +26,14 @@ class Stab extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function status() {
+    public function stab_status() {
         return $this->belongsTo('Emprunt\Status', 'status');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function stab_owner() {
+        return $this->belongsTo('Emprunt\User', 'owner');
     }
 }

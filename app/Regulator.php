@@ -16,6 +16,23 @@ class Regulator extends Model
     protected $dateFormat = 'd/m/Y';
 
     /**
+     * @var array
+     */
+    protected $casts = [
+        'borrowable'         => 'boolean',
+        'number'             => 'integer'
+    ];
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'number', 'borrowable', 'brand', 'model',
+        'type', 'sn_stage_1', 'sn_stage_2',
+        'sn_stage_octo', 'usage', 'owner'
+    ];
+
+    /**
      * @return $this
      */
     public function users () {
@@ -25,7 +42,14 @@ class Regulator extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function status() {
-        return $this->belongsTo('Emprunt\Status', 'status');
+    public function regulator_status() {
+        return $this->belongsTo('Emprunt\Status', 'status', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function regulator_owner() {
+        return $this->belongsTo('Emprunt\User', 'owner');
     }
 }

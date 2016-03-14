@@ -17,19 +17,21 @@ class StabsTableSeeder extends Seeder
         $data = [
             [
                 'number' => '1',
-                'active' => true,
+                'borrowable' => true,
                 'brand' => 'Scubapro',
                 'model' => 'T-one',
                 'size'  => 'M',
-                'status' => '1'
+                'status' => '1',
+                'owner' => '1'
             ],
             [
                 'number' => '2',
-                'active' => true,
+                'borrowable' => true,
                 'brand' => 'Spirotech',
                 'model' => 'Atlantis',
                 'size'  => 'M',
-                'status' => '1'
+                'status' => '1',
+                'owner' => '1'
             ],
         ];
 
