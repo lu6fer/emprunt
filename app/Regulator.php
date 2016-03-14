@@ -29,7 +29,7 @@ class Regulator extends Model
     protected $fillable = [
         'number', 'borrowable', 'brand', 'model',
         'type', 'sn_stage_1', 'sn_stage_2',
-        'sn_stage_octo', 'usage', 'owner'
+        'sn_stage_octo', 'usage', 'owner', 'status'
     ];
 
     /**

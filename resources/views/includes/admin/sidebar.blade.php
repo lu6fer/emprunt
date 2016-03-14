@@ -72,7 +72,7 @@
                 <li class="{{ (Request::segment(2) === 'regulator' && Request::segment(3) === null) ? 'active' : null }}"
                     data-toggle="tooltip"
                     data-placement="right"
-                    data-original-title="Lister les blocs">
+                    data-original-title="Lister les détendeurs">
                     <a href="{!! url('admin/regulator') !!}">
                         <i class="fa fa-fw fa-list"></i>&nbsp;
                     <span class="sidenav-link">
@@ -107,7 +107,7 @@
                 <li class="{{ (Request::segment(2) === 'stab' && Request::segment(3) === null) ? 'active' : null }}"
                     data-toggle="tooltip"
                     data-placement="right"
-                    data-original-title="Lister les blocs">
+                    data-original-title="Lister les stabs">
                     <a href="{!! url('admin/stab') !!}">
                         <i class="fa fa-fw fa-list"></i>&nbsp;
                     <span class="sidenav-link">
@@ -141,7 +141,7 @@
                 <li class="{{ (Request::segment(2) === 'user' && Request::segment(3) === null) ? 'active' : null }}"
                     data-toggle="tooltip"
                     data-placement="right"
-                    data-original-title="Lister les blocs">
+                    data-original-title="Lister les utilisateurs">
                     <a href="{!! url('admin/user') !!}">
                         <i class="fa fa-fw fa-list"></i>&nbsp;
                     <span class="sidenav-link">

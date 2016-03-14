@@ -145,7 +145,7 @@ return [
         'brand'                 => 'Marque',
         'model'                 => 'Modèle',
         'sn_valve'              => 'N° série robineterie',
-        'sn_cylinder'           => 'N° série fut',
+        'sn_cylinder'           => 'N° série fût',
         'test_pressure'         => 'Pression d\'essaie',
         'operating_pressure'    => 'Pression de service',
         'usage'                 => 'Utilisation',

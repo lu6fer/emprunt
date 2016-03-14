@@ -16,6 +16,22 @@ class Stab extends Model
     protected $dateFormat = 'd/m/Y';
 
     /**
+     * @var array
+     */
+    protected $casts = [
+        'borrowable' => 'boolean',
+        'number'     => 'integer',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'number', 'borrowable', 'brand', 'model',
+        'size', 'owner', 'status'
+    ];
+
+    /**
      * @return $this
      */
     public function users ()

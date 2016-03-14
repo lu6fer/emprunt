@@ -146,9 +146,9 @@
                 </div>
                 <!-- Status -->
                 <div class="form-group {!! $errors->has('status') ? 'has-error' :'' !!}">
-                    <label for="status" class="col-sm-2 control-label">Propriètaire</label>
+                    <label for="status" class="col-sm-2 control-label">Statut</label>
                     <div class="col-sm-10">
-                        <select title="tank" name="status"
+                        <select title="tank" name="Statut"
                                 id="status" aria-describedby="status_error"
                                 class="form-control">
                             @foreach($statuses as $status)
