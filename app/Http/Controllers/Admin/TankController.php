@@ -60,7 +60,10 @@ class TankController extends Controller
      */
     public function add() {
         $users = User::all();
-        return view('pages.admin.tank.edit')->with('users', $users);
+        $statuses = Status::all();
+        return view('pages.admin.tank.add')
+            ->with('users', $users)
+            ->with('statuses', $statuses);
     }
 
     /**
@@ -82,7 +85,8 @@ class TankController extends Controller
             'test_pressure' => 'required|numeric',
             'operating_pressure' => 'required|numeric',
             'usage' => 'required|string',
-            'owner' => 'required|integer'
+            'owner' => 'required|integer',
+            'status' => 'required|integer'
         ]);
 
         // Validation errors

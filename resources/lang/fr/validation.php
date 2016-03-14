@@ -144,11 +144,16 @@ return [
         'borrowable'            => 'Empruntable',
         'brand'                 => 'Marque',
         'model'                 => 'Modèle',
+        'type'                  => 'Description',
         'sn_valve'              => 'N° série robineterie',
         'sn_cylinder'           => 'N° série fût',
+        'sn_stage_1'            => 'N° série 1er étage',
+        'sn_stage_2'            => 'N° série 2ème étage',
+        'sn_stage_octo'         => 'N° série octopus',
         'test_pressure'         => 'Pression d\'essaie',
         'operating_pressure'    => 'Pression de service',
         'usage'                 => 'Utilisation',
+        'status'                => 'Statut',
         'owner'                 => 'Propriètaire'
     ],
 
