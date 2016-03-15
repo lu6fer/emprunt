@@ -479,3 +479,18 @@ label:hover:before {
     font-weight: bold;
 }
 
+/**
+ *
+ *
+ */
+.fixed-table-toolbar .bars {
+    line-height: 34px;
+    margin-bottom: 10px;
+    margin-top: 8px;
+    position: relative;
+}
+
+.fixed-table-toolbar .bars.pull-right {
+    margin-left: 5px;
+}
+

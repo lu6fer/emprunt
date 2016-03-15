@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <form name="tank_edit"
-                  action="{!! url('admin/regulator/store') !!}"
+                  action="{!! url('admin/stab/store') !!}"
                   method="post"
                   class="form-horizontal">
                 <!-- Number -->
@@ -92,16 +92,14 @@
                 <div class="form-group {!! $errors->has('status') ? 'has-error' :'' !!}">
                     <label for="status" class="col-sm-2 control-label">Statut</label>
                     <div class="col-sm-10">
-                        <select title="tank" name="Statut"
-                                id="status" aria-describedby="status_error"
+                        <select name="status" id="status"
+                                aria-describedby="status_error"
                                 class="form-control">
                             @foreach($statuses as $status)
-                                <option value="{{$user->id}}"
+                                <option value="{{$status->id}}"
                                         @if($status->id == $stab->stab_status->id)
                                         selected="selected"
-                                        @endif
-                                        name="owner"
-                                        id="owner">
+                                        @endif>
                                     {{$status->value}}
                                 </option>
                             @endforeach

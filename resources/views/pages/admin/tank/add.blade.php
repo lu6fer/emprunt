@@ -163,9 +163,7 @@
                                 id="status" aria-describedby="status_error"
                                 class="form-control">
                             @foreach($statuses as $status)
-                                <option value="{{$user->id}}"
-                                        name="owner"
-                                        id="owner">
+                                <option value="{{$status->id}}">
                                     {{$status->value}}
                                 </option>
                             @endforeach

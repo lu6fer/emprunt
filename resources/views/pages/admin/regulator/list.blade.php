@@ -5,7 +5,29 @@
 @endsection
 @section('content')
     <div class="table-responsive">
-        <table data-class="table table-hover table-striped"
+        <a href="{!! url('admin/regulator/add') !!}"
+           class="btn btn-default"
+           id="toolbar">
+            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+        </a>
+        <table data-toggle="table"
+               data-toolbar="#toolbar"
+               data-toolbar-align="right"
+               data-show-refresh="true"
+               data-show-toggle="true"
+               data-show-columns="true"
+               data-search="true"
+               data-search-on-enter-key="true"
+               data-pagination="true"
+               data-side-pagination="client"
+               data-page-size="20"
+               data-page-list="[10, 25, 50, 100, All]"
+               data-show-export="true"
+               >
+        {{--<table data-class="table table-hover table-striped"
+               data-sticky-header="true"
+               data-sticky-header-offset-y="60px"
+               data-toolbar="#toolbar"
                data-toggle="table"
                data-flat="true"
                data-search="true"
@@ -17,7 +39,7 @@
                data-pagination-first-text="Début"
                data-pagination-pre-text="Previous"
                data-pagination-next-text="Next"
-               data-pagination-last-text="Last">
+               data-pagination-last-text="Last">--}}
             <thead>
             <tr>
                 <th data-sortable="true">Numéro</th>

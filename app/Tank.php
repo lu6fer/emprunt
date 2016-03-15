@@ -31,7 +31,7 @@ class Tank extends Model
     protected $fillable = [
         'number', 'borrowable', 'brand', 'model',
         'size', 'sn_valve', 'sn_cylinder', 'test_pressure',
-        'operating_pressure', 'usage', 'owner'
+        'operating_pressure', 'usage', 'owner', 'status'
     ];
 
     /**

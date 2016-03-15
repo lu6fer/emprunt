@@ -5,19 +5,25 @@
 @endsection
 @section('content')
     <div class="table-responsive">
-        <table data-class="table table-hover table-striped"
-               data-toggle="table"
-               data-flat="true"
-               data-search="true"
+        <a href="{!! url('admin/tank/add') !!}"
+           class="btn btn-default"
+           id="toolbar">
+            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+        </a>
+        <table data-toggle="table"
+               data-toolbar="#toolbar"
+               data-toolbar-align="right"
+               data-show-refresh="true"
+               data-show-toggle="true"
                data-show-columns="true"
-               data-show-multi-sort="true"
+               data-search="true"
+               data-search-on-enter-key="true"
+               data-pagination="true"
                data-side-pagination="client"
-               data-page-number="1"
+               data-page-size="20"
                data-page-list="[10, 25, 50, 100, All]"
-               data-pagination-first-text="Début"
-               data-pagination-pre-text="Previous"
-               data-pagination-next-text="Next"
-               data-pagination-last-text="Last">
+               data-show-export="true"
+        >
             <thead>
             <tr>
                 <th data-sortable="true">Numéro</th>

@@ -60,7 +60,10 @@ class StabController extends Controller
      */
     public function add() {
         $users = User::all();
-        return view('pages.admin.stab.edit')->with('users', $users);
+        $statuses = Status::all();
+        return view('pages.admin.stab.add')
+            ->with('users', $users)
+            ->with('statuses', $statuses);
     }
 
     /**
@@ -70,19 +73,15 @@ class StabController extends Controller
     public function store(Request $request) {
         $id = $request->input('id');
 
-       // Validation rules
+        // Validation rules
         $validator = Validator::make($request->all(), [
-            'number' => 'required|numeric',
+            'number'     => 'required|numeric',
             'borrowable' => 'sometimes|accepted',
-            'brand' => 'string',
-            'model' => 'string',
-            'size' => 'required|string',
-            'sn_valve' => 'required_without:sn_cylinder|string',
-            'sn_cylinder' => 'required_without:sn_valve|string',
-            'test_pressure' => 'required|numeric',
-            'operating_pressure' => 'required|numeric',
-            'usage' => 'required|string',
-            'owner' => 'required|integer'
+            'brand'      => 'string',
+            'model'      => 'string',
+            'size'       => 'required|string',
+            'owner'      => 'required|integer',
+            'status'     => 'required|integer',
         ]);
 
         // Validation errors

@@ -60,7 +60,10 @@ class RegulatorController extends Controller
      */
     public function add() {
         $users = User::all();
-        return view('pages.admin.regulator.edit')->with('users', $users);
+        $statuses = Status::all();
+        return view('pages.admin.regulator.add')
+            ->with('statuses', $statuses)
+            ->with('users', $users);
     }
 
     /**
@@ -72,16 +75,17 @@ class RegulatorController extends Controller
 
        // Validation rules
         $validator = Validator::make($request->all(), [
-            'number' => 'required|numeric',
-            'borrowable' => 'sometimes|accepted',
-            'brand' => 'string',
-            'model' => 'string',
-            'type' => 'required|string',
-            'sn_stage_1' => 'required|string',
-            'sn_stage_2' => 'required|string',
+            'number'        => 'required|numeric',
+            'borrowable'    => 'sometimes|accepted',
+            'brand'         => 'string',
+            'model'         => 'string',
+            'type'          => 'required|string',
+            'sn_stage_1'    => 'required|string',
+            'sn_stage_2'    => 'required|string',
             'sn_stage_octo' => 'required|string',
-            'usage' => 'required|string',
-            'owner' => 'required|integer'
+            'usage'         => 'required|string',
+            'owner'         => 'required|integer',
+            'status'        => 'required|integer'
         ]);
 
         // Validation errors

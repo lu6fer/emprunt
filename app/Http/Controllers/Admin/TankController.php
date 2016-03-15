@@ -75,18 +75,18 @@ class TankController extends Controller
 
        // Validation rules
         $validator = Validator::make($request->all(), [
-            'number' => 'required|numeric',
-            'borrowable' => 'sometimes|accepted',
-            'brand' => 'string',
-            'model' => 'string',
-            'size' => 'required|string',
-            'sn_valve' => 'required_without:sn_cylinder|string',
-            'sn_cylinder' => 'required_without:sn_valve|string',
-            'test_pressure' => 'required|numeric',
+            'number'             => 'required|numeric',
+            'borrowable'         => 'sometimes|accepted',
+            'brand'              => 'string',
+            'model'              => 'string',
+            'size'               => 'required|string',
+            'sn_valve'           => 'required_without:sn_cylinder|string',
+            'sn_cylinder'        => 'required_without:sn_valve|string',
+            'test_pressure'      => 'required|numeric',
             'operating_pressure' => 'required|numeric',
-            'usage' => 'required|string',
-            'owner' => 'required|integer',
-            'status' => 'required|integer'
+            'usage'              => 'required|string',
+            'owner'              => 'required|integer',
+            'status'             => 'required|integer'
         ]);
 
         // Validation errors
