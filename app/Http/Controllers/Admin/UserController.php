@@ -16,7 +16,7 @@ use Emprunt\Status;
  * Class TankController
  * @package Emprunt\Http\Controllers\Admin
  */
-class TankController extends Controller
+class UserController extends Controller
 {
     /**
      * @return $this

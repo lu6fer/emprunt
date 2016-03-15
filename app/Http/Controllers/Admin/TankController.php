@@ -91,9 +91,15 @@ class TankController extends Controller
 
         // Validation errors
         if ($validator->fails()) {
-            return redirect('admin/tank/edit/'.$id)
-                ->withErrors($validator)
-                ->withInput();
+            if ($id) {
+                return redirect('admin/tank/edit/'.$id)
+                    ->withErrors($validator)
+                    ->withInput();
+            } else {
+                return redirect('admin/tank/add')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
         }
 
         // Find id or create new

@@ -86,9 +86,15 @@ class StabController extends Controller
 
         // Validation errors
         if ($validator->fails()) {
-            return redirect('admin/stab/edit/'.$id)
-                ->withErrors($validator)
-                ->withInput();
+            if ($id) {
+                return redirect('admin/stab/edit/'.$id)
+                    ->withErrors($validator)
+                    ->withInput();
+            } else {
+                return redirect('admin/stab/add')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
         }
 
         // Find id or create new

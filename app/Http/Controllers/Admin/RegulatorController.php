@@ -82,7 +82,7 @@ class RegulatorController extends Controller
             'type'          => 'required|string',
             'sn_stage_1'    => 'required|string',
             'sn_stage_2'    => 'required|string',
-            'sn_stage_octo' => 'required|string',
+            'sn_stage_octo' => 'sometimes|string',
             'usage'         => 'required|string',
             'owner'         => 'required|integer',
             'status'        => 'required|integer'
@@ -90,9 +90,15 @@ class RegulatorController extends Controller
 
         // Validation errors
         if ($validator->fails()) {
-            return redirect('admin/regulator/edit/'.$id)
-                ->withErrors($validator)
-                ->withInput();
+            if ($id) {
+                return redirect('admin/regulator/edit/'.$id)
+                    ->withErrors($validator)
+                    ->withInput();
+            } else {
+                return redirect('admin/regulator/add')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
         }
 
         // Find id or create new

@@ -6,7 +6,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form name="tank_edit"
+            <form name="regulator_add"
                   action="{!! url('admin/regulator/store') !!}"
                   method="post"
                   class="form-horizontal">
@@ -129,9 +129,7 @@
                                 id="owner" aria-describedby="owner_error"
                                 class="form-control">
                             @foreach($users as $user)
-                                <option value="{{$user->id}}"
-                                        name="owner"
-                                        id="owner">
+                                <option value="{{$user->id}}">
                                     {{$user->firstname}} {{$user->lastname}}
                                 </option>
                             @endforeach
@@ -150,7 +148,9 @@
                                 class="form-control">
                             @foreach($statuses as $status)
                                 <option value="{{$status->id}}"
-                                        selected="selected">
+                                        @if($status->id == 1)
+                                        selected="selected"
+                                        @endif>
                                     {{$status->value}}
                                 </option>
                             @endforeach

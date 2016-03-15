@@ -6,8 +6,11 @@
 @section('content')
     <div class="table-responsive">
         <a href="{!! url('admin/stab/add') !!}"
-           class="btn btn-default"
-           id="toolbar">
+           class="btn btn-primary"
+           id="toolbar"
+           data-toggle="tooltip"
+           data-placement="bottom"
+           title="Ajouter une stab">
             <i class="fa fa-plus-square-o" aria-hidden="true"></i>
         </a>
         <table data-toggle="table"
@@ -75,7 +78,7 @@
                             {{ csrf_field() }}
                             <div class="btn-group btn-group-sm" role="group" aria-label="...">
                                 @if (count($stab->users) != 0)
-                                    <button class="btn btn-default"
+                                    <button class="btn btn-default fa-color-success"
                                             type="submit"
                                             data-toggle="tooltip"
                                             data-placement="top"
@@ -83,11 +86,19 @@
                                         <span class="fa fa-sign-out" aria-hidden="true"></span>
                                     </button>
                                 @endif
-                                <a href="{!! url('admin/stab/edit/'.$stab->id) !!}" class="btn btn-default"
+                                <a href="{!! url('admin/stab/edit/'.$stab->id) !!}"
+                                   class="btn btn-default fa-color-primary"
                                    data-toggle="tooltip"
                                    data-placement="top"
                                    title="Editer la stab">
                                     <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+                                </a>
+                                <a href="{!! url('admin/stab/delete/'.$stab->id) !!}"
+                                   class="btn btn-default fa-color-danger"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="Supprimer la stab">
+                                    <span class="fa fa-trash" aria-hidden="true"></span>
                                 </a>
                             </div>
                         </form>
