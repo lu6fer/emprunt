@@ -1,4 +1,4 @@
-<div class="sidebar-md" id="sidenav">
+<div class="sidebar-sm" id="sidenav">
     <ul class="nav navbar-nav sidenav sidenav-inverse">
         <li>
             <!-- Tanks -->
