@@ -125,4 +125,18 @@ class TankController extends Controller
         $request->session()->flash($alert['type'], $alert['msg']);
         return redirect('admin/tank');
     }
+
+    public function destroy($tank_id, Request $request) {
+        $tank = Tank::findOrFail($tank_id);
+
+        $tank->delete();
+
+        $alert = [
+            'type' => "alert-success",
+            'msg'  => "Le bloc ".$tank->number." a été supprimer"
+        ];
+        $request->session()->flash($alert['type'], $alert['msg']);
+
+        return redirect('admin/tank');
+    }
 }

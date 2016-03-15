@@ -93,8 +93,10 @@
                                    title="Editer le bloc">
                                     <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
                                 </a>
-                                <a href="{!! url('admin/tank/delete/'.$tank->id) !!}"
-                                   class="btn btn-default fa-color-danger"
+                                <a href="{!! url('admin/tank/destroy/'.$tank->id) !!}"
+                                   data-method="DELETE"
+                                   data-csrf="{!! csrf_token() !!}"
+                                   class="btn btn-default fa-color-danger rest"
                                    data-toggle="tooltip"
                                    data-placement="top"
                                    title="Supprimer le bloc">

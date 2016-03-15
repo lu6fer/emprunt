@@ -22,9 +22,8 @@ class UserController extends Controller
      * @return $this
      */
     public function index() {
-        $tanks = Tank::with('users')->get();
-        $statuses = Status::all();
-        return view('pages.admin.tank.list')->with('tanks', $tanks)->with('statuses', $statuses);
+        $users = User::all();
+        return view('pages.admin.user.list')->with('users', $users);
     }
 
     /**

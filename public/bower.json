@@ -22,6 +22,7 @@
     "select2": "^4.0.1",
     "font-awesome": "^4.5.0",
     "lato": "^0.3.0",
-    "tableExport.jquery.plugin": "^1.4.0"
+    "tableExport.jquery.plugin": "^1.4.0",
+    "restfulizer": "resfulizerjs#*"
   }
 }

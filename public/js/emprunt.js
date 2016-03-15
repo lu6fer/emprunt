@@ -27,6 +27,8 @@ $(document).ready(function() {
     });
     // Create select 2 from select
     $('select').select2();
+    // Create restful link
+    $('.rest').restfulizer();
 
 
     /**

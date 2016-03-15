@@ -3,6 +3,8 @@
 <script type="application/javascript"
         src="{{ asset('bower_components/tableExport.jquery.plugin/tableExport.min.js') }}"></script>
 <script type="application/javascript"
+        src="{{ asset('bower_components/restfulizer/jquery.restfulizer.js') }}"></script>
+<script type="application/javascript"
         src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script type="application/javascript"
         src="{{ asset('bower_components/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
