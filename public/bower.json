@@ -23,6 +23,7 @@
     "font-awesome": "^4.5.0",
     "lato": "^0.3.0",
     "tableExport.jquery.plugin": "^1.4.0",
-    "restfulizer": "resfulizerjs#*"
+    "restfulizer": "resfulizerjs#*",
+    "morris.js": "morrisjs#^0.5.1"
   }
 }

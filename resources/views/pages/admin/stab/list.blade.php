@@ -57,7 +57,7 @@
                                checked="checked"
                                @endif
                                disabled>
-                        <label for="borrowed"></label>
+                        <label for="borrowed">&nbsp;</label>
                     </td>
                     <td>
                         @if (count($stab->users) != 0)
@@ -95,6 +95,15 @@
                                 </a>
                                 <a href="{!! url('admin/stab/delete/'.$stab->id) !!}"
                                    class="btn btn-default fa-color-danger"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="Supprimer la stab">
+                                    <span class="fa fa-trash" aria-hidden="true"></span>
+                                </a>
+                                <a href="{!! url('admin/stab/destroy/'.$stab->id) !!}"
+                                   data-method="DELETE"
+                                   data-csrf="{!! csrf_token() !!}"
+                                   class="btn btn-default fa-color-danger rest"
                                    data-toggle="tooltip"
                                    data-placement="top"
                                    title="Supprimer la stab">

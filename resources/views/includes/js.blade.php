@@ -15,6 +15,10 @@
 <script type="application/javascript"
         src="{{ asset('bower_components/select2/dist/js/select2.min.js') }}"></script>
 <script type="application/javascript"
+        src="{{ asset('bower_components/raphael/raphael-min.js') }}"></script>
+<script type="application/javascript"
+        src="{{ asset('bower_components/morris.js/morris.min.js') }}"></script>
+<script type="application/javascript"
         src="{{ asset('bower_components/select2/dist/js/i18n/fr.js') }}"></script>
 <script type="application/javascript"
         src="{{ asset('js/emprunt.js') }}"></script>

@@ -154,7 +154,11 @@ return [
         'operating_pressure'    => 'Pression de service',
         'usage'                 => 'Utilisation',
         'status'                => 'Statut',
-        'owner'                 => 'Propriètaire'
+        'owner'                 => 'Propriètaire',
+        'phone_mob'             => 'Téléphone mobile',
+        'phone_fix'             => 'Téléphone fixe',
+        'phone_work'            => 'Téléphone professionnel',
+        'licence'               => 'Licence',
     ],
 
 ];

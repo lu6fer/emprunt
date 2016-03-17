@@ -43,14 +43,13 @@
                                                name="borrowed"
                                                @if (count($tank->users) != 0) checked="checked" @endif
                                                disabled>
-                                        <label for="borrowed"></label>
+                                        <label for="borrowed">&nbsp;</label>
                                     </div>
-                                    {{--<input title="borrow" type="checkbox" @if (count($tank->users) != 0) checked="checked" @endif disabled>--}}
                                 </td>
                                 <td>
                                     @if (count($tank->users) != 0)
                                         <form name="block" method="post" action="{{url('return/tank')}}">
-                                            <input type="hidden" name="block_id" value="{{$tank->id}}">
+                                            <input type="hidden" name="tank_id" value="{{$tank->id}}">
                                             <input type="hidden" name="user_id" value="{{$tank->users[0]->id}}">
                                             {{ csrf_field() }}
                                             <button class="btn btn-default btn-sm"

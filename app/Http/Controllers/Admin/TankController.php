@@ -126,6 +126,11 @@ class TankController extends Controller
         return redirect('admin/tank');
     }
 
+    /**
+     * @param $tank_id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function destroy($tank_id, Request $request) {
         $tank = Tank::findOrFail($tank_id);
 

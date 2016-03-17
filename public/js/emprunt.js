@@ -12,9 +12,21 @@ $(document).ready(function() {
      * Get localStorage shrinked status and apply
      */
     if (JSON.parse(localStorage.getItem('sidebar_shrinked'))) {
-        console.log('shrinked is true');
         $('#sidenav').removeClass('sidebar-md').addClass('sidebar-sm');
         $('#sidebar_shrink>i').removeClass('fa-arrow-left').addClass('fa-arrow-right');
+        setTimeout(function() {
+            $.each(window.m, function(id, obj) {
+                obj.redraw();
+            });
+        }, 500);
+    } else {
+        $('#sidenav').removeClass('sidebar-sm').addClass('sidebar-md');
+        $('#sidebar_shrink>i').removeClass('fa-arrow-right').addClass('fa-arrow-left');
+        setTimeout(function() {
+            $.each(window.m, function(id, obj) {
+                obj.redraw();
+            });
+        }, 500);
     }
 
     $(function () {
@@ -54,5 +66,10 @@ $(document).ready(function() {
         $('#sidebar_shrink>i').toggleClass('fa-arrow-right fa-arrow-left');
         var shrinked = JSON.parse(localStorage.getItem('sidebar_shrinked'));
         localStorage.setItem('sidebar_shrinked', !shrinked);
+        setTimeout(function() {
+            $.each(window.m, function(id, obj) {
+                obj.redraw();
+            });
+        }, 500);
     });
 });

@@ -26,6 +26,7 @@
                data-page-size="20"
                data-page-list="[10, 25, 50, 100, All]"
                data-show-export="true"
+               data-row-style="stripped"
         >
             <thead>
             <tr>
@@ -57,7 +58,7 @@
                                checked="checked"
                                @endif
                                disabled>
-                        <label for="borrowed"></label>
+                        <label for="borrowed">&nbsp;</label>
                     </td>
                     <td>
                         @if (count($tank->users) != 0)

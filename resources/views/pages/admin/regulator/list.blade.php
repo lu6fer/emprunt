@@ -27,22 +27,6 @@
                data-page-list="[10, 25, 50, 100, All]"
                data-show-export="true"
                >
-        {{--<table data-class="table table-hover table-striped"
-               data-sticky-header="true"
-               data-sticky-header-offset-y="60px"
-               data-toolbar="#toolbar"
-               data-toggle="table"
-               data-flat="true"
-               data-search="true"
-               data-show-columns="true"
-               data-show-multi-sort="true"
-               data-side-pagination="client"
-               data-page-number="1"
-               data-page-list="[10, 25, 50, 100, All]"
-               data-pagination-first-text="Début"
-               data-pagination-pre-text="Previous"
-               data-pagination-next-text="Next"
-               data-pagination-last-text="Last">--}}
             <thead>
             <tr>
                 <th data-sortable="true">Numéro</th>
@@ -73,7 +57,7 @@
                                checked="checked"
                                @endif
                                disabled>
-                        <label for="borrowed"></label>
+                        <label for="borrowed">&nbsp;</label>
                     </td>
                     <td>
                         @if (count($regulator->users) != 0)
@@ -111,6 +95,15 @@
                                 </a>
                                 <a href="{!! url('admin/regulator/delete/'.$regulator->id) !!}"
                                    class="btn btn-default fa-color-danger"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="Supprimer le détendeur">
+                                    <span class="fa fa-trash" aria-hidden="true"></span>
+                                </a>
+                                <a href="{!! url('admin/regulator/destroy/'.$regulator->id) !!}"
+                                   data-method="DELETE"
+                                   data-csrf="{!! csrf_token() !!}"
+                                   class="btn btn-default fa-color-danger rest"
                                    data-toggle="tooltip"
                                    data-placement="top"
                                    title="Supprimer le détendeur">

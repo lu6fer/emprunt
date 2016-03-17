@@ -262,6 +262,7 @@ a:hover {
     max-width: 300px;
     border-radius: 5px;
     display: inline-block;
+    width: 25%;
 }
 .main-login-form {
     position: relative;
@@ -504,6 +505,7 @@ label:hover:before {
 
 /**
  *
+ *  Table
  *
  */
 .fixed-table-toolbar .bars {
@@ -517,8 +519,14 @@ label:hover:before {
     margin-left: 5px;
 }
 
+th small {
+    color: #7d7d7d;
+}
+
+
 /*
  *
+ * Icon color
  *
  */
 .fa-color-danger > .fa {
@@ -538,5 +546,11 @@ label:hover:before {
 }
 .fa-color-primary > .fa {
     color: #337ab7;
+}
+
+#borrowed_stabs > svg,
+#borrowed_regulators > svg,
+#borrowed_tanks > svg {
+    width: 100%;
 }
 

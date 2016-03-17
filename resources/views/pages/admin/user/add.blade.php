@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <form name="tank_edit"
-                  action="{!! url('admin/tank/store') !!}"
+                  action="{!! url('admin/user/store') !!}"
                   method="post"
                   class="form-horizontal">
                 <!-- Firstname -->
@@ -17,7 +17,7 @@
                         <input type="text" class="form-control"
                                name="firstname" id="firstname"
                                placeholder="Prénom"
-                               value="{!! old('firstname') ? old('firstname') : $user->firstname !!}"
+                               value="{!! old('firstname') !!}"
                                aria-describedby="firstname_error">
                         <span id="firstname_error" class="help-block">
                             {!! $errors->first('firstname') !!}
@@ -31,7 +31,7 @@
                         <input type="text" class="form-control"
                                name="lastname" id="lastname"
                                placeholder="Nom"
-                               value="{!! old('lastname') ? old('lastname') : $user->lastname !!}"
+                               value="{!! old('lastname') !!}"
                                aria-describedby="lastname_error">
                         <span id="lastname_error" class="help-block">
                             {!! $errors->first('lastname') !!}
@@ -45,7 +45,7 @@
                         <input type="email" class="form-control"
                                name="email" id="email"
                                placeholder="Email"
-                               value="{!! old('email') ? old('email') : $user->email !!}"
+                               value="{!! old('email') !!}"
                                aria-describedby="email_error">
                         <span id="email_error" class="help-block">
                             {!! $errors->first('email') !!}
@@ -58,7 +58,7 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="phone_fix"
                                id="phone_fix" placeholder="Téléphone fixe"
-                               value="{!! old('phone_fix') ? old('phone_fix') : $user->phone_fix !!}"
+                               value="{!! old('phone_fix') !!}"
                                aria-describedby="phone_fix_error">
                         <span id="phone_fix_error" class="help-block">
                             {!! $errors->first('phone_fix') !!}
@@ -71,7 +71,7 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="phone_mob"
                                id="phone_mob" placeholder="Téléphone mobile"
-                               value="{!! old('phone_mob') ? old('phone_mob') : $user->phone_mob !!}"
+                               value="{!! old('phone_mob') !!}"
                                aria-describedby="phone_mob_error">
                         <span id="phone_mob_error" class="help-block">
                             {!! $errors->first('phone_mob') !!}
@@ -84,7 +84,7 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="phone_fix"
                                id="phone_work" placeholder="Téléphone professionnel"
-                               value="{!! old('phone_work') ? old('phone_work') : $user->phone_work !!}"
+                               value="{!! old('phone_work') !!}"
                                aria-describedby="phone_work_error">
                         <span id="phone_work_error" class="help-block">
                             {!! $errors->first('phone_work') !!}
@@ -97,7 +97,7 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="licence"
                                id="licence" placeholder="Licence"
-                               value="{!! old('licence') ? old('licence') : $user->licence !!}"
+                               value="{!! old('licence') !!}"
                                aria-describedby="licence_error">
                         <span id="licence_error" class="help-block">
                             {!! $errors->first('licence') !!}
@@ -109,9 +109,7 @@
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="checkbox" id="active"
                                name="active"
-                               @if ($user->active)
                                checked="checked"
-                               @endif
                                aria-describedby="active_error">
                         <label for="active">Actif</label>
                         <span id="active_error" class="help-block">
@@ -124,9 +122,7 @@
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="checkbox" id="stab"
                                name="stab"
-                               @if ($user->stab)
                                checked="checked"
-                               @endif
                                aria-describedby="stab_error">
                         <label for="stab">Pret stab</label>
                         <span id="stab_error" class="help-block">
@@ -139,9 +135,7 @@
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="checkbox" id="tank"
                                name="tank"
-                               @if ($user->tank)
                                checked="checked"
-                               @endif
                                aria-describedby="tank_error">
                         <label for="tank">Pret bloc</label>
                         <span id="tank_error" class="help-block">
@@ -154,9 +148,7 @@
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="checkbox" id="regulator"
                                name="regulator"
-                               @if ($user->regulator)
                                checked="checked"
-                               @endif
                                aria-describedby="regulator_error">
                         <label for="regulator">Pret détendeur</label>
                         <span id="regulator_error" class="help-block">
@@ -188,8 +180,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- ID -->
-                <input type="hidden" name="id" id="id" value="{{$user->id}}">
                 <!-- CSRF -->
                 {!! csrf_field() !!}
                         <!-- Submit -->

@@ -120,4 +120,23 @@ class StabController extends Controller
         $request->session()->flash($alert['type'], $alert['msg']);
         return redirect('admin/stab');
     }
+
+    /**
+     * @param $stab_id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy($stab_id, Request $request) {
+        $stab = Stab::findOrFail($stab_id);
+
+        $stab->delete();
+
+        $alert = [
+            'type' => "alert-success",
+            'msg'  => "Le bloc ".$stab->number." a été supprimer"
+        ];
+        $request->session()->flash($alert['type'], $alert['msg']);
+
+        return redirect('admin/stab');
+    }
 }

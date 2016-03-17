@@ -4,9 +4,8 @@
     @include('includes.admin.sidebar')
 @endsection
 @section('content')
-    {!! dd($users) !!}
     <div class="table-responsive">
-        <a href="{!! url('admin/tank/add') !!}"
+        <a href="{!! url('admin/user/add') !!}"
            class="btn btn-primary"
            id="toolbar"
            data-toggle="tooltip"
@@ -30,70 +29,86 @@
         >
             <thead>
             <tr>
-                <th data-sortable="true">Numéro</th>
-                <th data-sortable="true">Marque</th>
-                <th data-sortable="true">Model</th>
-                <th data-sortable="true">Taille</th>
-                <th data-sortable="true">Etat</th>
-                <th data-sortable="true">Propriètaire</th>
-                <th data-sortable="true">Emprunté</th>
-                <th data-sortable="true">Emprunteur</th>
-                <th data-sortable="true">Date d'emprunt</th>
-                <th data-sortable="true">Actions</th>
+                <th data-sortable="true" rowspan="2" data-valign="middle">Prénom</th>
+                <th data-sortable="true" rowspan="2" data-valign="middle">Nom</th>
+                <th data-sortable="true" rowspan="2" data-valign="middle">Email</th>
+                <th data-sortable="true" rowspan="2" data-valign="middle">Téléphone <br>
+                    <small>fixe / mobile / Professionnel</small>
+                </th>
+                <th data-sortable="true" rowspan="2" data-valign="middle">Actif</th>
+                <th data-sortable="true" colspan="3">Emprunt</th>
+                <th data-sortable="true" rowspan="2" data-valign="middle">Actions</th>
+            </tr>
+            <tr>
+                <th data-sortable="true">Bloc</th>
+                <th data-sortable="true">Détendeur</th>
+                <th data-sortable="true">Stab</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($tanks as $tank)
+            @foreach( $users as $user)
                 <tr>
-                    <td>{{$tank->number}}</td>
-                    <td>{{$tank->brand}}</td>
-                    <td>{{$tank->model}}</td>
-                    <td>{{$tank->size}}</td>
-                    <td>{{$tank->tank_status->value}}</td>
-                    <td>{{$tank->tank_owner->firstname}} {{$tank->tank_owner->lastname}}</td>
+                    <td>{{$user->firstname}}</td>
+                    <td>{{$user->lastname}}</td>
+                    <td>{{$user->email}}</td>
                     <td>
-                        <input type="checkbox" id="borrowed"
-                               name="borrowed"
-                               @if (count($tank->users) != 0)
+                        {{$user->phone_fix}} /
+                        {{$user->phone_mob}} /
+                        {{$user->phone_work}}
+                    </td>
+                    <td>
+                        <input type="checkbox" id="active"
+                               name="active"
+                               @if ($user->active == 1)
                                checked="checked"
                                @endif
                                disabled>
-                        <label for="borrowed"></label>
+                        <label for="active">&nbsp;</label>
                     </td>
                     <td>
-                        @if (count($tank->users) != 0)
-                            {{$tank->users[0]->firstname}} {{$tank->users[0]->lastname}}
-                        @endif
+                        <input type="checkbox" id="tank"
+                               name="tank"
+                               @if ($user->tank == 1)
+                               checked="checked"
+                               @endif
+                               disabled>
+                        <label for="tank">&nbsp;</label>
                     </td>
                     <td>
-                        @if (count($tank->users) != 0)
-                            {{$tank->users[0]->pivot->borrow_date}}
-                        @endif
+                        <input type="checkbox" id="regulator"
+                               name="regulator"
+                               @if ($user->regulator == 1)
+                               checked="checked"
+                               @endif
+                               disabled>
+                        <label for="regulator">&nbsp;</label>
                     </td>
                     <td>
-                        @if (count($tank->users) != 0)
-                        <form id="block" name="block" method="post" action="{{url('return/tank')}}">
-                            <input type="hidden" name="block_id" value="{{$tank->id}}">
-                            <input type="hidden" name="user_id" value="{{$tank->users[0]->id}}">
-                            {{ csrf_field() }}
-                        </form>
-                        @endif
+                        <input type="checkbox" id="stab"
+                               name="stab"
+                               @if ($user->stab == 1)
+                               checked="checked"
+                               @endif
+                               disabled>
+                        <label for="stab">&nbsp;</label>
+                    </td>
+                    <td>
                         <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                            @if (count($tank->users) != 0)
-                            <button class="btn btn-default" form="block"
-                                    type="submit"
-                                    data-toggle="tooltip"
-                                    data-placement="top"
-                                    title="Rendre le bloc">
-                                <span class="fa fa-sign-out" aria-hidden="true"></span>
-                            </button>
-                            @endif
-                            <a href="{!! url('admin/tank/edit/'.$tank->id) !!}" class="btn btn-default"
-                               type="submit"
+                            <a href="{!! url('admin/user/edit/'.$user->id) !!}"
+                               class="btn btn-default fa-color-primary"
                                data-toggle="tooltip"
                                data-placement="top"
-                               title="Editer le bloc">
+                               title="Editer l'utilisateur">
                                 <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+                            </a>
+                            <a href="{!! url('admin/user/destroy/'.$user->id) !!}"
+                               data-method="DELETE"
+                               data-csrf="{!! csrf_token() !!}"
+                               class="btn btn-default fa-color-danger rest"
+                               data-toggle="tooltip"
+                               data-placement="top"
+                               title="Supprimer l'utilisateur">
+                                <span class="fa fa-trash" aria-hidden="true"></span>
                             </a>
                         </div>
                     </td>

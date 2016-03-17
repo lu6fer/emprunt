@@ -124,4 +124,23 @@ class RegulatorController extends Controller
         $request->session()->flash($alert['type'], $alert['msg']);
         return redirect('admin/regulator');
     }
+
+    /**
+     * @param $regulator_id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy($regulator_id, Request $request) {
+        $regulator = Regulator::findOrFail($regulator_id);
+
+        $regulator->delete();
+
+        $alert = [
+            'type' => "alert-success",
+            'msg'  => "Le bloc ".$regulator->number." a été supprimer"
+        ];
+        $request->session()->flash($alert['type'], $alert['msg']);
+
+        return redirect('admin/regulator');
+    }
 }

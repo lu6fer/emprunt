@@ -13,7 +13,7 @@
                 <th data-sortable="true">Id</th>
                 <th data-sortable="true">Prénom</th>
                 <th data-sortable="true">Nom</th>
-                <th data-sortable="true">email</th>
+                <th data-sortable="true">Email</th>
                 <th>Action</th>
             </tr>
             </thead>

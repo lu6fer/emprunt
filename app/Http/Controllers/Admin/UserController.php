@@ -8,9 +8,8 @@ use Illuminate\Http\Request;
 use Emprunt\Http\Controllers\Controller;
 use Emprunt\Http\Requests;
 use Validator;
-use Emprunt\Tank;
+use Illuminate\Support\Facades\Hash;
 use Emprunt\User;
-use Emprunt\Status;
 
 /**
  * Class TankController
@@ -22,44 +21,26 @@ class UserController extends Controller
      * @return $this
      */
     public function index() {
-        $users = User::all();
+        $users = User::where('firstname', '<>', 'SubAlcatel')->get();
         return view('pages.admin.user.list')->with('users', $users);
     }
 
-    /**
-     * @return $this
-     */
-    public function history() {
-        $history = Borrow_history::where('device_type', 'tank')->orderBy('return_date', 'desc')->get();
-        foreach ($history as $tank) {
-            $borrow = strtotime($tank->borrow_date);
-            $return = strtotime($tank->return_date);
-            $datediff = $return - $borrow;
-            $tank->duration = floor($datediff/(60*60*24));
-        }
-        return view('pages.admin.tank.history')->with('history', $history);
-    }
 
     /**
-     * @param $tank_id
-     * @return mixed
+     * @param $user_id
+     * @return $this
      */
-    public function edit($tank_id) {
-        $tank = Tank::find($tank_id);
-        $users = User::all();
-        $statuses = Status::all();
-        return view('pages.admin.tank.edit')
-            ->with('tank', $tank)
-            ->with('users', $users)
-            ->with('statuses', $statuses);
+    public function edit($user_id) {
+        $user = User::find($user_id);
+        return view('pages.admin.user.edit')
+            ->with('user', $user);
     }
 
     /**
      * @return mixed
      */
     public function add() {
-        $users = User::all();
-        return view('pages.admin.tank.edit')->with('users', $users);
+        return view('pages.admin.user.add');
     }
 
     /**
@@ -71,47 +52,76 @@ class UserController extends Controller
 
        // Validation rules
         $validator = Validator::make($request->all(), [
-            'number' => 'required|numeric',
-            'borrowable' => 'sometimes|accepted',
-            'brand' => 'string',
-            'model' => 'string',
-            'size' => 'required|string',
-            'sn_valve' => 'required_without:sn_cylinder|string',
-            'sn_cylinder' => 'required_without:sn_valve|string',
-            'test_pressure' => 'required|numeric',
-            'operating_pressure' => 'required|numeric',
-            'usage' => 'required|string',
-            'owner' => 'required|integer'
+            'firstname'  => 'required|string',
+            'lastname'   => 'required|string',
+            'email'      => 'required|email|max:255|unique:users',
+            'phone_fix'  => 'string',
+            'phone_mob'  => 'string',
+            'phone_work' => 'string',
+            'active'     => 'sometimes|accepted',
+            'stab'       => 'sometimes|accepted',
+            'regulator'  => 'sometimes|accepted',
+            'tank'       => 'sometimes|accepted',
+            'password'   => 'sometimes|confirmed|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/',
         ]);
 
         // Validation errors
         if ($validator->fails()) {
-            return redirect('admin/tank/edit/'.$id)
-                ->withErrors($validator)
-                ->withInput();
+            if ($id) {
+                return redirect('admin/user/edit/'.$id)
+                    ->withErrors($validator)
+                    ->withInput();
+            } else {
+                return redirect('admin/user/add')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
         }
 
         // Find id or create new
-        $tank = Tank::findOrNew($id);
+        $user = User::findOrNew($id);
         $data = $request->all();
-        $data['borrowable'] = $request->input('borrowable', false) ? 1 : 0;
-        $tank->fill($data);
-        $tank->save();
+        $data['active'] = $request->input('active', false) ? 1 : 0;
+        $data['tank'] = $request->input('tank', false) ? 1 : 0;
+        $data['regulator'] = $request->input('regulator', false) ? 1 : 0;
+        $data['stab'] = $request->input('stab', false) ? 1 : 0;
+        $data['password'] = bcrypt($request->input('password'));
+        $user->fill($data);
+        $user->save();
 
         // Display success according to add or update
         if ($id) {
             $alert = [
                 'type' => 'alert-success',
-                'msg' => 'Le bloc '.$tank->number.' a correctement mis à jour'
+                'msg' => 'L\'utilisateur '.$user->firstname.' '.$user->lastname.' a correctement mis à jour'
             ];
         } else {
             $alert = [
                 'type' => 'alert-success',
-                'msg' => 'Le bloc '.$tank->number.' a correctement été ajouter'
+                'msg' => 'L\'utilisateur '.$user->firstname.' '.$user->lastname.' a correctement été ajouter'
             ];
         }
 
         $request->session()->flash($alert['type'], $alert['msg']);
-        return redirect('admin/tank');
+        return redirect('admin/user');
+    }
+
+    /**
+     * @param $user_id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy($user_id, Request $request) {
+        $user = User::findOrFail($user_id);
+
+        $user->delete();
+
+        $alert = [
+            'type' => "alert-success",
+            'msg'  => 'L\'utilisateur '.$user->firstname.' '.$user->lastname.' a été supprimer'
+        ];
+        $request->session()->flash($alert['type'], $alert['msg']);
+
+        return redirect('admin/user');
     }
 }

@@ -79,8 +79,8 @@ class ReturnController extends Controller
         $user_id = $request->input('user_id');
         $tank_id = $request->input('tank_id');
 
-        $user = User::find($user_id);
-        $tank = Tank::find($tank_id);
+        $user = User::findorFail($user_id);
+        $tank = Tank::findorFail($tank_id);
         $borrow = DB::select('select borrow_date from tank_user where user_id = ? and tank_id = ?', [$user_id, $tank_id]);
 
         $borrow_history = new Borrow_history();

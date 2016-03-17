@@ -12,7 +12,7 @@
                 <p class="alert fade in alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
             @endif
         @endforeach
-        {{--@if (count($errors) > 0)
+        @if (count($errors) > 0)
             <div class="alert fade in alert-danger">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <ul>
@@ -21,7 +21,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif--}}
+        @endif
     </div> <!-- end .flash-message -->
 
     @include('includes.navbar')
@@ -34,7 +34,5 @@
             @yield('content')
         </div>
     </div>
-
-    @include('includes.js')
 </body>
 </html>
