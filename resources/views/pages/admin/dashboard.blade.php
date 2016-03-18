@@ -42,7 +42,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default graph">
-                <div class="panel-heading">Emprunts</div>
+                <div class="panel-heading">Emprunts - saison encours</div>
                 <div class="panel-body">
                     <div id="borrow_history" style="height: 150px"></div>
                 </div>
@@ -136,7 +136,7 @@
             });
 
 
-            Morris.Line({
+            window.m.push(Morris.Line({
                 element: 'borrow_history',
                 data: borrow_history,
                 lineColors: [
@@ -151,19 +151,7 @@
                 parseTime: true,
                 hideHover: 'auto',
                 resize: true
-            });
-            /*window.m.push(Morris.Line({
-                element: 'borrow_history',
-                data: [
-                    { month: '1', tanks: 100, stabs: 90, regulators: 25 },
-                    { month: '2', tanks: 5, stabs: 12, regulators: 2 },
-                    { month: '3', tanks: 35, stabs: 40, regulators: 40 }
-                ],
-                xkey: 'month',
-                xLabels: 'Mois',
-                ykeys: ['tanks', 'stabs', 'regulators'],
-                labels: ['Blocs', 'Stabs', 'Détendeurs']
-            }));*/
+            }));
         }
 
     </script>
