@@ -113,6 +113,10 @@ Route::group(['middleware' => 'web'], function () {
                 'tank/add',
                 'TankController@add'
             );
+            Route::get(
+                'tank/tiv/{tank_id}',
+                'TankController@tivs'
+            );
             Route::post(
                 'tank/store',
                 'TankController@store'

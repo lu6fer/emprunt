@@ -144,4 +144,13 @@ class TankController extends Controller
 
         return redirect('admin/tank');
     }
+
+    /**
+     * @return mixed
+     */
+    public function tivs($tank_id) {
+        $tanks = Tank::findOrFail($tank_id)->with('tivs')->get();
+        return view('pages.admin.tank.tivs')
+            ->with('tanks', $tanks);
+    }
 }

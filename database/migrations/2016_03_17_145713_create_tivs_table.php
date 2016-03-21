@@ -16,13 +16,15 @@ class CreateTivsTable extends Migration
             $table->increments('id');
             $table->integer('tank_id')->unsigned();
             $table->foreign('tank_id')->references('id')->on('tanks')->onDelete('cascade');
-            $table->string('review');
+            $table->integer('review')->unsigned();
+            $table->foreign('review')->references('id')->on('tiv_statuses');
             $table->integer('reviewer')->unsigned();
-            $table->foreign('reviewer')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('reviewer')->references('id')->on('tiv_statuses');
             $table->dateTime('review_date');
-            $table->dateTime('previous_review_date');
-            $table->string('review_status');
-            $table->dateTime('shipping_date');
+            $table->dateTime('previous_review_date')->nullable();
+            $table->integer('review_status')->unsigned();
+            $table->foreign('review_status')->references('id')->on('tiv_statuses');
+            $table->dateTime('shipping_date')->nullable();
             $table->integer('valve')->unsigned();
             $table->foreign('valve')->references('id')->on('tiv_statuses');
             $table->integer('valve_ring')->unsigned();
@@ -42,7 +44,7 @@ class CreateTivsTable extends Migration
             $table->foreign('todo_maintenance')->references('id')->on('tiv_statuses');
             $table->integer('performed_maintenance')->unsigned();
             $table->foreign('performed_maintenance')->references('id')->on('tiv_statuses');
-            $table->longText('comment');
+            $table->longText('comment')->nullable();
             $table->timestamps();
         });
     }

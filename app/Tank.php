@@ -54,4 +54,8 @@ class Tank extends Model
     public function tank_status() {
         return $this->belongsTo('Emprunt\Status', 'status', 'id');
     }
+
+    public function tivs() {
+        return $this->hasMany('Emprunt\Tiv')->orderBy('review_date', 'asc');
+    }
 }

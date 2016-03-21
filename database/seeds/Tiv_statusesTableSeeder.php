@@ -103,6 +103,8 @@ class Tiv_statusesTableSeeder extends Seeder
             ['type' => 'review_status',         'value' => 'Expédié'],
             ['type' => 'review_status',         'value' => 'En cours'],
             ['type' => 'review_status',         'value' => 'Terminé'],
+            ['type' => 'review',                'value' => 'Périodique'],
+            ['type' => 'review',                'value' => 'Avant requalification'],
         ];
 
         DB::table($table)->insert($data);

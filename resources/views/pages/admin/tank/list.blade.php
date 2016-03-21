@@ -94,6 +94,15 @@
                                    title="Editer le bloc">
                                     <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
                                 </a>
+                                <a href="{!! url('admin/tank/tiv/'.$tank->id) !!}"
+                                   data-method="GET"
+                                   data-csrf="{!! csrf_token() !!}"
+                                   class="btn btn-default rest"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="T.I.V.">
+                                    <span class="fa fa-wrench" aria-hidden="true"></span>
+                                </a>
                                 <a href="{!! url('admin/tank/destroy/'.$tank->id) !!}"
                                    data-method="DELETE"
                                    data-csrf="{!! csrf_token() !!}"
