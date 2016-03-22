@@ -6,41 +6,48 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tiv extends Model
 {
+    protected $with = [
+        'valve', 'ext_state', 'int_residue',
+        'int_state', 'neck_thread', 'neck_thread_size',
+        'performed_maintenance', 'review', 'review_status',
+        'todo_maintenance', 'valve_ring'
+    ];
+    
     public function tank() {
         return $this->belongsTo('Emprunt\Tank');
     }
 
-    public function valve_status() {
-        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve')->where('type', 'valve');
+    public function valve() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve_id')->where('type', 'valve');
     }
-    public function ext_state_status() {
-        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve')->where('type', 'ext_state');
+    public function ext_state() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'ext_state_id')->where('type', 'ext_state');
     }
-    public function int_residue_status() {
-        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve')->where('type', 'int_residue');
+    public function int_residue() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'int_residue_id')->where('type', 'int_residue');
     }
-    public function int_state_status() {
-        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve')->where('type', 'int_state');
+    public function int_state() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'int_state_id')->where('type', 'int_state');
     }
-    public function neck_thread_status() {
-        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve')->where('type', 'neck_thread');
+    public function neck_thread() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'neck_thread_id')->where('type', 'neck_thread');
     }
-    public function neck_thread_size_status() {
-        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve')->where('type', 'neck_thread_size');
+    public function neck_thread_size() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'neck_thread_size_id')->where('type', 'neck_thread_size');
     }
-    public function performed_maintenance_status() {
-        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve')->where('type', 'performed_maintenance');
+    public function performed_maintenance() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'performed_maintenance_id')->where('type', 'performed_maintenance');
+    }
+    public function review() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'review_id')->where('type', 'review');
     }
     public function review_status() {
-        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve')->where('type', 'review');
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'review_status_id')->where('type', 'review_status');
     }
-    public function review_status_status() {
-        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve')->where('type', 'review_status');
+    public function todo_maintenance() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'todo_maintenance_id')->where('type', 'todo_maintenance');
     }
-    public function todo_maintenance_status() {
-        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve')->where('type', 'todo_maintenance');
-    }
-    public function valve_ring_status() {
-        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve')->where('type', 'valve_ring');
+    public function valve_ring() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve_ring_id')->where('type', 'valve_ring');
     }
 }

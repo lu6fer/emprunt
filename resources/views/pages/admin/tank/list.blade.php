@@ -49,8 +49,8 @@
                     <td>{{$tank->brand}}</td>
                     <td>{{$tank->model}}</td>
                     <td>{{$tank->size}}</td>
-                    <td>{{$tank->tank_status->value}}</td>
-                    <td>{{$tank->tank_owner->firstname}} {{$tank->tank_owner->lastname}}</td>
+                    <td>{{$tank->status->value}}</td>
+                    <td>{{$tank->owner->firstname}} {{$tank->owner->lastname}}</td>
                     <td>
                         <input type="checkbox" id="borrowed"
                                name="borrowed"

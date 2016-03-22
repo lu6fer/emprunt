@@ -23,10 +23,10 @@ class CreateRegulatorsTable extends Migration
             $table->string('sn_stage_1');
             $table->string('sn_stage_2');
             $table->string('sn_stage_octo');
-            $table->integer('owner')->unsigned()->index();
-            $table->foreign('owner')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('status')->unsigned()->index();
-            $table->foreign('status')->references('id')->on('statuses')->onDelete('cascade');
+            $table->integer('owner_id')->unsigned()->index();
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('status_id')->unsigned()->index();
+            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('cascade');
             $table->timestamps();
         });
     }

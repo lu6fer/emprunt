@@ -19,10 +19,10 @@ class CreateStabsTable extends Migration
             $table->string('brand');
             $table->string('model');
             $table->string('size');
-            $table->integer('owner')->unsigned()->index();
-            $table->foreign('owner')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('status')->unsigned()->index();
-            $table->foreign('status')->references('id')->on('statuses')->onDelete('cascade');
+            $table->integer('owner_id')->unsigned()->index();
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('status_id')->unsigned()->index();
+            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('cascade');
             $table->timestamps();
         });
     }

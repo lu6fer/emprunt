@@ -48,8 +48,8 @@
                     <td>{{$regulator->brand}}</td>
                     <td>{{$regulator->model}}</td>
                     <td>{{$regulator->type}}</td>
-                    <td>{{$regulator->regulator_status->value}}</td>
-                    <td>{{$regulator->regulator_owner->firstname}} {{$regulator->regulator_owner->lastname}}</td>
+                    <td>{{$regulator->status->value}}</td>
+                    <td>{{$regulator->owner->firstname}} {{$regulator->owner->lastname}}</td>
                     <td>
                         <input type="checkbox" id="borrowed"
                                name="borrowed"

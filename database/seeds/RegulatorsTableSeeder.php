@@ -25,8 +25,8 @@ class RegulatorsTableSeeder extends Seeder
                 'sn_stage_1' => 'F002874',
                 'sn_stage_2' => 'F002874',
                 'sn_stage_octo' => 'F004516',
-                'owner' => '1',
-                'status' => '1'
+                'owner_id' => '1',
+                'status_id' => '1'
             ],
             [
                 'number' => '21',
@@ -38,8 +38,8 @@ class RegulatorsTableSeeder extends Seeder
                 'sn_stage_1' => 'F002875',
                 'sn_stage_2' => 'F002875',
                 'sn_stage_octo' => 'F004505',
-                'owner' => '1',
-                'status' => '1'
+                'owner_id' => '1',
+                'status_id' => '1'
             ],
         ];
 

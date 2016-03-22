@@ -29,7 +29,7 @@ class Regulator extends Model
     protected $fillable = [
         'number', 'borrowable', 'brand', 'model',
         'type', 'sn_stage_1', 'sn_stage_2',
-        'sn_stage_octo', 'usage', 'owner', 'status'
+        'sn_stage_octo', 'usage', 'owner_id', 'status_id'
     ];
 
     /**
@@ -42,14 +42,14 @@ class Regulator extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function regulator_status() {
-        return $this->belongsTo('Emprunt\Status', 'status', 'id');
+    public function status() {
+        return $this->belongsTo('Emprunt\Status', 'status_id', 'id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function regulator_owner() {
-        return $this->belongsTo('Emprunt\User', 'owner');
+    public function owner() {
+        return $this->belongsTo('Emprunt\User', 'owner_id');
     }
 }

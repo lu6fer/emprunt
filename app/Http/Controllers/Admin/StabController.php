@@ -80,8 +80,8 @@ class StabController extends Controller
             'brand'      => 'string',
             'model'      => 'string',
             'size'       => 'required|string',
-            'owner'      => 'required|integer',
-            'status'     => 'required|integer',
+            'owner_id'   => 'required|integer',
+            'status_id'  => 'required|integer',
         ]);
 
         // Validation errors

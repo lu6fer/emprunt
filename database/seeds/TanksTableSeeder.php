@@ -27,8 +27,8 @@ class TanksTableSeeder extends Seeder
                 'test_pressure' => '345',
                 'operating_pressure' => '230',
                 'usage' => 'Air',
-                'owner' => '1',
-                'status' => '1'
+                'owner_id' => '1',
+                'status_id' => '1'
             ],
             [
                 'number' => '626',
@@ -41,8 +41,8 @@ class TanksTableSeeder extends Seeder
                 'test_pressure' => '348',
                 'operating_pressure' => '232',
                 'usage' => 'Air',
-                'owner' => '2',
-                'status' => '1'
+                'owner_id' => '2',
+                'status_id' => '1'
             ],
             [
                 'number' => '5',

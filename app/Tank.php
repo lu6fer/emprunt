@@ -31,7 +31,7 @@ class Tank extends Model
     protected $fillable = [
         'number', 'borrowable', 'brand', 'model',
         'size', 'sn_valve', 'sn_cylinder', 'test_pressure',
-        'operating_pressure', 'usage', 'owner', 'status'
+        'operating_pressure', 'usage', 'owner_id', 'status_id'
     ];
 
     /**
@@ -44,18 +44,18 @@ class Tank extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function tank_owner() {
-        return $this->belongsTo('Emprunt\User', 'owner');
+    public function owner() {
+        return $this->belongsTo('Emprunt\User', 'owner_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function tank_status() {
-        return $this->belongsTo('Emprunt\Status', 'status', 'id');
+    public function status() {
+        return $this->belongsTo('Emprunt\Status', 'status_id', 'id');
     }
 
     public function tivs() {
-        return $this->hasMany('Emprunt\Tiv')->orderBy('review_date', 'asc');
+        return $this->hasMany('Emprunt\Tiv')->orderBy('review_date', 'desc');
     }
 }

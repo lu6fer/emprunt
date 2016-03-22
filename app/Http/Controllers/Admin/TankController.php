@@ -11,6 +11,7 @@ use Validator;
 use Emprunt\Tank;
 use Emprunt\User;
 use Emprunt\Status;
+use Emprunt\Tiv_status;
 
 /**
  * Class TankController
@@ -85,8 +86,8 @@ class TankController extends Controller
             'test_pressure'      => 'required|numeric',
             'operating_pressure' => 'required|numeric',
             'usage'              => 'required|string',
-            'owner'              => 'required|integer',
-            'status'             => 'required|integer'
+            'owner_id'           => 'required|integer',
+            'status_id'          => 'required|integer'
         ]);
 
         // Validation errors
@@ -149,8 +150,18 @@ class TankController extends Controller
      * @return mixed
      */
     public function tivs($tank_id) {
-        $tanks = Tank::findOrFail($tank_id)->with('tivs')->get();
-        return view('pages.admin.tank.tivs')
-            ->with('tanks', $tanks);
+        $tank = Tank::find($tank_id);
+        $statuses = Tiv_status::all();
+        $tank->load('tivs');
+
+        /*foreach ($tank->tivs as $tiv) {
+            if ($tiv->review_value->id == 90) {
+                $tiv->next_test = 
+            }
+        }*/
+
+        return view('pages.admin.tank.tiv.list')
+            ->with('tank', $tank)
+            ->with('statuses', $statuses);
     }
 }

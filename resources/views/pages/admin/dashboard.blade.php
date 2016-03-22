@@ -138,7 +138,7 @@
 
             window.m.push(Morris.Line({
                 element: 'borrow_history',
-                data: borrow_history,
+                data: borrow_history.length ? borrow_history : [ { period:"0", tanks:0, stabs: 0, regulators: 0 } ],
                 lineColors: [
                     '#F0AD4E',
                     '#5CB85C',

@@ -139,12 +139,12 @@
                 <div class="form-group {!! $errors->has('owner') ? 'has-error' :'' !!}">
                     <label for="owner" class="col-sm-2 control-label">Propriètaire</label>
                     <div class="col-sm-10">
-                        <select name="owner" id="owner"
+                        <select name="owner_id" id="owner_id"
                                 aria-describedby="owner_error"
                                 class="form-control">
                             @foreach($users as $user)
                                 <option value="{{$user->id}}"
-                                        @if($user->id == $tank->tank_owner->id)
+                                        @if($user->id == $tank->owner->id)
                                                 selected="selected"
                                         @endif
                                         name="owner"
@@ -162,12 +162,12 @@
                 <div class="form-group {!! $errors->has('status') ? 'has-error' :'' !!}">
                     <label for="status" class="col-sm-2 control-label">Statut</label>
                     <div class="col-sm-10">
-                        <select name="status" id="status"
+                        <select name="status_id" id="status_id"
                                 aria-describedby="status_error"
                                 class="form-control">
                             @foreach($statuses as $status)
                                 <option value="{{$status->id}}"
-                                        @if($status->id == $tank->tank_status->id)
+                                        @if($status->id == $tank->status->id)
                                         selected="selected"
                                         @endif>
                                     {{$status->value}}

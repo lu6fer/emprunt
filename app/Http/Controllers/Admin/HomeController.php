@@ -32,13 +32,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tanks = Tank::where('status', 1)->count();
+        $tanks = Tank::where('status_id', 1)->count();
         $tanks_borrowed = DB::table('tank_user')->count();
         //$tanks_history = DB::select('select count(borrow_date) as history, month(borrow_date) as month from borrow_histories where device_type = ? group by month(borrow_date);', ['tank']);
-        $stabs = Stab::where('status', 1)->count();
+        $stabs = Stab::where('status_id', 1)->count();
         $stabs_borrowed = DB::table('stab_user')->count();
         //$stabs_history = DB::select('select count(borrow_date) as history, month(borrow_date) as month from borrow_histories where device_type = ? group by month(borrow_date);', ['stab']);
-        $regulators = Regulator::where('status', 1)->count();
+        $regulators = Regulator::where('status_id', 1)->count();
         $regulators_borrowed = DB::table('regulator_user')->count();
         //$regulators_history = DB::select('select count(borrow_date) as history, month(borrow_date) as month from borrow_histories where device_type = ? group by month(borrow_date);', ['regulator']);
         $disponibility = [

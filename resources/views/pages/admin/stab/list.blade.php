@@ -48,8 +48,8 @@
                     <td>{{$stab->brand}}</td>
                     <td>{{$stab->model}}</td>
                     <td>{{$stab->size}}</td>
-                    <td>{{$stab->stab_status->value}}</td>
-                    <td>{{$stab->stab_owner->firstname}} {{$stab->stab_owner->lastname}}</td>
+                    <td>{{$stab->status->value}}</td>
+                    <td>{{$stab->owner->firstname}} {{$stab->owner->lastname}}</td>
                     <td>
                         <input type="checkbox" id="borrowed"
                                name="borrowed"

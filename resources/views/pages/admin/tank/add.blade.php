@@ -139,8 +139,8 @@
                 <div class="form-group {!! $errors->has('owner') ? 'has-error' :'' !!}">
                     <label for="owner" class="col-sm-2 control-label">Propriètaire</label>
                     <div class="col-sm-10">
-                        <select title="tank" name="owner"
-                                id="owner" aria-describedby="owner_error"
+                        <select title="tank" name="owner_id"
+                                id="owner_id" aria-describedby="owner_error"
                                 class="form-control">
                             @foreach($users as $user)
                                 <option value="{{$user->id}}">
@@ -157,8 +157,8 @@
                 <div class="form-group {!! $errors->has('status') ? 'has-error' :'' !!}">
                     <label for="status" class="col-sm-2 control-label">Statut</label>
                     <div class="col-sm-10">
-                        <select title="tank" name="Statut"
-                                id="status" aria-describedby="status_error"
+                        <select title="tank" name="status_id"
+                                id="status_id" aria-describedby="status_error"
                                 class="form-control">
                             @foreach($statuses as $status)
                                 <option value="{{$status->id}}"

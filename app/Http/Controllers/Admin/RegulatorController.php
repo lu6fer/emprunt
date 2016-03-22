@@ -84,8 +84,8 @@ class RegulatorController extends Controller
             'sn_stage_2'    => 'required|string',
             'sn_stage_octo' => 'sometimes|string',
             'usage'         => 'required|string',
-            'owner'         => 'required|integer',
-            'status'        => 'required|integer'
+            'owner_id'      => 'required|integer',
+            'status_id'     => 'required|integer'
         ]);
 
         // Validation errors

@@ -21,8 +21,8 @@ class StabsTableSeeder extends Seeder
                 'brand' => 'Scubapro',
                 'model' => 'T-one',
                 'size'  => 'M',
-                'status' => '1',
-                'owner' => '1'
+                'status_id' => '1',
+                'owner_id' => '1'
             ],
             [
                 'number' => '2',
@@ -30,8 +30,8 @@ class StabsTableSeeder extends Seeder
                 'brand' => 'Spirotech',
                 'model' => 'Atlantis',
                 'size'  => 'M',
-                'status' => '1',
-                'owner' => '1'
+                'status_id' => '1',
+                'owner_id' => '1'
             ],
         ];
 

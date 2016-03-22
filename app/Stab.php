@@ -28,7 +28,7 @@ class Stab extends Model
      */
     protected $fillable = [
         'number', 'borrowable', 'brand', 'model',
-        'size', 'owner', 'status'
+        'size', 'owner_id', 'status_id'
     ];
 
     /**
@@ -42,14 +42,14 @@ class Stab extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function stab_status() {
-        return $this->belongsTo('Emprunt\Status', 'status');
+    public function status() {
+        return $this->belongsTo('Emprunt\Status', 'status_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function stab_owner() {
-        return $this->belongsTo('Emprunt\User', 'owner');
+    public function owner() {
+        return $this->belongsTo('Emprunt\User', 'owner_id');
     }
 }
