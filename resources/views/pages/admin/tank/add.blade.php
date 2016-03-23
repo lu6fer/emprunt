@@ -178,7 +178,7 @@
                 <div class="form-group {!! $errors->has('borrowable') ? 'has-error' :'' !!}">
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="checkbox" id="borrowable"
-                               name="borrowab"
+                               name="borrowable"
                                checked="checked"
                                aria-describedby="borrowable_error">
                         <label for="borrowable">Empruntable</label>

@@ -47,7 +47,8 @@ $(document).ready(function() {
         format: 'dd/mm/yyyy',
         autoclose: true,
         toggleActive:true,
-        todayBtn: true
+        todayBtn: "linked",
+        todayHighlight: true
     });
 
 
