@@ -21,4 +21,8 @@
 <script type="application/javascript"
         src="{{ asset('bower_components/select2/dist/js/i18n/fr.js') }}"></script>
 <script type="application/javascript"
+        src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js') }}"></script>
+<script type="application/javascript"
+        src="{{ asset('bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.fr.min.js') }}"></script>
+<script type="application/javascript"
         src="{{ asset('js/emprunt.js') }}"></script>

@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <h1 class="text-center">[{{$tank->number}}] {{$tank->brand}} - {{$tank->model}} - {{$tank->size}}</h1>
-    <a href="{!! url('admin/tank/add') !!}"
+    <a href="{!! url('admin/tank/tiv/add/'.$tank->id) !!}"
        class="btn btn-primary"
        id="toolbar"
        data-toggle="tooltip"
@@ -43,7 +43,19 @@
                 <td>{{ $tiv->review->value }}</td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                        <a href="{!! url('admin/tank/tiv/detail/'.$tiv->id) !!}"
+                           data-method="GET"
+                           data-csrf="{!! csrf_token() !!}"
+                           class="btn btn-default rest"
+                           data-toggle="tooltip"
+                           data-placement="top"
+                           title="Détails">
+                            <span class="fa fa-info" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </td>
             </tr>
         @endforeach
         </tbody>

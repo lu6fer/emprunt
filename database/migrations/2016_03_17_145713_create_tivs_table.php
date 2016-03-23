@@ -22,6 +22,7 @@ class CreateTivsTable extends Migration
             $table->foreign('reviewer_id')->references('id')->on('tiv_statuses');
             $table->dateTime('review_date');
             $table->dateTime('previous_review_date')->nullable();
+            $table->dateTime('next_test_date')->nullable();
             $table->integer('review_status_id')->unsigned();
             $table->foreign('review_status_id')->references('id')->on('tiv_statuses');
             $table->dateTime('shipping_date')->nullable();

@@ -145,23 +145,4 @@ class TankController extends Controller
 
         return redirect('admin/tank');
     }
-
-    /**
-     * @return mixed
-     */
-    public function tivs($tank_id) {
-        $tank = Tank::find($tank_id);
-        $statuses = Tiv_status::all();
-        $tank->load('tivs');
-
-        /*foreach ($tank->tivs as $tiv) {
-            if ($tiv->review_value->id == 90) {
-                $tiv->next_test = 
-            }
-        }*/
-
-        return view('pages.admin.tank.tiv.list')
-            ->with('tank', $tank)
-            ->with('statuses', $statuses);
-    }
 }

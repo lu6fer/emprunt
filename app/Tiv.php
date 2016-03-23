@@ -12,6 +12,16 @@ class Tiv extends Model
         'performed_maintenance', 'review', 'review_status',
         'todo_maintenance', 'valve_ring'
     ];
+
+    protected $fillable = [
+        'tank_id', 'review_id', 'reviewer_id', 'review_date',
+        'previous_review_date', 'next_test_date', 'review_status_id',
+        'shipping_date', 'valve_id', 'valve_ring_id', 'neck_thread_id',
+        'neck_thread_size_id', 'ext_state_id', 'int_state_id', 'int_oil',
+        'int_residue_id', 'todo_maintenance_id', 'performed_maintenance_id',
+        'comment'
+    ];
+
     
     public function tank() {
         return $this->belongsTo('Emprunt\Tank');

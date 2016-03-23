@@ -34,5 +34,6 @@
             @yield('content')
         </div>
     </div>
+@include('includes.js')
 </body>
 </html>

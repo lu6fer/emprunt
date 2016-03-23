@@ -24,6 +24,7 @@
     "lato": "^0.3.0",
     "tableExport.jquery.plugin": "^1.4.0",
     "restfulizer": "resfulizerjs#*",
-    "morris.js": "morrisjs#^0.5.1"
+    "morris.js": "morrisjs#^0.5.1",
+    "bootstrap-datepicker": "^1.6.0"
   }
 }

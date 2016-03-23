@@ -41,6 +41,14 @@ $(document).ready(function() {
     $('select').select2();
     // Create restful link
     $('.rest').restfulizer();
+    // Create datepicker
+    $('.datepicker').datepicker({
+        language: 'fr',
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        toggleActive:true,
+        todayBtn: true
+    });
 
 
     /**
