@@ -105,6 +105,12 @@ class Tiv_statusesTableSeeder extends Seeder
             ['type' => 'review_status',         'value' => 'Terminé'],
             ['type' => 'review',                'value' => 'Périodique'],
             ['type' => 'review',                'value' => 'Avant requalification'],
+            ['type' => 'recipient',             'value' => 'Scubaland'],
+            ['type' => 'recipient',             'value' => 'L\'atelier de la plongée'],
+            ['type' => 'recipient',             'value' => 'Saint Brieuc plongée'],
+            ['type' => 'recipient',             'value' => 'SAI Mauron'],
+            ['type' => 'recipient',             'value' => 'Aux plongeurs breton'],
+
         ];
 
         DB::table($table)->insert($data);

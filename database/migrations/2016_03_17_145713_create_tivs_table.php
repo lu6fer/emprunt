@@ -45,6 +45,8 @@ class CreateTivsTable extends Migration
             $table->foreign('todo_maintenance_id')->references('id')->on('tiv_statuses');
             $table->integer('performed_maintenance_id')->unsigned();
             $table->foreign('performed_maintenance_id')->references('id')->on('tiv_statuses');
+            $table->integer('recipient_id')->unsigned();
+            $table->foreign('recipient_id')->references('id')->on('tiv_statuses');
             $table->longText('comment')->nullable();
             $table->timestamps();
         });

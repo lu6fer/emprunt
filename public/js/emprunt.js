@@ -11,23 +11,30 @@ $(document).ready(function() {
     /**
      * Get localStorage shrinked status and apply
      */
-    if (JSON.parse(localStorage.getItem('sidebar_shrinked'))) {
-        $('#sidenav').removeClass('sidebar-md').addClass('sidebar-sm');
-        $('#sidebar_shrink>i').removeClass('fa-arrow-left').addClass('fa-arrow-right');
-        setTimeout(function() {
-            $.each(window.m, function(id, obj) {
-                obj.redraw();
-            });
-        }, 500);
+    if ($('#sidenav').length) {
+        if (JSON.parse(localStorage.getItem('sidebar_shrinked'))) {
+            $('#sidebar').removeClass('sidebar-md').addClass('sidebar-sm');
+            $('#content').removeClass('content-sm').addClass('content-md');
+            $('#sidebar_shrink>i').removeClass('fa-arrow-left').addClass('fa-arrow-right');
+            setTimeout(function() {
+                $.each(window.m, function(id, obj) {
+                    obj.redraw();
+                });
+            }, 500);
+        } else {
+            $('#sidebar').removeClass('sidebar-sm').addClass('sidebar-md');
+            $('#content').removeClass('content-md').addClass('content-sm');
+            $('#sidebar_shrink>i').removeClass('fa-arrow-right').addClass('fa-arrow-left');
+            setTimeout(function() {
+                $.each(window.m, function(id, obj) {
+                    obj.redraw();
+                });
+            }, 500);
+        }
     } else {
-        $('#sidenav').removeClass('sidebar-sm').addClass('sidebar-md');
-        $('#sidebar_shrink>i').removeClass('fa-arrow-right').addClass('fa-arrow-left');
-        setTimeout(function() {
-            $.each(window.m, function(id, obj) {
-                obj.redraw();
-            });
-        }, 500);
+        $('#content').removeClass('content-md').removeClass('content-sm');
     }
+
 
     $(function () {
         // enbale tooltip
@@ -71,7 +78,8 @@ $(document).ready(function() {
      * Sidebar shrink
      */
     $('#sidebar_shrink').click(function() {
-       $('#sidenav').toggleClass('sidebar-md sidebar-sm');
+        $('#sidebar').toggleClass('sidebar-md sidebar-sm');
+        $('#content').toggleClass('content-md content-sm');
         $('#sidebar_shrink>i').toggleClass('fa-arrow-right fa-arrow-left');
         var shrinked = JSON.parse(localStorage.getItem('sidebar_shrinked'));
         localStorage.setItem('sidebar_shrinked', !shrinked);

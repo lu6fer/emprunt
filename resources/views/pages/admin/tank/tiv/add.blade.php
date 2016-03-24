@@ -276,16 +276,26 @@
                     <!-- previous_review_date -->
                     <div class="form-group {!! $errors->has('previous_review_date') ? 'has-error' :'' !!}">
                         <label for="previous_review_date" class="col-sm-2 control-label">
-                            <a href="{!! url('admin/tank/tiv/detail/'.$previous_tiv->id) !!}">
                                 Date inspection précédente
-                            </a>
                         </label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"
-                                   name="previous_review_date" id="previous_review_date"
-                                   placeholder="jj/mm/aaaa" disabled
-                                   value="{!! date('d/m/Y', strtotime($previous_tiv->review_date)) !!}"
-                                   aria-describedby="previous_review_date_error">
+                            <div class="input-group">
+                                <input type="text" class="form-control datepicker"
+                                       name="next_test_date" id="next_test_date"
+                                       placeholder="jj/mm/aaaa"
+                                       disabled
+                                       value="{!! date('d/m/Y', strtotime($previous_tiv->review_date)) !!}"
+                                       aria-describedby="next_test_date_error" />
+                                <span class="input-group-btn">
+                                    <a  class="btn btn-default"
+                                        href="{!! url('admin/tank/tiv/detail/'.$previous_tiv->id) !!}"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Détails inspection précédente">
+                                        <span class="fa fa-info" aria-hidden="true"></span>
+                                    </a>
+                                </span>
+                            </div>
                         <span id="previous_review_date_error" class="help-block">
                             {!! $errors->first('previous_review_date') !!}
                         </span>
@@ -298,7 +308,8 @@
                             <input type="text" class="form-control datepicker"
                                    name="next_test_date" id="next_test_date"
                                    placeholder="jj/mm/aaaa"
-                                   value="{!! date('d/m/Y', strtotime($previous_tiv->review_date)) !!}"
+
+                                   value="{!! date("d/m/Y", strtotime("+5 years", strtotime($previous_test->review_date))) !!}"
                                    aria-describedby="next_test_date_error">
                         <span id="next_test_date_error" class="help-block">
                             {!! $errors->first('next_test_date') !!}
@@ -332,10 +343,29 @@
                             <input type="text" class="form-control datepicker"
                                    name="shipping_date" id="next_test_date"
                                    placeholder="jj/mm/aaaa"
-                                   value="{!! date('d/m/Y', strtotime($previous_tiv->review_date)) !!}"
+                                   value="{!! old('shipping_date') !!}"
                                    aria-describedby="shipping_date_error">
                         <span id="shipping_date_error" class="help-block">
                             {!! $errors->first('shipping_date') !!}
+                        </span>
+                        </div>
+                    </div>
+                    <!-- recipient_id -->
+                    <div class="form-group {!! $errors->has('recipient_id') ? 'has-error' :'' !!}">
+                        <label for="recipient_id" class="col-sm-2 control-label">Société</label>
+                        <div class="col-sm-10">
+                            <select title="tank" name="recipient_id"
+                                    id="recipient_id" aria-describedby="recipient_id_error"
+                                    class="form-control">
+                                <option></option>
+                                @foreach($tiv_datas['recipient'] as $data)
+                                    <option value="{{$data->id}}">
+                                        {{$data->value}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        <span id="recipient_id_error" class="help-block">
+                            {!! $errors->first('recipient_id') !!}
                         </span>
                         </div>
                     </div>

@@ -33,6 +33,7 @@ class TivsTableSeeder extends Seeder
                 'int_residue_id'           => 51,
                 'todo_maintenance_id'      => 68,
                 'performed_maintenance_id' => 85,
+                'recipient_id'             => 91,
                 'comment'                  => '',
             ],
             [
@@ -53,6 +54,7 @@ class TivsTableSeeder extends Seeder
                 'int_residue_id'           => 51,
                 'todo_maintenance_id'      => 68,
                 'performed_maintenance_id' => 85,
+                'recipient_id'             => 90,
                 'comment'                  => '',
             ]
         ];

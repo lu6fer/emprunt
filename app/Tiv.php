@@ -10,7 +10,7 @@ class Tiv extends Model
         'valve', 'ext_state', 'int_residue',
         'int_state', 'neck_thread', 'neck_thread_size',
         'performed_maintenance', 'review', 'review_status',
-        'todo_maintenance', 'valve_ring'
+        'todo_maintenance', 'valve_ring', 'recipient'
     ];
 
     protected $fillable = [
@@ -19,7 +19,7 @@ class Tiv extends Model
         'shipping_date', 'valve_id', 'valve_ring_id', 'neck_thread_id',
         'neck_thread_size_id', 'ext_state_id', 'int_state_id', 'int_oil',
         'int_residue_id', 'todo_maintenance_id', 'performed_maintenance_id',
-        'comment'
+        'comment', 'recipient_id'
     ];
 
     
@@ -59,5 +59,8 @@ class Tiv extends Model
     }
     public function valve_ring() {
         return $this->hasOne('Emprunt\Tiv_status', 'id', 'valve_ring_id')->where('type', 'valve_ring');
+    }
+    public function recipient() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'recipient_id')->where('type', 'recipient');
     }
 }

@@ -10,7 +10,7 @@
        id="toolbar"
        data-toggle="tooltip"
        data-placement="bottom"
-       title="Ajouter un bloc">
+       title="Ajouter une inspection">
         <i class="fa fa-plus-square-o" aria-hidden="true"></i>
     </a>
     <table data-toggle="table"

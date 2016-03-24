@@ -13,6 +13,7 @@ use Emprunt\User;
 use Emprunt\Status;
 use Emprunt\Tiv_status;
 use Emprunt\Tiv;
+use DB;
 
 /**
  * Class TankController
@@ -44,6 +45,12 @@ class TivController extends Controller
         $tank = Tank::findOrFail($tank_id);
         $reviewers = User::all();
         $previous = Tiv::where('tank_id', $tank_id)->orderBy('review_date', 'desc')->first();
+        $previous_test = DB::table('tivs')
+            ->select('review_date')
+            ->where('tank_id', $tank_id)
+            ->where('review_id', '90')
+            ->orderBy('review_date', 'desc')
+            ->first();
         $tiv_datas = [
             'ext_state' => Tiv_status::where('type', 'ext_state')->get(),
             'int_residue' => Tiv_status::where('type', 'int_residue')->get(),
@@ -56,12 +63,14 @@ class TivController extends Controller
             'todo_maintenance' => Tiv_status::where('type', 'todo_maintenance')->get(),
             'valve' => Tiv_status::where('type', 'valve')->get(),
             'valve_ring' => Tiv_status::where('type', 'valve_ring')->get(),
+            'recipient' => Tiv_status::where('type', 'recipient')->get(),
         ];
         return view('pages.admin.tank.tiv.add')
             ->with('tank', $tank)
             ->with('reviewers', $reviewers)
             ->with('tiv_datas', $tiv_datas)
-            ->with('previous_tiv', $previous);
+            ->with('previous_tiv', $previous)
+            ->with('previous_test', $previous_test);
     }
     
     public function detail($tiv_id) {

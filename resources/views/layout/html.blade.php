@@ -27,10 +27,10 @@
     @include('includes.navbar')
 
     <div id="wrapper">
-        <div id="sidebar">
+        <div id="sidebar" class="sidebar-sm">
             @yield('sidebar')
         </div>
-        <div id="content" class="container">
+        <div id="content" class="container content-md">
             @yield('content')
         </div>
     </div>
