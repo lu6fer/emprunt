@@ -273,15 +273,81 @@
                         </span>
                         </div>
                     </div>
-                    <!-- next_test_date -->
                     <!-- previous_review_date -->
-                    <!-- shipping_date -->
+                    <div class="form-group {!! $errors->has('previous_review_date') ? 'has-error' :'' !!}">
+                        <label for="previous_review_date" class="col-sm-2 control-label">
+                            <a href="{!! url('admin/tank/tiv/detail/'.$previous_tiv->id) !!}">
+                                Date inspection précédente
+                            </a>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"
+                                   name="previous_review_date" id="previous_review_date"
+                                   placeholder="jj/mm/aaaa" disabled
+                                   value="{!! date('d/m/Y', strtotime($previous_tiv->review_date)) !!}"
+                                   aria-describedby="previous_review_date_error">
+                        <span id="previous_review_date_error" class="help-block">
+                            {!! $errors->first('previous_review_date') !!}
+                        </span>
+                        </div>
+                    </div>
+                    <!-- next_test_date -->
+                    <div class="form-group {!! $errors->has('next_test_date') ? 'has-error' :'' !!}">
+                        <label for="next_test_date" class="col-sm-2 control-label">Date prochaine réépreuve</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control datepicker"
+                                   name="next_test_date" id="next_test_date"
+                                   placeholder="jj/mm/aaaa"
+                                   value="{!! date('d/m/Y', strtotime($previous_tiv->review_date)) !!}"
+                                   aria-describedby="next_test_date_error">
+                        <span id="next_test_date_error" class="help-block">
+                            {!! $errors->first('next_test_date') !!}
+                        </span>
+                        </div>
+                    </div>
+                    <!-- comment -->
+                    <div class="form-group {!! $errors->has('comment') ? 'has-error' :'' !!}">
+                        <label for="comment" class="col-sm-2 control-label">Commentaires</label>
+                        <div class="col-sm-10">
+                        <textarea class="form-control"
+                                  rows="3"
+                                  name="comment"
+                                  id="comment"
+                                  value="{!! old('comment') !!}"
+                                  aria-describedby="comment_error">
+
+                        </textarea>
+                        <span id="comment_error" class="help-block">
+                            {!! $errors->first('comment') !!}
+                        </span>
+                        </div>
+                    </div>
                 </fieldset>
+                <fieldset>
+                    <legend>Prestataire</legend>
+                    <!-- shipping_date -->
+                    <div class="form-group {!! $errors->has('shipping_date') ? 'has-error' :'' !!}">
+                        <label for="shipping_date" class="col-sm-2 control-label">Date expédition prestataire</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control datepicker"
+                                   name="shipping_date" id="next_test_date"
+                                   placeholder="jj/mm/aaaa"
+                                   value="{!! date('d/m/Y', strtotime($previous_tiv->review_date)) !!}"
+                                   aria-describedby="shipping_date_error">
+                        <span id="shipping_date_error" class="help-block">
+                            {!! $errors->first('shipping_date') !!}
+                        </span>
+                        </div>
+                    </div>
 
-
-                <!-- comment -->
+                </fieldset>
                 <input type="hidden" value="{{$tank->id}}">
                 {!! csrf_field() !!}
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

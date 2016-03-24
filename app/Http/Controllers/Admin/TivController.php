@@ -12,6 +12,7 @@ use Emprunt\Tank;
 use Emprunt\User;
 use Emprunt\Status;
 use Emprunt\Tiv_status;
+use Emprunt\Tiv;
 
 /**
  * Class TankController
@@ -42,6 +43,7 @@ class TivController extends Controller
     public function add($tank_id) {
         $tank = Tank::findOrFail($tank_id);
         $reviewers = User::all();
+        $previous = Tiv::where('tank_id', $tank_id)->orderBy('review_date', 'desc')->first();
         $tiv_datas = [
             'ext_state' => Tiv_status::where('type', 'ext_state')->get(),
             'int_residue' => Tiv_status::where('type', 'int_residue')->get(),
@@ -58,7 +60,8 @@ class TivController extends Controller
         return view('pages.admin.tank.tiv.add')
             ->with('tank', $tank)
             ->with('reviewers', $reviewers)
-            ->with('tiv_datas', $tiv_datas);
+            ->with('tiv_datas', $tiv_datas)
+            ->with('previous_tiv', $previous);
     }
     
     public function detail($tiv_id) {
