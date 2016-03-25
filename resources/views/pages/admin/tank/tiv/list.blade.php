@@ -39,7 +39,8 @@
         <tbody>
         @foreach($tank->tivs as $index => $tiv)
             <tr>
-                <td>{!! date('d/m/Y', strtotime($tiv->review_date)) !!}</td>
+                {{--<td>{!! date('d/m/Y', strtotime($tiv->review_date)) !!}</td>--}}
+                <td>{{$tiv->review_date->format('d/m/Y')}}</td>
                 <td>{{ $tiv->review->value }}</td>
                 <td></td>
                 <td></td>

@@ -57,6 +57,21 @@ $(document).ready(function() {
         todayBtn: "linked",
         todayHighlight: true
     });
+    $('#review_date').on("changeDate", function() {
+        $('#review_date').val(
+            $('#review_date').datepicker('getDate')
+        );
+    });
+    $('#next_test_date').on("changeDate", function() {
+        $('#next_test_date').val(
+            $('#next_test_date').datepicker('getDate')
+        );
+    });
+    $('#shipping_date').on("changeDate", function() {
+        $('#shipping_date').val(
+            $('#shipping_date').datepicker('getDate')
+        );
+    });
 
 
     /**

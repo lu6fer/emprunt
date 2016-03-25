@@ -36,7 +36,7 @@
                                     class="form-control">
                                 <option></option>
                                 @foreach($reviewers as $reviewer)
-                                    <option value="{{$reviewer->id}}">
+                                    <option value="{{$reviewer->id}}" @if (old('reviewer_id') == $reviewer->id) selected @endif>
                                         {{$reviewer->firstname}} {{$reviewer->lastname}}
                                     </option>
                                 @endforeach
@@ -55,7 +55,7 @@
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['review'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('review_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -74,7 +74,7 @@
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['review_status'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('review_status_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -96,7 +96,7 @@
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['ext_state'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('ext_state_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -115,7 +115,7 @@
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['int_state'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('int_state_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -141,12 +141,12 @@
                     <div class="form-group {!! $errors->has('int_residue_id') ? 'has-error' :'' !!}">
                         <label for="int_residue_id" class="col-sm-2 control-label">Résidus</label>
                         <div class="col-sm-10">
-                            <select title="tank" name="int_state_id"
+                            <select title="tank" name="int_residue_id"
                                     id="int_residue_id" aria-describedby="int_residue_id_error"
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['int_residue'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('int_residue_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -165,7 +165,7 @@
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['valve'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('valve_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -184,7 +184,7 @@
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['valve_ring'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('valve_ring_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -203,7 +203,7 @@
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['neck_thread'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('neck_thread_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -215,14 +215,14 @@
                     </div>
                     <!-- neck_thread_size_id -->
                     <div class="form-group {!! $errors->has('neck_thread_size_id') ? 'has-error' :'' !!}">
-                        <label for="neck_thread_id" class="col-sm-2 control-label">Mesure filetage col</label>
+                        <label for="neck_thread_size_id" class="col-sm-2 control-label">Mesure filetage col</label>
                         <div class="col-sm-10">
                             <select title="tank" name="neck_thread_size_id"
                                     id="neck_thread_size_id" aria-describedby="neck_thread_size_id_error"
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['neck_thread_size'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('neck_thread_size_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -244,7 +244,7 @@
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['todo_maintenance'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('todo_maintenance_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -263,7 +263,7 @@
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['performed_maintenance'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('performed_maintenance_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -281,11 +281,10 @@
                         <div class="col-sm-10">
                             <div class="input-group">
                                 <input type="text" class="form-control datepicker"
-                                       name="next_test_date" id="next_test_date"
                                        placeholder="jj/mm/aaaa"
                                        disabled
-                                       value="{!! date('d/m/Y', strtotime($previous_tiv->review_date)) !!}"
-                                       aria-describedby="next_test_date_error" />
+                                       value="{{$previous_tiv->review_date->format('d/m/Y')}}"
+                                       aria-describedby="previous_review_date_error" />
                                 <span class="input-group-btn">
                                     <a  class="btn btn-default"
                                         href="{!! url('admin/tank/tiv/detail/'.$previous_tiv->id) !!}"
@@ -296,6 +295,11 @@
                                     </a>
                                 </span>
                             </div>
+                            <input type="hidden" class="form-control datepicker"
+                                   name="previous_review_date" id="previous_review_date"
+                                   placeholder="jj/mm/aaaa"
+                                   value="{{$previous_tiv->review_date->format('d/m/Y')}}"
+                                   aria-describedby="previous_review_date_error" />
                         <span id="previous_review_date_error" class="help-block">
                             {!! $errors->first('previous_review_date') !!}
                         </span>
@@ -325,9 +329,8 @@
                                   rows="3"
                                   name="comment"
                                   id="comment"
-                                  value="{!! old('comment') !!}"
                                   aria-describedby="comment_error">
-
+                            {!! old('comment') !!}
                         </textarea>
                         <span id="comment_error" class="help-block">
                             {!! $errors->first('comment') !!}
@@ -342,7 +345,7 @@
                         <label for="shipping_date" class="col-sm-2 control-label">Date expédition prestataire</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control datepicker"
-                                   name="shipping_date" id="next_test_date"
+                                   name="shipping_date" id="shipping_date"
                                    placeholder="jj/mm/aaaa"
                                    value="{!! old('shipping_date') !!}"
                                    aria-describedby="shipping_date_error">
@@ -360,7 +363,7 @@
                                     class="form-control">
                                 <option></option>
                                 @foreach($tiv_datas['recipient'] as $data)
-                                    <option value="{{$data->id}}">
+                                    <option value="{{$data->id}}" @if (old('recipient_id') == $data->id) selected @endif>
                                         {{$data->value}}
                                     </option>
                                 @endforeach
@@ -372,7 +375,7 @@
                     </div>
 
                 </fieldset>
-                <input type="hidden" value="{{$tank->id}}">
+                <input type="hidden" name="tank_id" id="tank_id" value="{{$tank->id}}">
                 {!! csrf_field() !!}
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">

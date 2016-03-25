@@ -88,6 +88,12 @@ body {
     display: none;
 }
 
+@media screen and (max-width: 1110px) {
+    #sidebar .navbar-nav {
+        margin: 0;
+    }
+}
+
 @media screen and (min-width: 1109px) {
     #sidebar {
         min-width: 250px;

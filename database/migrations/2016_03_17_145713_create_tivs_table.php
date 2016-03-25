@@ -41,11 +41,11 @@ class CreateTivsTable extends Migration
             $table->boolean('int_oil')->default(false);
             $table->integer('int_residue_id')->unsigned();
             $table->foreign('int_residue_id')->references('id')->on('tiv_statuses');
-            $table->integer('todo_maintenance_id')->unsigned();
+            $table->integer('todo_maintenance_id')->unsigned()->nullable();
             $table->foreign('todo_maintenance_id')->references('id')->on('tiv_statuses');
-            $table->integer('performed_maintenance_id')->unsigned();
+            $table->integer('performed_maintenance_id')->unsigned()->nullable();
             $table->foreign('performed_maintenance_id')->references('id')->on('tiv_statuses');
-            $table->integer('recipient_id')->unsigned();
+            $table->integer('recipient_id')->unsigned()->nullable();
             $table->foreign('recipient_id')->references('id')->on('tiv_statuses');
             $table->longText('comment')->nullable();
             $table->timestamps();
