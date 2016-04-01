@@ -4,5 +4,5 @@
     @include('includes.admin.sidebar')
 @endsection
 @section('content')
-    {!! dd($request) !!}
+    {!! dd($tiv) !!}
 @endsection

@@ -23,6 +23,7 @@ use Carbon;
 class TivController extends Controller
 {
     /**
+     * List tivs for a tank
      * @param $tank_id
      * @return mixed
      */
@@ -31,17 +32,16 @@ class TivController extends Controller
         $statuses = Tiv_status::all();
         $tank->load('tivs');
 
-        /*foreach ($tank->tivs as $tiv) {
-            if ($tiv->review_value->id == 90) {
-                $tiv->next_test =
-            }
-        }*/
-
         return view('pages.admin.tank.tiv.list')
             ->with('tank', $tank)
             ->with('statuses', $statuses);
     }
-    
+
+    /**
+     * Add new tiv
+     * @param $tank_id
+     * @return mixed
+     */
     public function add($tank_id) {
         $tank = Tank::findOrFail($tank_id);
         $reviewers = User::all();
@@ -73,11 +73,23 @@ class TivController extends Controller
             ->with('previous_tiv', $previous_tiv)
             ->with('previous_test', $previous_test);
     }
-    
+
+    /**
+     * Display details of tiv's tank
+     * @param $tiv_id
+     * @return mixed
+     */
     public function detail($tiv_id) {
-        return view('pages.admin.tank.tiv.detail');
+        $tiv = Tiv::findOrFail($tiv_id);
+        return view('pages.admin.tank.tiv.detail')
+            ->with('tiv', $tiv);
     }
 
+    /**
+     * Save new tiv
+     * @param Request $request
+     * @return mixed
+     */
     public function store(Request $request) {
         $id = $request->input('id');
         $tank_id = $request->input('tank_id');
