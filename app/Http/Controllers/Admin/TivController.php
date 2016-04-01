@@ -81,6 +81,7 @@ class TivController extends Controller
      */
     public function detail($tiv_id) {
         $tiv = Tiv::findOrFail($tiv_id);
+        $tiv->load('tank');
         return view('pages.admin.tank.tiv.detail')
             ->with('tiv', $tiv);
     }
