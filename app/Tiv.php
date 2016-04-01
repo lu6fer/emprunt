@@ -13,7 +13,7 @@ class Tiv extends Model
         'valve', 'ext_state', 'int_residue',
         'int_state', 'neck_thread', 'neck_thread_size',
         'performed_maintenance', 'review', 'review_status',
-        'todo_maintenance', 'valve_ring', 'recipient'
+        'todo_maintenance', 'valve_ring', 'recipient', 'reviewer'
     ];
 
     /**
@@ -170,5 +170,12 @@ class Tiv extends Model
      */
     public function recipient() {
         return $this->hasOne('Emprunt\Tiv_status', 'id', 'recipient_id')->where('type', 'recipient');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function reviewer() {
+        return $this->hasOne('Emprunt\User', 'id', 'reviewer_id');
     }
 }
