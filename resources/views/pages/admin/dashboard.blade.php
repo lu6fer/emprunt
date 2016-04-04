@@ -51,7 +51,7 @@
 
     </div>
     <script type="application/javascript">
-        var dispo_ori = '{{$disponibility}}';
-        var b_history_ori = '{{$borrow_history}}';
+        dispo_ori = '{{$disponibility}}';
+        b_history_ori = '{{$borrow_history}}';
     </script>
 @endsection

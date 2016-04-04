@@ -224,9 +224,13 @@
                                     id="todo_maintenance_id" aria-describedby="todo_maintenance_id_error"
                                     class="form-control"
                                     disabled>
-                                <option value="{{$tiv->todo_maintenance->id}}" selected>
-                                    {{$tiv->todo_maintenance->value}}
-                                </option>
+                                @if ($tiv->todo_maintenance_id == null)
+                                    <option selected></option>
+                                @else
+                                    <option value="{{$tiv->todo_maintenance->id}}" selected>
+                                        {{$tiv->todo_maintenance->value}}
+                                    </option>
+                                @endif
                             </select>
                         <span id="todo_maintenance_id_error" class="help-block">
                             {!! $errors->first('todo_maintenance_id') !!}
@@ -241,9 +245,13 @@
                                     id="performed_maintenance_id" aria-describedby="performed_maintenance_id_error"
                                     class="form-control"
                                     disabled>
-                                <option value="{{$tiv->performed_maintenance->id}}" selected>
-                                    {{$tiv->performed_maintenance->value}}
-                                </option>
+                                @if ($tiv->performed_maintenance_id == null)
+                                    <option selected></option>
+                                @else
+                                    <option value="{{$tiv->performed_maintenance->id}}" selected>
+                                        {{$tiv->performed_maintenance->value}}
+                                    </option>
+                                @endif
                             </select>
                         <span id="performed_maintenance_id_error" class="help-block">
                             {!! $errors->first('performed_maintenance_id') !!}
@@ -260,7 +268,7 @@
                                 <input type="text" class="form-control datepicker"
                                        placeholder="jj/mm/aaaa"
                                        disabled
-                                       value="{{$tiv->previous_review_date->format('d/m/Y')}}"
+                                       @if($tiv->previous_review_date != null) value="{{$tiv->previous_review_date->format('d/m/Y')}}"@endif
                                        aria-describedby="previous_review_date_error" />
                             </div>
                         <span id="previous_review_date_error" class="help-block">
@@ -284,7 +292,7 @@
                         </span>
                         </div>
                     </div>--}}
-                            <!-- comment -->
+                    <!-- comment -->
                     <div class="form-group {!! $errors->has('comment') ? 'has-error' :'' !!}">
                         <label for="comment" class="col-sm-2 control-label">Commentaires</label>
                         <div class="col-sm-10">
@@ -312,7 +320,7 @@
                                    name="shipping_date" id="shipping_date"
                                    placeholder="jj/mm/aaaa"
                                    disabled
-                                   value="{{$tiv->shipping_date->format('d/m/Y')}}"
+                                   @if($tiv->shipping_date != null) value="{{$tiv->shipping_date->format('d/m/Y')}}" @endif
                                    aria-describedby="shipping_date_error">
                         <span id="shipping_date_error" class="help-block">
                             {!! $errors->first('shipping_date') !!}
@@ -327,9 +335,13 @@
                                     id="recipient_id" aria-describedby="recipient_id_error"
                                     class="form-control"
                                     disabled>
-                                <option value="{{$tiv->recipient->id}}" selected>
-                                    {{$tiv->recipient->value}}
-                                </option>
+                                @if ($tiv->recipient_id == null)
+                                    <option selected></option>
+                                @else
+                                    <option value="{{$tiv->recipient->id}}" selected>
+                                        {{$tiv->recipient->value}}
+                                    </option>
+                                @endif
                             </select>
                         <span id="recipient_id_error" class="help-block">
                             {!! $errors->first('recipient_id') !!}

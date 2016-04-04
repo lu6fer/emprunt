@@ -42,10 +42,6 @@ class Tiv extends Model
      */
     protected $casts = [
         'int_oil' => 'boolean',
-        /*'review_date' => 'datetime',
-        'previous_review_date' => 'datetime',
-        'next_test_date' => 'datetime',
-        'shipping_date' => 'datetime'*/
     ];
 
 
@@ -74,6 +70,32 @@ class Tiv extends Model
      */
     public function setRecipientIdAttribute($value) {
         $this->attributes['recipient_id'] = ($value) ? $value : null;
+    }
+
+    /**
+     * Mutator for nullable date
+     * @param $timestamp
+     * @return \Carbon\Carbon|null
+     */
+    public function getPreviousReviewDateAttribute($timestamp)
+    {
+        // flexible:
+        return ( ! starts_with($timestamp, '0000')) ? $timestamp : null;
+        // or explicit:
+        //return ($timestamp !== '0000-00-00 00:00:00') ? $this->asDateTime($timestamp) : null;
+    }
+
+    /**
+     * Mutator for nullable date
+     * @param $timestamp
+     * @return \Carbon\Carbon|null
+     */
+    public function getShippingDateAttribute($timestamp)
+    {
+        // flexible:
+        return ( ! starts_with($timestamp, '0000')) ? $timestamp : null;
+        // or explicit:
+        //return ($timestamp !== '0000-00-00 00:00:00') ? $this->asDateTime($timestamp) : null;
     }
 
 

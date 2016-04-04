@@ -104,4 +104,7 @@ $(document).ready(function() {
             });
         }, 500);
     });
+
+    var dispo_ori = false;
+    var b_history_ori = false;
 });
