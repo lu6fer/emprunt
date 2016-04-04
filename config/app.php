@@ -149,12 +149,18 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Applicatoin addon
+         */
+        Barryvdh\DomPDF\ServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         Emprunt\Providers\AppServiceProvider::class,
         Emprunt\Providers\AuthServiceProvider::class,
         Emprunt\Providers\EventServiceProvider::class,
         Emprunt\Providers\RouteServiceProvider::class,
+
         /*
          * Debug
          */
@@ -204,6 +210,10 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        /*
+         * Addon
+         */
+        'PDF' => Barryvdh\DomPDF\Facade::class,
         /*
          * Debug
          */

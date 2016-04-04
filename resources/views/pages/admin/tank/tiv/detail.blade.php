@@ -260,18 +260,15 @@
                     </div>
                     <!-- previous_review_date -->
                     <div class="form-group {!! $errors->has('previous_review_date') ? 'has-error' :'' !!}">
-                        <label for="previous_review_date" class="col-sm-2 control-label">
-                            Date inspection précédente
-                        </label>
+                        <label for="shipping_date" class="col-sm-2 control-label">Date inspection précédente</label>
                         <div class="col-sm-10">
-                            <div class="input-group">
-                                <input type="text" class="form-control datepicker"
-                                       placeholder="jj/mm/aaaa"
-                                       disabled
-                                       @if($tiv->previous_review_date != null) value="{{$tiv->previous_review_date->format('d/m/Y')}}"@endif
-                                       aria-describedby="previous_review_date_error" />
-                            </div>
-                        <span id="previous_review_date_error" class="help-block">
+                            <input type="text" class="form-control datepicker"
+                                   name="shipping_date" id="shipping_date"
+                                   placeholder="jj/mm/aaaa"
+                                   disabled
+                                   @if($tiv->previous_review_date != null) value="{{$tiv->previous_review_date->format('d/m/Y')}}" @endif
+                                   aria-describedby="shipping_date_error">
+                        <span id="shipping_date_error" class="help-block">
                             {!! $errors->first('previous_review_date') !!}
                         </span>
                         </div>
@@ -352,7 +349,8 @@
                 </fieldset>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <a href="{!! url('admin/tank/tiv/'.$tiv->tank->id) !!}" class="btn btn-default">Retour</a>
+                        <a href="{!! url('admin/tank/tiv/pdf/'.$tiv->tank->id) !!}" class="btn btn-primary">Imprimer</a>
                     </div>
                 </div>
             </form>

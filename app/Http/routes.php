@@ -87,6 +87,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('tank/tiv/add/{tank_id}', 'TivController@add');
             Route::post('tank/tiv/store', 'TivController@store');
             Route::get('tank/tiv/detail/{tiv_id}', 'TivController@detail');
+            /*Route::get('tank/tiv/pdf/{tiv_id}', 'TivController@pdf');*/
             // Stabs
             Route::get( 'stab', 'StabController@index');
             Route::get( 'stab/history', 'StabController@history');

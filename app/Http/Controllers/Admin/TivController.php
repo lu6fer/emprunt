@@ -10,11 +10,12 @@ use Emprunt\Http\Requests;
 use Validator;
 use Emprunt\Tank;
 use Emprunt\User;
-use Emprunt\Status;
+//use Emprunt\Status;
 use Emprunt\Tiv_status;
 use Emprunt\Tiv;
 use DB;
 use Carbon;
+use PDF;
 
 /**
  * Class TankController
@@ -85,6 +86,13 @@ class TivController extends Controller
         return view('pages.admin.tank.tiv.detail')
             ->with('tiv', $tiv);
     }
+
+    /*public function pdf($tiv_id) {
+        $tiv = Tiv::findOrFail($tiv_id);
+        $tiv->load('tank');
+        $pdf = PDF::loadView('pages.admin.tank.tiv.pdf', compact('tiv'));
+        return $pdf->download($tiv->tank->id.'- Inspection - '.date('Y-m-d H:i:s').'.pdf');
+    }*/
 
     /**
      * Save new tiv
