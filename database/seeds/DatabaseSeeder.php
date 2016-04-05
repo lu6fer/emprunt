@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Regulator_UserTableSeeder::class);
         $this->call(Stab_UserTableSeeder::class);
         $this->call(TivsTableSeeder::class);
+        $this->call(Buy_tanksTableSeeder::class);
     }
 }

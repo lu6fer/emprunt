@@ -34,6 +34,10 @@ class Tank extends Model
         'operating_pressure', 'usage', 'owner_id', 'status_id'
     ];
 
+    protected $with = [
+        'owner', 'status', 'buy'
+    ];
+
     /**
      * @return $this
      */
@@ -55,7 +59,14 @@ class Tank extends Model
         return $this->belongsTo('Emprunt\Status', 'status_id', 'id');
     }
 
+    /**
+     * @return mixed
+     */
     public function tivs() {
         return $this->hasMany('Emprunt\Tiv')->orderBy('review_date', 'desc');
+    }
+
+    public function buy() {
+        return $this->hasOne('Emprunt\Tank_buy');
     }
 }

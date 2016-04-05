@@ -80,6 +80,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('tank/history','TankController@history');
             Route::get( 'tank/edit/{tank_id}','TankController@edit');
             Route::get('tank/add','TankController@add');
+            Route::get('tank/buy','TankController@buy_history');
             Route::post( 'tank/store', 'TankController@store');
             Route::delete( 'tank/destroy/{tank_id}', 'TankController@destroy');
             //TIV

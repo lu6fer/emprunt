@@ -52,4 +52,11 @@ class Stab extends Model
     public function owner() {
         return $this->belongsTo('Emprunt\User', 'owner_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function buy() {
+        return $this->hasOne('Emprunt\Stab_buy');
+    }
 }

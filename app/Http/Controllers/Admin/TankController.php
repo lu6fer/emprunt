@@ -3,6 +3,7 @@
 namespace Emprunt\Http\Controllers\Admin;
 
 use Emprunt\Borrow_history;
+use Emprunt\Tank_buy;
 use Illuminate\Http\Request;
 
 use Emprunt\Http\Controllers\Controller;
@@ -87,7 +88,8 @@ class TankController extends Controller
             'operating_pressure' => 'required|numeric',
             'usage'              => 'required|string',
             'owner_id'           => 'required|integer',
-            'status_id'          => 'required|integer'
+            'status_id'          => 'required|integer',
+            'Tank_buy.maker'     => 'required|string'
         ]);
 
         // Validation errors
@@ -144,5 +146,14 @@ class TankController extends Controller
         $request->session()->flash($alert['type'], $alert['msg']);
 
         return redirect('admin/tank');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function buy_history() {
+        $tanks = Tank::all();
+        return view('pages.admin.tank.buy')
+            ->with('tanks', $tanks);
     }
 }
