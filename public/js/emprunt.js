@@ -72,6 +72,11 @@ $(document).ready(function() {
             $('#shipping_date').datepicker('getDate')
         );
     });
+    $('#buy.date').on("changeDate", function() {
+        $('#buy.date').val(
+            $('#buy.date').datepicker('getDate')
+        );
+    });
 
 
     /**

@@ -35,6 +35,9 @@ class Tiv extends Model
         'next_test_date', 'shipping_date'
     ];
 
+    /**
+     * @var string
+     */
     protected $dateFormat = 'Y-m-d H:i:s';
 
     /**
@@ -79,10 +82,7 @@ class Tiv extends Model
      */
     public function getPreviousReviewDateAttribute($timestamp)
     {
-        // flexible:
-        return ( ! starts_with($timestamp, '0000')) ? $timestamp : null;
-        // or explicit:
-        //return ($timestamp !== '0000-00-00 00:00:00') ? $this->asDateTime($timestamp) : null;
+        return ( ! starts_with($timestamp, '0000')) ?$this->asDateTime($timestamp) : null;
     }
 
     /**
@@ -92,10 +92,7 @@ class Tiv extends Model
      */
     public function getShippingDateAttribute($timestamp)
     {
-        // flexible:
-        return ( ! starts_with($timestamp, '0000')) ? $timestamp : null;
-        // or explicit:
-        //return ($timestamp !== '0000-00-00 00:00:00') ? $this->asDateTime($timestamp) : null;
+        return ( ! starts_with($timestamp, '0000')) ?$this->asDateTime($timestamp) : null;
     }
 
 

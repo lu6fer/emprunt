@@ -33,7 +33,7 @@ class User extends Authenticatable
     /**
      * @var string
      */
-    protected $dateFormat = 'd/m/Y';
+    protected $dateFormat = 'Y-m-d H:i:s';
 
     /**
      * @var array

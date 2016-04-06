@@ -9,7 +9,7 @@ class Tank_buy extends Model
     /**
      * @var string
      */
-    //protected $dateFormat = 'd/m/Y';
+    protected $dateFormat = 'Y-m-d H:i:s';
 
     /**
      * @var array
@@ -25,6 +25,16 @@ class Tank_buy extends Model
         'tank_id', 'maker', 'thread_type',
         'date', 'price', 'shop', 'sell_price',
     ];
+
+    /**
+     * Mutator for nullable date
+     * @param $timestamp
+     * @return \Carbon\Carbon|null
+     */
+    public function getDateAttribute($timestamp)
+    {
+        return ( ! starts_with($timestamp, '0000')) ?$this->asDateTime($timestamp) : null;
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

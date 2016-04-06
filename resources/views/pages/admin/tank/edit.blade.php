@@ -7,8 +7,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <form name="tank_edit"
-                  action="{!! url('admin/tank/store') !!}"
-                  method="post"
+                  action="{!! url('admin/tank/update') !!}"
+                  method="put"
                   class="form-horizontal">
                 <fieldset>
                     <legend>Déscription</legend>
@@ -73,70 +73,70 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="buy[maker]"
                                    id="buy[maker]" placeholder="Fabriquant"
-                                   value="{!! old('buy[maker]') ? old('buy[maker]') : $tank->buy->maker !!}"
+                                   value="{!! old('buy.maker') ? old('buy.maker') : $tank->buy->maker !!}"
                                    aria-describedby="size_error">
                         <span id="size_error" class="help-block">
-                            {!! $errors->first('buy[maker]') !!}
+                            {!! $errors->first('buy.maker') !!}
                         </span>
                         </div>
                     </div>
                     <!-- buy[thread_type] -->
-                    <div class="form-group {!! $errors->has('buy[thread_type]') ? 'has-error' :'' !!}">
+                    <div class="form-group {!! $errors->has('buy.thread_type') ? 'has-error' :'' !!}">
                         <label for="buy[thread_type]" class="col-sm-2 control-label">Type filetage</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="buy[thread_type]"
                                    id="buy[thread_type]" placeholder="Type filetage"
-                                   value="{!! old('buy[thread_type]') ? old('buy[thread_type]') : $tank->buy->thread_type !!}"
+                                   value="{!! old('buy.thread_type') ? old('buy.thread_type') : $tank->buy->thread_type !!}"
                                    aria-describedby="size_error">
                         <span id="size_error" class="help-block">
-                            {!! $errors->first('buy[thread_type]') !!}
+                            {!! $errors->first('buy.thread_type') !!}
                         </span>
                         </div>
                     </div>
-
                 </fieldset>
                 <fieldset>
                     <legend>Achat</legend>
                     <!-- buy[shop] -->
-                    <div class="form-group {!! $errors->has('buy[shop]') ? 'has-error' :'' !!}">
-                        <label for="buy[shop]" class="col-sm-2 control-label">Fournisseur</label>
+                    <div class="form-group {!! $errors->has('buy.shop') ? 'has-error' :'' !!}">
+                        <label for="buy.shop" class="col-sm-2 control-label">Fournisseur</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="buy[shop]"
-                                   id="buy[shop]" placeholder="Fournisseur"
-                                   value="{!! old('buy[shop]') ? old('buy[shop]') : $tank->buy->shop !!}"
-                                   aria-describedby="size_error">
-                        <span id="size_error" class="help-block">
-                            {!! $errors->first('buy[shop]') !!}
+                            <input type="text" class="form-control"
+                                   name="buy[shop]" id="buy.shop"
+                                   placeholder="Fournisseur"
+                                   value="{!! old('buy.shop') ? old('buy.shop') : $tank->buy->shop !!}"
+                                   aria-describedby="buy.shop_error">
+                        <span id="buy.shop_error" class="help-block">
+                            {!! $errors->first('buy.shop') !!}
                         </span>
                         </div>
                     </div>
                     <!-- buy[date] -->
-                    <div class="form-group {!! $errors->has('buy[date]') ? 'has-error' :'' !!}">
-                        <label for="buy[date]" class="col-sm-2 control-label">Date d'achat</label>
+                    <div class="form-group {!! $errors->has('buy.date') ? 'has-error' :'' !!}">
+                        <label for="buy.date" class="col-sm-2 control-label">Date d'achat</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="buy[shop]"
-                                   id="buy[date]" placeholder="Date d'achat"
-                                   value="{!! old('buy[date]') ? old('buy[date]') : $tank->buy->date->format('d/m/Y') !!}"
-                                   aria-describedby="size_error">
-                        <span id="size_error" class="help-block">
-                            {!! $errors->first('buy[date]') !!}
+                            <input type="text" class="form-control datepicker"
+                                   name="buy[date]" id="buy.date"
+                                   placeholder="jj/mm/aaaa"
+                                   value="{!! old('buy.date') ? old('buy.date') : $tank->buy->date->format('d/m/Y') !!}"
+                                   aria-describedby="buy.date_error">
+                        <span id="buy.date_error" class="help-block">
+                            {!! $errors->first('buy.date') !!}
                         </span>
                         </div>
                     </div>
                     <!-- buy[price] -->
-                    <div class="form-group {!! $errors->has('buy[price]') ? 'has-error' :'' !!}">
-                        <label for="buy[price]" class="col-sm-2 control-label">Prix d'achat</label>
+                    <div class="form-group {!! $errors->has('buy.price') ? 'has-error' :'' !!}">
+                        <label for="buy.price" class="col-sm-2 control-label">Prix d'achat</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="buy[shop]"
-                                   id="buy[price]" placeholder="Prix d'achat"
-                                   value="{!! old('buy[price]') ? old('buy[price]') : $tank->buy->price !!}"
-                                   aria-describedby="size_error">
-                        <span id="size_error" class="help-block">
-                            {!! $errors->first('buy[price]') !!}
+                            <input type="text" class="form-control" name="buy[price]"
+                                   id="buy.price" placeholder="Prix d'achat"
+                                   value="{!! old('buy.price') ? old('buy.price') : $tank->buy->price !!}"
+                                   aria-describedby="buy.price_error">
+                        <span id="buy.price_error" class="help-block">
+                            {!! $errors->first('buy.price') !!}
                         </span>
                         </div>
                     </div>
-
                 </fieldset>
                 <fieldset>
                     <legend>T.I.V</legend>

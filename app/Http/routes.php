@@ -81,7 +81,9 @@ Route::group(['middleware' => 'web'], function () {
             Route::get( 'tank/edit/{tank_id}','TankController@edit');
             Route::get('tank/add','TankController@add');
             Route::get('tank/buy','TankController@buy_history');
-            Route::post( 'tank/store', 'TankController@store');
+            Route::post( 'tank/create', 'TankController@store');
+            Route::put( 'tank/update', 'TankController@update');
+            Route::patch( 'tank/update', 'TankController@update');
             Route::delete( 'tank/destroy/{tank_id}', 'TankController@destroy');
             //TIV
             Route::get('tank/tiv/{tank_id}', 'TivController@tivs');
@@ -109,6 +111,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::get( 'user/add', 'UserController@add');
             Route::post( 'user/store', 'UserController@store');
             Route::delete( 'user/destroy/{user_id}', 'UserController@destroy');
+
             /*Route::get('user/history',             'UserController@history');
 
             Route::get('user/add',                 'UserController@add');

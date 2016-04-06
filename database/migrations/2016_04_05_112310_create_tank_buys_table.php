@@ -15,7 +15,7 @@ class CreateTankBuysTable extends Migration
         Schema::create('tank_buys', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('tank_id')->unsigned();
-            $table->foreign('tank_id')->references('id')->on('tanks');
+            $table->foreign('tank_id')->references('id')->on('tanks')->onDelete('cascade');
             $table->string('maker');
             $table->string('thread_type');
             $table->dateTime('date');

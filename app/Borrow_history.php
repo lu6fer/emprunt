@@ -14,7 +14,7 @@ class Borrow_history extends Model
      * Force date format
      * @var string
      */
-    protected $dateFormat = 'd/m/Y';
+    protected $dateFormat = 'Y-m-d H:i:s';
     /**
      * Disable timestamps
      * @var bool

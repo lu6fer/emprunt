@@ -13,6 +13,7 @@ use Emprunt\Tank;
 use Emprunt\User;
 use Emprunt\Status;
 use Emprunt\Tiv_status;
+use Carbon\Carbon;
 
 /**
  * Class TankController
@@ -73,9 +74,62 @@ class TankController extends Controller
      * @return $this|\Illuminate\Http\RedirectResponse
      */
     public function store(Request $request) {
-        $id = $request->input('id');
+        // Validation rules
+        $validator = Validator::make($request->all(), [
+            'number'             => 'required|numeric|unique:tanks,number',
+            'borrowable'         => 'sometimes|accepted',
+            'brand'              => 'string',
+            'model'              => 'string',
+            'size'               => 'required|string',
+            'sn_valve'           => 'required_without:sn_cylinder|string',
+            'sn_cylinder'        => 'required_without:sn_valve|string',
+            'test_pressure'      => 'required|numeric',
+            'operating_pressure' => 'required|numeric',
+            'usage'              => 'required|string',
+            'owner_id'           => 'required|integer',
+            'status_id'          => 'required|integer',
+            'buy.maker'          => 'required|string',
+            'buy.thread_type'    => 'required|string',
+            'buy.shop'           => 'string',
+            'buy.date'           => 'date_format:d/m/Y'
+        ]);
 
-       // Validation rules
+        // Validation errors
+        if ($validator->fails()) {
+            return redirect('admin/tank/add')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Find id or create new
+        $tank = new Tank();
+        $data = $request->all();
+        $data['borrowable'] = $request->input('borrowable', false) ? 1 : 0;
+        $tank->fill($data);
+        $tank->save();
+
+        $buy = new Tank_buy();
+        $buy_data =$request->input('buy');
+        $buy_data['date'] = Carbon::createFromFormat('d/m/Y', $request->input('buy.date'));
+        $buy->fill($buy_data);
+        $tank->buy()->save($buy);
+
+        // Display success according to add or update
+        $alert = [
+            'type' => 'alert-success',
+            'msg' => 'Le bloc '.$tank->number.' a correctement été ajouter'
+        ];
+
+        $request->session()->flash($alert['type'], $alert['msg']);
+        return redirect('admin/tank');
+    }
+
+    /**
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request) {
+        // Validation rules
         $validator = Validator::make($request->all(), [
             'number'             => 'required|numeric',
             'borrowable'         => 'sometimes|accepted',
@@ -89,41 +143,37 @@ class TankController extends Controller
             'usage'              => 'required|string',
             'owner_id'           => 'required|integer',
             'status_id'          => 'required|integer',
-            'Tank_buy.maker'     => 'required|string'
+            'buy.maker'          => 'required|string',
+            'buy.thread_type'    => 'required|string',
+            'buy.shop'           => 'string',
+            'buy.date'           => 'date_format:d/m/Y'
         ]);
 
         // Validation errors
         if ($validator->fails()) {
-            if ($id) {
-                return redirect('admin/tank/edit/'.$id)
-                    ->withErrors($validator)
-                    ->withInput();
-            } else {
-                return redirect('admin/tank/add')
-                    ->withErrors($validator)
-                    ->withInput();
-            }
+            return redirect('admin/tank/edit/'.$request->input('id'))
+                ->withErrors($validator)
+                ->withInput();
         }
 
         // Find id or create new
-        $tank = Tank::findOrNew($id);
+        $tank = Tank::findOrNew($request->input('id'));
         $data = $request->all();
         $data['borrowable'] = $request->input('borrowable', false) ? 1 : 0;
         $tank->fill($data);
         $tank->save();
 
+        $buy = $tank->buy;
+        $buy_data =$request->input('buy');
+        $buy_data['date'] = Carbon::createFromFormat('d/m/Y', $request->input('buy.date'));
+        $buy->fill($buy_data);
+        $tank->buy()->save($buy);
+
         // Display success according to add or update
-        if ($id) {
-            $alert = [
-                'type' => 'alert-success',
-                'msg' => 'Le bloc '.$tank->number.' a correctement mis à jour'
-            ];
-        } else {
-            $alert = [
-                'type' => 'alert-success',
-                'msg' => 'Le bloc '.$tank->number.' a correctement été ajouter'
-            ];
-        }
+        $alert = [
+            'type' => 'alert-success',
+            'msg' => 'Le bloc '.$tank->number.' a correctement mis à jour'
+        ];
 
         $request->session()->flash($alert['type'], $alert['msg']);
         return redirect('admin/tank');

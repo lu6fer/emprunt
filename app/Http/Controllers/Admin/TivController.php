@@ -52,7 +52,8 @@ class TivController extends Controller
             ->where('tank_id', $tank_id)
             ->where('review_id', '90')
             ->orderBy('review_date', 'desc')
-            ->first();
+            ->first()
+            ?: $tank->buy->date;
         $tiv_datas = [
             'ext_state' => Tiv_status::where('type', 'ext_state')->get(),
             'int_residue' => Tiv_status::where('type', 'int_residue')->get(),

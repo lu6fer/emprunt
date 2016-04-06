@@ -4,7 +4,6 @@
     @include('includes.admin.sidebar')
 @endsection
 @section('content')
-    {!! dd($tanks) !!}
     <div class="table-responsive">
         <a href="{!! url('admin/tank/add') !!}"
            class="btn btn-primary"
@@ -82,6 +81,7 @@
                                title="Supprimer le bloc">
                                 <span class="fa fa-trash" aria-hidden="true"></span>
                             </a>
+                        </div>
                     </td>
                 </tr>
             @endforeach

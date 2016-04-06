@@ -178,6 +178,12 @@ return [
         'comment'                  => 'Commentaire',
         'shipping_date'            => 'Date expédition prestataire',
         'recipient_id'             => 'Société',
+        'buy' => [
+            'maker'                => 'Fabriquant',
+            'thread_type'          => 'Type filetage',
+            'shop'                 => 'Fournisseur',
+            'date'                 => 'Date d\'achat',
+        ]
     ],
 
 ];
