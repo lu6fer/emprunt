@@ -88,8 +88,11 @@ Route::group(['middleware' => 'web'], function () {
             //TIV
             Route::get('tank/tiv/{tank_id}', 'TivController@tivs');
             Route::get('tank/tiv/add/{tank_id}', 'TivController@add');
-            Route::post('tank/tiv/store', 'TivController@store');
+            Route::get( 'tank/tiv/edit/{tiv_id}','TivController@edit');
             Route::get('tank/tiv/detail/{tiv_id}', 'TivController@detail');
+            Route::post('tank/tiv/store', 'TivController@store');
+            Route::put( 'tank/tiv/update', 'TivController@update');
+            Route::patch( 'tank/tiv/update', 'TivController@update');
             /*Route::get('tank/tiv/pdf/{tiv_id}', 'TivController@pdf');*/
             // Stabs
             Route::get( 'stab', 'StabController@index');

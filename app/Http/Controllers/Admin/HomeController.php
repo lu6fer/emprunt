@@ -58,7 +58,9 @@ class HomeController extends Controller
                 'borrowed'  => $regulators_borrowed
             ]
         ];
-        $borrow_history = DB::select("select date_format(borrow_date, '%Y-%m') as period, device_type as device, count(borrow_date) as history
+        $borrow_history = DB::select("select date_format(borrow_date, '%Y-%m') as period, 
+                                             device_type as device, 
+                                             count(borrow_date) as history
                                       from borrow_histories
                                       group by year(borrow_date), month(borrow_date), device_type;");
 

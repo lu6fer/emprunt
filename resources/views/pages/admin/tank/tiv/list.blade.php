@@ -4,6 +4,7 @@
     @include('includes.admin.sidebar')
 @endsection
 @section('content')
+    {{--{!! dd($tank) !!}--}}
     <h1 class="text-center">[{{$tank->number}}] {{$tank->brand}} - {{$tank->model}} - {{$tank->size}}</h1>
     <a href="{!! url('admin/tank/tiv/add/'.$tank->id) !!}"
        class="btn btn-primary"
@@ -31,19 +32,16 @@
         <tr>
             <th data-sortable="true">Date inspection</th>
             <th data-sortable="true">Type</th>
-            <th data-sortable="true">Prochaine inspection</th>
-            <th data-sortable="true">Prochaine requalification</th>
+            <th data-sortable="true">Statut</th>
             <th data-sortable="true">Actions</th>
         </tr>
         </thead>
         <tbody>
         @foreach($tank->tivs as $index => $tiv)
             <tr>
-                {{--<td>{!! date('d/m/Y', strtotime($tiv->review_date)) !!}</td>--}}
-                <td>{{$tiv->review_date->format('d/m/Y')}}</td>
+                <td>{{ $tiv->review_date->format('d/m/Y') }}</td>
                 <td>{{ $tiv->review->value }}</td>
-                <td></td>
-                <td></td>
+                <td>{{ $tiv->review_status->value }}</td>
                 <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
                         <a href="{!! url('admin/tank/tiv/detail/'.$tiv->id) !!}"
@@ -55,6 +53,17 @@
                            title="Détails">
                             <span class="fa fa-info" aria-hidden="true"></span>
                         </a>
+                        @if ($tiv->review_status->id != '88')
+                        <a href="{!! url('admin/tank/tiv/edit/'.$tiv->id) !!}"
+                           class="btn btn-default fa-color-primary rest"
+                           data-method="GET"
+                           data-csrf="{!! csrf_token() !!}"
+                           data-toggle="tooltip"
+                           data-placement="top"
+                           title="Editer">
+                            <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+                        </a>
+                        @endif
                     </div>
                 </td>
             </tr>

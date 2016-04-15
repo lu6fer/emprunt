@@ -313,12 +313,12 @@
                                    name="next_test_date" id="next_test_date"
                                    placeholder="jj/mm/aaaa"
                                    @if($previous_test)
-                                   value="{!! date("d/m/Y", strtotime("+5 years", strtotime($previous_test->review_date))) !!}"
+                                   value="{!! date("d/m/Y", strtotime("+5 years", strtotime($previous_test))) !!}"
                                    @endif
                                    aria-describedby="next_test_date_error">
-                        <span id="next_test_date_error" class="help-block">
-                            {!! $errors->first('next_test_date') !!}
-                        </span>
+                            <span id="next_test_date_error" class="help-block">
+                                {!! $errors->first('next_test_date') !!}
+                            </span>
                         </div>
                     </div>
                     <!-- comment -->
