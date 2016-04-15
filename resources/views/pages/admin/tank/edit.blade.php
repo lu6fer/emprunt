@@ -8,7 +8,7 @@
         <div class="col-md-8 col-md-offset-2">
             <form name="tank_edit"
                   action="{!! url('admin/tank/update') !!}"
-                  method="put"
+                  method="post"
                   class="form-horizontal">
                 <fieldset>
                     <legend>Déscription</legend>
@@ -275,6 +275,7 @@
                 </fieldset>
                 <!-- ID -->
                 <input type="hidden" name="id" id="id" value="{{$tank->id}}">
+                <input type="hidden" name="_method" value="PUT">
                 <!-- CSRF -->
                 {!! csrf_field() !!}
                 <!-- Submit -->
