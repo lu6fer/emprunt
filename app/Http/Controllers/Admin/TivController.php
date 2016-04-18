@@ -122,12 +122,20 @@ class TivController extends Controller
             ->with('previous_test', $previous_test);
     }
 
-    /*public function pdf($tiv_id) {
+    /**
+     * @param $tiv_id
+     * @return mixed
+     */
+    public function pdf($tiv_id) {
         $tiv = Tiv::findOrFail($tiv_id);
         $tiv->load('tank');
-        $pdf = PDF::loadView('pages.admin.tank.tiv.pdf', compact('tiv'));
-        return $pdf->download($tiv->tank->id.'- Inspection - '.date('Y-m-d H:i:s').'.pdf');
-    }*/
+        $previous_tiv = Tiv::where('tank_id', $tiv->tank_id)
+            ->where('review_date', $tiv->previous_review_date)
+            ->first();
+        $pdf = PDF::loadView('pages.admin.tank.tiv.pdf', compact('tiv', "previous_tiv"));
+        return $pdf->stream($tiv->tank->id.'- Inspection - '.date('Y-m-d H:i:s').'.pdf');
+        //return view('pages.admin.tank.tiv.pdf')->with('tiv', $tiv)->with('previous_tiv', $previous_tiv);
+    }
 
     /**
      * Save new tiv

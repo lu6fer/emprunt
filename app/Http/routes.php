@@ -93,7 +93,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::post('tank/tiv/store', 'TivController@store');
             Route::put( 'tank/tiv/update', 'TivController@update');
             Route::patch( 'tank/tiv/update', 'TivController@update');
-            /*Route::get('tank/tiv/pdf/{tiv_id}', 'TivController@pdf');*/
+            Route::get('tank/tiv/pdf/{tiv_id}', 'TivController@pdf');
             // Stabs
             Route::get( 'stab', 'StabController@index');
             Route::get( 'stab/history', 'StabController@history');
