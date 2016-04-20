@@ -110,7 +110,9 @@ class Tiv_statusesTableSeeder extends Seeder
             ['type' => 'recipient',             'value' => 'Saint Brieuc plongée'],
             ['type' => 'recipient',             'value' => 'SAI Mauron'],
             ['type' => 'recipient',             'value' => 'Aux plongeurs breton'],
-
+            ['type' => 'decision',              'value' => 'Acceptée'],
+            ['type' => 'decision',              'value' => 'Refusée'],
+            ['type' => 'decision',              'value' => 'Attente'],
         ];
 
         DB::table($table)->insert($data);

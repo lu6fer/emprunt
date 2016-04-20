@@ -33,6 +33,7 @@
             <th data-sortable="true">Date inspection</th>
             <th data-sortable="true">Type</th>
             <th data-sortable="true">Statut</th>
+            <th data-sortable="true">Décision</th>
             <th data-sortable="true">Actions</th>
         </tr>
         </thead>
@@ -42,6 +43,7 @@
                 <td>{{ $tiv->review_date->format('d/m/Y') }}</td>
                 <td>{{ $tiv->review->value }}</td>
                 <td>{{ $tiv->review_status->value }}</td>
+                <td>{{ $tiv->decision->value }}</td>
                 <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
                         <a href="{!! url('admin/tank/tiv/detail/'.$tiv->id) !!}"
@@ -53,7 +55,7 @@
                            title="Détails">
                             <span class="fa fa-info" aria-hidden="true"></span>
                         </a>
-                        @if ($tiv->review_status->id != '88')
+                        @if ($tiv->review_status->id != '88' || $tiv->decision->id != 96)
                         <a href="{!! url('admin/tank/tiv/edit/'.$tiv->id) !!}"
                            class="btn btn-default fa-color-primary rest"
                            data-method="GET"

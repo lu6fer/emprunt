@@ -52,6 +52,9 @@ class TivController extends Controller
             ->orderBy('review_date', 'desc')
             ->first()
             ?: $tank->buy->date;
+        if (isset($previous_test->review_date)) {
+            $previous_test = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $previous_test->review_date);
+        }
         $tiv_datas = [
             'ext_state' => Tiv_status::where('type', 'ext_state')->get(),
             'int_residue' => Tiv_status::where('type', 'int_residue')->get(),
@@ -65,6 +68,7 @@ class TivController extends Controller
             'valve' => Tiv_status::where('type', 'valve')->get(),
             'valve_ring' => Tiv_status::where('type', 'valve_ring')->get(),
             'recipient' => Tiv_status::where('type', 'recipient')->get(),
+            'decision' => Tiv_status::where('type', 'decision')->get()
         ];
         return view('pages.admin.tank.tiv.add')
             ->with('tank', $tank)
@@ -87,13 +91,24 @@ class TivController extends Controller
     }
 
     /**
-     * Display details of tiv's tank
      * @param $tiv_id
+     * @param Request $request
      * @return mixed
      */
-    public function edit($tiv_id) {
+    public function edit($tiv_id, Request $request) {
         $tiv = Tiv::findOrFail($tiv_id);
         $tiv->load('tank');
+
+        if ($tiv->review_status->id == 88 && $tiv->decision->id != 98) {
+            $alert = [
+                'type' => 'alert-warning',
+                'msg' => 'Il est impossible d\'éditer une inspection "Terminer" et "Acceptée" ou "Refusée"'
+            ];
+
+            $request->session()->flash($alert['type'], $alert['msg']);
+            return redirect('/admin/tank/tiv/'.$tiv->tank->id);
+        }
+
         $previous_test = DB::table('tivs')
             ->select('review_date')
             ->where('tank_id', $tiv->tank->id)
@@ -101,6 +116,9 @@ class TivController extends Controller
             ->orderBy('review_date', 'desc')
             ->first()
             ?: $tiv->tank->buy->date;
+        if (isset($previous_test->review_date)) {
+            $previous_test = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $previous_test->review_date);
+        }
         $tiv_datas = [
             'ext_state'             => Tiv_status::where('type', 'ext_state')->get(),
             'int_residue'           => Tiv_status::where('type', 'int_residue')->get(),
@@ -114,7 +132,8 @@ class TivController extends Controller
             'valve'                 => Tiv_status::where('type', 'valve')->get(),
             'valve_ring'            => Tiv_status::where('type', 'valve_ring')->get(),
             'recipient'             => Tiv_status::where('type', 'recipient')->get(),
-            'reviewer'              => $reviewers = User::all()
+            'reviewer'              => $reviewers = User::all(),
+            'decision' => Tiv_status::where('type', 'decision')->get()
         ];
         return view('pages.admin.tank.tiv.edit')
             ->with('tiv', $tiv)
@@ -129,12 +148,14 @@ class TivController extends Controller
     public function pdf($tiv_id) {
         $tiv = Tiv::findOrFail($tiv_id);
         $tiv->load('tank');
+        $last_test = Tiv::where('tank_id', $tiv->tank_id)
+            ->where('review_id', 90)
+            ->first();
         $previous_tiv = Tiv::where('tank_id', $tiv->tank_id)
             ->where('review_date', $tiv->previous_review_date)
             ->first();
-        $pdf = PDF::loadView('pages.admin.tank.tiv.pdf', compact('tiv', "previous_tiv"));
-        return $pdf->stream($tiv->tank->id.'- Inspection - '.date('Y-m-d H:i:s').'.pdf');
-        //return view('pages.admin.tank.tiv.pdf')->with('tiv', $tiv)->with('previous_tiv', $previous_tiv);
+        $pdf = PDF::loadView('pages.admin.tank.tiv.pdf', compact('tiv', "previous_tiv", "last_test"));
+        return $pdf->download($tiv->tank->id.'- Inspection - '.date('Y-m-d H:i:s').'.pdf');
     }
 
     /**
@@ -166,6 +187,7 @@ class TivController extends Controller
             'comment'                  => 'string',
             'shipping_date'            => 'required_with:recipient_id|date_format:d/m/Y',
             'recipient_id'             => 'required_with:shipping_date|integer',
+            'decision_id'              => 'required|integer'
         ]);
 
         // Validation errors
@@ -232,6 +254,7 @@ class TivController extends Controller
             'comment'                  => 'string',
             'shipping_date'            => 'required_with:recipient_id|date_format:d/m/Y',
             'recipient_id'             => 'required_with:shipping_date|integer',
+            'decision_id'              => 'required|integer'
         ]);
 
         // Validation errors

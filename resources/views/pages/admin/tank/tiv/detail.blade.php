@@ -348,7 +348,30 @@
                         </span>
                         </div>
                     </div>
-
+                </fieldset>
+                <fieldset>
+                    <legend>Décision</legend>
+                    <!-- recipient_id -->
+                    <div class="form-group {!! $errors->has('decision_id') ? 'has-error' :'' !!}">
+                        <label for="decision_id" class="col-sm-2 control-label">Décision</label>
+                        <div class="col-sm-10">
+                            <select title="tank" name="decision_id"
+                                    id="decision_id" aria-describedby="decision_id_error"
+                                    class="form-control"
+                                    disabled>
+                                @if ($tiv->decision == null)
+                                    <option selected></option>
+                                @else
+                                    <option value="{{$tiv->decision->id}}" selected>
+                                        {{$tiv->decision->value}}
+                                    </option>
+                                @endif
+                            </select>
+                        <span id="decision_id_error" class="help-block">
+                            {!! $errors->first('decision_id') !!}
+                        </span>
+                        </div>
+                    </div>
                 </fieldset>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">

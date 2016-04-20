@@ -48,6 +48,8 @@ class CreateTivsTable extends Migration
             $table->integer('recipient_id')->unsigned()->nullable();
             $table->foreign('recipient_id')->references('id')->on('tiv_statuses');
             $table->longText('comment')->nullable();
+            $table->integer('decision_id')->unsigned()->nullable();
+            $table->foreign('decision_id')->references('id')->on('tiv_statuses');
             $table->timestamps();
         });
     }

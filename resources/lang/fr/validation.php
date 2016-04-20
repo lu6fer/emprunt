@@ -178,6 +178,7 @@ return [
         'comment'                  => 'Commentaire',
         'shipping_date'            => 'Date expédition prestataire',
         'recipient_id'             => 'Société',
+        'decision'                 => 'Décision',
         'buy' => [
             'maker'                => 'Fabriquant',
             'thread_type'          => 'Type filetage',

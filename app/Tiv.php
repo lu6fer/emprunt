@@ -197,4 +197,11 @@ class Tiv extends Model
     public function reviewer() {
         return $this->hasOne('Emprunt\User', 'id', 'reviewer_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function decision() {
+        return $this->hasOne('Emprunt\Tiv_status', 'id', 'decision_id');
+    }
 }

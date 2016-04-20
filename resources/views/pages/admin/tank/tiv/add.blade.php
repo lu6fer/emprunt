@@ -375,6 +375,28 @@
                     </div>
 
                 </fieldset>
+                <fieldset>
+                    <legend>Décision</legend>
+                    <!-- recipient_id -->
+                    <div class="form-group {!! $errors->has('decision_id') ? 'has-error' :'' !!}">
+                        <label for="decision_id" class="col-sm-2 control-label">Décision</label>
+                        <div class="col-sm-10">
+                            <select title="tank" name="decision_id"
+                                    id="decision_id" aria-describedby="decision_id_error"
+                                    class="form-control">
+                                <option></option>
+                                @foreach($tiv_datas['decision'] as $data)
+                                    <option value="{{$data->id}}" @if (old('decision_id') == $data->id) selected @endif>
+                                        {{$data->value}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        <span id="decision_id_error" class="help-block">
+                            {!! $errors->first('decision_id') !!}
+                        </span>
+                        </div>
+                    </div>
+                </fieldset>
                 <input type="hidden" name="tank_id" id="tank_id" value="{{$tank->id}}">
                 {!! csrf_field() !!}
                 <div class="form-group">

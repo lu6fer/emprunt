@@ -364,8 +364,9 @@
                             <input type="text" class="form-control datepicker"
                                    name="shipping_date" id="shipping_date"
                                    placeholder="jj/mm/aaaa"
-                                   
-                                   @if($tiv->previous_review_date != null) value="{{$tiv->previous_review_date->format('d/m/Y')}}" @endif
+                                   @if($tiv->previous_review_date != null)
+                                   value="{{$tiv->previous_review_date->format('d/m/Y')}}"
+                                   @endif
                                    aria-describedby="shipping_date_error">
                         <span id="shipping_date_error" class="help-block">
                             {!! $errors->first('previous_review_date') !!}
@@ -380,7 +381,7 @@
                                    name="next_test_date" id="next_test_date"
                                    placeholder="jj/mm/aaaa"
                                    @if($previous_test)
-                                   value="{!! date("d/m/Y", strtotime("+5 years", strtotime($previous_test->review_date))) !!}"
+                                   value="{!! date("d/m/Y", strtotime("+5 years", strtotime($previous_test))) !!}"
                                    @endif
                                    aria-describedby="next_test_date_error">
                         <span id="next_test_date_error" class="help-block">
@@ -449,7 +450,31 @@
                         </span>
                         </div>
                     </div>
-
+                </fieldset>
+                <fieldset>
+                    <legend>Décision</legend>
+                    <!-- recipient_id -->
+                    <div class="form-group {!! $errors->has('decision_id') ? 'has-error' :'' !!}">
+                        <label for="decision_id" class="col-sm-2 control-label">Décision</label>
+                        <div class="col-sm-10">
+                            <select title="tank" name="decision_id"
+                                    id="decision_id" aria-describedby="decision_id_error"
+                                    class="form-control">
+                                <option></option>
+                                @foreach($tiv_datas['decision'] as $data)
+                                    <option value="{{$data->id}}"
+                                            @if (old('decision_id') ?: ($tiv->decision ? $tiv->decision->id : null) == $data->id)
+                                            selected
+                                            @endif>
+                                        {{$data->value}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        <span id="decision_id_error" class="help-block">
+                            {!! $errors->first('decision_id') !!}
+                        </span>
+                        </div>
+                    </div>
                 </fieldset>
 
                 <input type="hidden" name="id" value="{{ $tiv->id }}">
