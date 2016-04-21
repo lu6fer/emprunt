@@ -291,4 +291,14 @@ class TivController extends Controller
         $request->session()->flash($alert['type'], $alert['msg']);
         return redirect('/admin/tank/tiv/'.$tank_id);
     }
+
+    /**
+     * @return bool
+     */
+    public function dashboard() {
+        //select tank_id, MAX(review_date) as review_date, next_test_date from tivs group by tank_id order by review_date desc;
+        $tivs = Tiv::groupBy('tank_id')->latest('review_date')->get();
+        return view('pages.admin.tank.tiv.dashboard')
+            ->with('tivs', $tivs);
+    }
 }

@@ -26,6 +26,7 @@
     "restfulizer": "resfulizerjs#*",
     "morris.js": "morrisjs#^0.5.1",
     "bootstrap-datepicker": "^1.6.0",
-    "KNACSS": "knacss#^4.4.5"
+    "KNACSS": "knacss#^4.4.5",
+    "moment": "momentjs#^2.13.0"
   }
 }

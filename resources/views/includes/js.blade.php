@@ -7,7 +7,7 @@
 <script type="application/javascript"
         src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script type="application/javascript"
-        src="{{ asset('bower_components/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
+        src="{{ asset('bower_components/bootstrap-table/dist/bootstrap-table.js') }}"></script>
 <script type="application/javascript"
         src="{{ asset('bower_components/bootstrap-table/dist/locale/bootstrap-table-fr-FR.min.js') }}"></script>
 <script type="application/javascript"
@@ -15,7 +15,7 @@
 <script type="application/javascript"
         src="{{ asset('bower_components/select2/dist/js/select2.min.js') }}"></script>
 <script type="application/javascript"
-        src="{{ asset('bower_components/raphael/raphael-min.js') }}"></script>
+        src="{{ asset('bower_components/raphael/raphael.min.js') }}"></script>
 <script type="application/javascript"
         src="{{ asset('bower_components/morris.js/morris.min.js') }}"></script>
 <script type="application/javascript"
@@ -25,6 +25,10 @@
 <script type="application/javascript"
         src="{{ asset('bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.fr.min.js') }}"></script>
 <script type="application/javascript"
+        src="{{ asset('bower_components/moment/min/moment-with-locales.min.js') }}"></script>
+<script type="application/javascript"
         src="{{ asset('js/emprunt.js') }}"></script>
 <script type="application/javascript"
         src="{{ asset('js/dashboard.js') }}"></script>
+<script type="application/javascript"
+        src="{{ asset('js/tiv.js') }}"></script>
