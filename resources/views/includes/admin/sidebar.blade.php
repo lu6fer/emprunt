@@ -92,6 +92,18 @@
                     </span>
                     </a>
                 </li>
+                <!-- Buy history -->
+                <li class="{{ (Request::segment(2) === 'regulator' && Request::segment(3) === 'buy') ? 'active' : null }}"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-original-title="Historique des achats">
+                    <a href="{!! url('admin/regulator/buy') !!}">
+                        <i class="fa fa-fw fa-money"></i>&nbsp;
+                    <span class="sidenav-link">
+                        Historique des achats
+                    </span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li>
@@ -124,6 +136,18 @@
                         <i class="fa fa-fw fa-history"></i>&nbsp;
                     <span class="sidenav-link">
                         Historique des emprunts
+                    </span>
+                    </a>
+                </li>
+                <!-- Buy history -->
+                <li class="{{ (Request::segment(2) === 'stab' && Request::segment(3) === 'buy') ? 'active' : null }}"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    data-original-title="Historique des achats">
+                    <a href="{!! url('admin/stab/buy') !!}">
+                        <i class="fa fa-fw fa-money"></i>&nbsp;
+                    <span class="sidenav-link">
+                        Historique des achats
                     </span>
                     </a>
                 </li>

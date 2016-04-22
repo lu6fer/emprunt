@@ -67,6 +67,15 @@ class RegulatorController extends Controller
     }
 
     /**
+     * @return mixed
+     */
+    public function buy_history() {
+        $regulators = Regulator::all();
+        return view('pages.admin.regulator.buy')
+            ->with('regulators', $regulators);
+    }
+
+    /**
      * @param Request $request
      * @return $this|\Illuminate\Http\RedirectResponse
      */

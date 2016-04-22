@@ -100,14 +100,22 @@ Route::group(['middleware' => 'web'], function () {
             Route::get( 'stab/history', 'StabController@history');
             Route::get( 'stab/edit/{stab_id}', 'StabController@edit');
             Route::get( 'stab/add', 'StabController@add');
-            Route::post( 'stab/store', 'StabController@store');
+            Route::post( 'stab/create', 'StabController@store');
+            Route::put( 'stab/update', 'StabController@update');
+            Route::patch( 'stab/update', 'StabController@update');
+            //Route::post( 'stab/store', 'StabController@store');
+            Route::get( 'stab/buy', 'StabController@buy_history');
             Route::delete( 'stab/destroy/{stab_id}', 'StabController@destroy');
             // Regulators
             Route::get( 'regulator', 'RegulatorController@index');
             Route::get( 'regulator/history', 'RegulatorController@history');
             Route::get( 'regulator/edit/{regulator_id}', 'RegulatorController@edit');
             Route::get( 'regulator/add', 'RegulatorController@add');
-            Route::post( 'regulator/store', 'RegulatorController@store');
+            Route::get( 'regulator/buy', 'RegulatorController@buy_history');
+            Route::post( 'regulator/create', 'RegulatorController@store');
+            Route::put( 'regulator/update', 'RegulatorController@update');
+            Route::patch( 'regulator/update', 'RegulatorController@update');
+            //Route::post( 'regulator/store', 'RegulatorController@store');
             Route::delete( 'regulator/destroy/{regulator_id}', 'RegulatorController@destroy');
             // Users
             Route::get( 'user', 'UserController@index');

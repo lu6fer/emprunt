@@ -67,6 +67,15 @@ class StabController extends Controller
     }
 
     /**
+     * @return mixed
+     */
+    public function buy_history() {
+        $tabs = Stab::all();
+        return view('pages.admin.stab.buy')
+            ->with('stabs', $tabs);
+    }
+
+    /**
      * @param Request $request
      * @return $this|\Illuminate\Http\RedirectResponse
      */
