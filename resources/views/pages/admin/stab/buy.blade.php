@@ -35,10 +35,8 @@
                 <th data-sortable="true">Model</th>
                 <th data-sortable="true">Taille</th>
                 <th data-sortable="true">Etat</th>
-                <th data-sortable="true">Fabriquant</th>
                 <th data-sortable="true">Date d'achat</th>
                 <th data-sortable="true">Prix d'achat</th>
-                <th data-sortable="true">Filetage</th>
                 <th data-sortable="true">Actions</th>
             </tr>
             </thead>
@@ -50,10 +48,10 @@
                     <td>{{$stab->model}}</td>
                     <td>{{$stab->size}}</td>
                     <td>{{$stab->status->value}}</td>
-                    <td>{{$stab->buy->maker}}</td>
+                    @if($stab->buy != null)
                     <td>{{$stab->buy->date->format('d/m/Y')}}</td>
                     <td>{{$stab->buy->price}}&nbsp;&euro;</td>
-                    <td>{{$stab->buy->thread_type}}</td>
+                    @endif
                     <td>
                         <div class="btn-group btn-group-sm" role="group" aria-label="...">
                             <a href="{!! url('admin/stab/edit/'.$stab->id) !!}"

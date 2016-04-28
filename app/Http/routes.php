@@ -90,7 +90,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('tank/tiv/add/{tank_id}', 'TivController@add');
             Route::get( 'tank/tiv/edit/{tiv_id}','TivController@edit');
             Route::get('tank/tiv/detail/{tiv_id}', 'TivController@detail');
-            Route::post('tank/tiv/store', 'TivController@store');
+            Route::post('tank/tiv/create', 'TivController@store');
             Route::put( 'tank/tiv/update', 'TivController@update');
             Route::patch( 'tank/tiv/update', 'TivController@update');
             Route::get('tank/tiv/pdf/{tiv_id}', 'TivController@pdf');
@@ -123,6 +123,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::get( 'user/add', 'UserController@add');
             Route::post( 'user/store', 'UserController@store');
             Route::delete( 'user/destroy/{user_id}', 'UserController@destroy');
+            
 
             /*Route::get('user/history',             'UserController@history');
 

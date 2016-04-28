@@ -16,8 +16,6 @@ class CreateRegulatorBuysTable extends Migration
             $table->increments('id');
             $table->integer('regulator_id')->unsigned();
             $table->foreign('regulator_id')->references('id')->on('regulators');
-            $table->string('maker');
-            $table->string('thread_type');
             $table->dateTime('date');
             $table->float('price')->default('0');
             $table->string('shop')->nullable();

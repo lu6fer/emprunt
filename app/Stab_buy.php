@@ -22,8 +22,7 @@ class Stab_buy extends Model
      * @var array
      */
     protected $fillable = [
-        'tank_id', 'maker', 'thread_type',
-        'date', 'price', 'shop', 'sell_price',
+        'tank_id', 'date', 'price', 'shop', 'sell_price',
     ];
 
     /**

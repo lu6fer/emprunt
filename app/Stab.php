@@ -32,6 +32,13 @@ class Stab extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $with = [
+        'status', 'buy'
+    ];
+
+    /**
      * @return $this
      */
     public function users ()

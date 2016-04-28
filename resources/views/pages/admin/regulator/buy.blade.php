@@ -33,12 +33,10 @@
                 <th data-sortable="true">Numéro</th>
                 <th data-sortable="true">Marque</th>
                 <th data-sortable="true">Model</th>
-                <th data-sortable="true">Taille</th>
+                <th data-sortable="true">Type</th>
                 <th data-sortable="true">Etat</th>
-                <th data-sortable="true">Fabriquant</th>
                 <th data-sortable="true">Date d'achat</th>
                 <th data-sortable="true">Prix d'achat</th>
-                <th data-sortable="true">Filetage</th>
                 <th data-sortable="true">Actions</th>
             </tr>
             </thead>
@@ -48,12 +46,12 @@
                     <td>{{$regulator->number}}</td>
                     <td>{{$regulator->brand}}</td>
                     <td>{{$regulator->model}}</td>
-                    <td>{{$regulator->size}}</td>
+                    <td>{{$regulator->type}}</td>
                     <td>{{$regulator->status->value}}</td>
-                    <td>{{$regulator->buy->maker}}</td>
+                    @if($regulator->buy != null)
                     <td>{{$regulator->buy->date->format('d/m/Y')}}</td>
                     <td>{{$regulator->buy->price}}&nbsp;&euro;</td>
-                    <td>{{$regulator->buy->thread_type}}</td>
+                    @endif
                     <td>
                         <div class="btn-group btn-group-sm" role="group" aria-label="...">
                             <a href="{!! url('admin/regulator/edit/'.$regulator->id) !!}"
