@@ -3,6 +3,7 @@
 namespace Emprunt\Http\Controllers\Admin;
 
 use Emprunt\Borrow_history;
+use Emprunt\Stab_buy;
 use Illuminate\Http\Request;
 
 use Emprunt\Http\Controllers\Controller;
@@ -11,6 +12,7 @@ use Validator;
 use Emprunt\Stab;
 use Emprunt\User;
 use Emprunt\Status;
+use Carbon\Carbon;
 
 /**
  * Class TankController
@@ -82,13 +84,16 @@ class StabController extends Controller
     public function store(Request $request) {
         // Validation rules
         $validator = Validator::make($request->all(), [
-            'number'     => 'required|numeric',
+            'number'     => 'required|numeric|unique:stabs,number',
             'borrowable' => 'sometimes|accepted',
             'brand'      => 'string',
             'model'      => 'string',
             'size'       => 'required|string',
             'owner_id'   => 'required|integer',
             'status_id'  => 'required|integer',
+            'buy.shop'   => 'string',
+            'buy.price'  => 'numeric',
+            'buy.date'   => 'date_format:d/m/Y'
         ]);
 
         // Validation errors
@@ -104,6 +109,12 @@ class StabController extends Controller
         $data['borrowable'] = $request->input('borrowable', false) ? 1 : 0;
         $stab->fill($data);
         $stab->save();
+
+        $buy = new Stab_buy();
+        $buy_data =$request->input('buy');
+        $buy_data['date'] = Carbon::createFromFormat('d/m/Y', $request->input('buy.date'));
+        $buy->fill($buy_data);
+        $stab->buy()->save($buy);
 
         // Display success according to add or update
         $alert = [
@@ -131,6 +142,9 @@ class StabController extends Controller
             'size'       => 'required|string',
             'owner_id'   => 'required|integer',
             'status_id'  => 'required|integer',
+            'buy.shop'   => 'string',
+            'buy.price'  => 'numeric',
+            'buy.date'   => 'date_format:d/m/Y'
         ]);
 
         // Validation errors
@@ -146,6 +160,12 @@ class StabController extends Controller
         $data['borrowable'] = $request->input('borrowable', false) ? 1 : 0;
         $stab->fill($data);
         $stab->save();
+
+        $buy = $stab->buy;
+        $buy_data =$request->input('buy');
+        $buy_data['date'] = Carbon::createFromFormat('d/m/Y', $request->input('buy.date'));
+        $buy->fill($buy_data);
+        $stab->buy()->save($buy);
 
         // Display success according to add or update
         $alert = [

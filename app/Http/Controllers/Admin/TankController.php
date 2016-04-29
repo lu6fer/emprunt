@@ -91,6 +91,7 @@ class TankController extends Controller
             'buy.maker'          => 'required|string',
             'buy.thread_type'    => 'required|string',
             'buy.shop'           => 'string',
+            'buy.price'          => 'numeric',
             'buy.date'           => 'date_format:d/m/Y'
         ]);
 

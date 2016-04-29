@@ -61,7 +61,7 @@
                                title="Editer le détendeur">
                                 <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
                             </a>
-                            <a href="{!! url('admin/v/destroy/'.$regulator->id) !!}"
+                            <a href="{!! url('admin/regulator/destroy/'.$regulator->id) !!}"
                                data-method="DELETE"
                                data-csrf="{!! csrf_token() !!}"
                                class="btn btn-default fa-color-danger rest"
