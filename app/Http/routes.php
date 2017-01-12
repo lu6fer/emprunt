@@ -60,6 +60,7 @@
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
     Route::get( '/', 'HomeController@index');
+	Route::get( '/status', 'StatusController@index');
     Route::get( '/devices', 'DeviceController@index');
     Route::get( '/borrow/user/{user_id}', 'BorrowController@user');
     Route::post( '/return/stab', 'ReturnController@stab');
