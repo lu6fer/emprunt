@@ -419,7 +419,7 @@
   }, {
     "name": "DATABASE_SERVICE_NAME",
     "displayName": "Database Service Name",
-    "value": "mysqli-emprunt",
+    "value": "mysql-emprunt",
     "required": true
   }, {
     "name": "DATABASE_ENGINE",
