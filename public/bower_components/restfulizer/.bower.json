@@ -1,0 +1,30 @@
+{
+  "name": "restfulizer",
+  "description": "A simple jQuery plugin for changing the http method (POST/PUT/DELETE) of a simple html link or button",
+  "main": "jquery.restfulizer.js",
+  "keywords": [
+    "jquery",
+    "restful"
+  ],
+  "authors": [
+    "Anael Favre <anael.favre@gmail.com>"
+  ],
+  "license": "WTFPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/Ifnot/RestfulizerJs",
+  "_release": "935f638e25",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "935f638e25b19d74468e5f960c0615dea3749547"
+  },
+  "_source": "https://github.com/Ifnot/RestfulizerJs.git",
+  "_target": "*",
+  "_originalSource": "resfulizerjs"
+}
